@@ -1,0 +1,39 @@
+{
+  "articles": [{
+    "title": "Test1",
+    "titleImg": "",
+    "contain": " Contain of Test1",
+    "tagList": ["test", "API"],
+    "createDay": "2017-05-01T03:22:56.637Z",
+    "updateDay": "2017-05-02T03:22:56.637Z",
+    "isLiked": false,
+    "isFollowed": false,
+    "likeCount": 0,
+    "followCount": 0,
+    "author": {
+      "userName": "anh",
+      "avatar": "",
+      "isFollowed": false,
+      "followCount": 0
+    }
+  },
+  {
+    "title": "Test2",
+    "titleImg": "",
+    "contain": " Contain of Test2",
+    "tagList": ["test", "API"],
+    "createDay": "2017-05-01T03:22:56.637Z",
+    "updateDay": "2017-05-02T03:22:56.637Z",
+    "isLiked": false,
+    "isFollowed": true,
+    "likeCount": 0,
+    "followCount": 1,
+    "author": {
+      "userName": "anh",
+      "avatar": "",
+      "isFollowed": false,
+      "followCount": 0
+    }
+  }],
+  "articlesCount": 2
+}

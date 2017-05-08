@@ -1,0 +1,19 @@
+.footer {
+  width: 100%;
+  padding: 30px 0;
+  background-color: $color-primary;
+  color: $color-a;
+  overflow: auto;
+  .footer-contain {
+    @extend %center-side;
+    .logo {
+      width: 100px;
+      height: auto;
+      float: left;
+    }
+    .license {
+      float: left;
+      margin: 6.5px 10px;
+    }
+  }
+}

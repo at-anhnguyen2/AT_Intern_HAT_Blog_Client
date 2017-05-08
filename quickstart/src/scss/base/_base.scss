@@ -1,0 +1,30 @@
+body {
+  font-family: $font-family-body;
+  color: $color-primary;
+  font-size: 14px;
+  background-color: $color-c;
+}
+
+* {
+  @include box-sizing;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+h1, h2, h3, h4, h5 {
+  font-family: $font-family-header;
+  font-weight: bold;
+}
+img {
+  max-width: 100%;
+}
+ul, ol{
+  list-style: none;
+}
+button, input, a {
+  &:focus {
+  outline: none;
+  }
+}
