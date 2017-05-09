@@ -1,6 +1,16 @@
 .header {
   width: 100%;
-  padding: 15px 0;
+  height: 78px;
+}
+.header-scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  padding: 10px 0;
+  background-color: $color-c;
+  border-bottom: 1px solid $color-primary;
   overflow: auto;
   .header-contain {
     @extend %center-side;

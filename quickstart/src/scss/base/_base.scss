@@ -10,12 +10,16 @@ body {
 }
 
 a {
-  color: inherit;
+  color: $color-primary;
   text-decoration: none;
+  @extend %text-hover;
 }
 h1, h2, h3, h4, h5 {
   font-family: $font-family-header;
   font-weight: bold;
+}
+h1, h2, h3 {
+  text-transform: uppercase;
 }
 img {
   max-width: 100%;
@@ -25,6 +29,6 @@ ul, ol{
 }
 button, input, a {
   &:focus {
-  outline: none;
+    outline: none;
   }
 }

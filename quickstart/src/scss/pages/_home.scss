@@ -21,9 +21,9 @@
     border: 0;
     li {
       text-transform: uppercase;
-      a:hover {
-        color: $color-a;
-        background-color: $color-primary;
+      a {
+        @extend %active;
+        @extend %text-hover;
       }
     } 
   }
@@ -34,11 +34,13 @@
   @extend %reset;
   min-height: 500px;
   margin-top: 30px;
+  overflow: hidden;
   .item-article {
     min-height: 200px;
-    background-color: white;
+    background-color: $color-a;
+    overflow: hidden;
     .article-img {
-      @extend %square;
+      @extend %article-view;
       img {
         width: 100%;
         height: 100%;
@@ -47,7 +49,7 @@
       .arrow {
         position: absolute;
         width: 6%;
-        height: 6%;
+        height: 10%;
         background-color: $color-a;
         right: -3%;
         top: 47%;
@@ -55,9 +57,9 @@
       }
     }
     .article-description {
-      @extend %square;
+      @extend %article-view;
       .content {
-        padding: 15px;
+        padding: 30px;
         .user {
           position: relative;
           overflow: hidden;
@@ -73,48 +75,50 @@
         }
         .follow-like {
           position: absolute;
-          bottom: 15px;
-          a {
+          bottom: 30px;
+          .btn {
             padding: 2px 5px;
           }
         }
-        p {
-          font-size: 12px;
-        }
       }
     }
-    @for $i from 1 through 1 {
-      &:nth-child(#{$i+2}) {
-        .article-img {
-          float: right;
-          .arrow {
-            right: 97%;
-          }
-        }
-        .article-description {
-          float: left;
+    &:nth-child(even) {
+      .article-img {
+        float: right;
+        .arrow {
+          right: 97%;
         }
       }
-      &:nth-child(#{$i+3}) {
-        .article-img {
-          float: right;
-          .arrow {
-            right: 97%;
-          }
-        }
-        .article-description {
-          float: left;
-        }
+      .article-description {
+        float: left;
+      }
+    }
+    p {
+      margin-top: 10px;
+    }
+    a {
+      @extend %text-hover;
+    }
+  }
+  .page-number {
+    text-align: center;
+    .pagination {
+      margin: 30px 0;
+      a {
+        @extend %active;
+        @extend %text-hover;
+        background-color: $color-a;
+        border-color: $color-primary;
       }
     }
   }
   .aside {
+    padding-left: 15px;
     h2 {
       margin-bottom: 10px;
     }
     .favorite-articles-list {
       background-color: $color-a;
-      margin-left: 15px;
       padding: 15px;
       overflow: hidden;
       ul {
@@ -128,12 +132,15 @@
             border-radius: 5px;
             text-align: center;
           }
+          a {
+            @extend %text-hover;
+          }
         }
       }
     }
     .popular-tags {
       background-color: $color-a;
-      margin: 15px 0 0 15px;
+      margin-top: 15px;
       padding: 15px;
       li {
         margin-top: 5px;

@@ -42,7 +42,7 @@ article, aside, details, figure, footer, header, menu, nav, section, summary {
 
 @font-face {
   font-family: 'Noto Sans', sans-serif; }
-.header .header-contain, .footer .footer-contain, .categories .navbar, .container {
+.header-scroll .header-contain, .footer .footer-contain, .article-page, .categories .navbar, .container, .login-container, .signup-container {
   max-width: 1140px;
   margin: 0 auto;
   width: 100%; }
@@ -57,11 +57,21 @@ article, aside, details, figure, footer, header, menu, nav, section, summary {
   .container .item-article .article-img:after, .container .item-article .article-description:after {
     content: "";
     display: block;
-    padding-bottom: 100%; }
+    padding-bottom: 60%; }
   .container .item-article .article-img .content, .container .item-article .article-description .content {
     position: absolute;
     width: 100%;
     height: 100%; }
+
+.categories .navbar li a, .container .page-number .pagination a {
+  color: #333333; }
+  .categories .navbar li a:active, .container .page-number .pagination a:active, .categories .navbar li a:focus, .container .page-number .pagination a:focus {
+    color: #ffffff;
+    background-color: #333333; }
+
+a:hover, .footer .footer-contain .license a:hover, .categories .navbar li a:hover, .container .item-article a:hover, .container .page-number .pagination a:hover, .container .aside .favorite-articles-list ul li a:hover, .login-container .login-form a:hover, .signup-container .signup-form a:hover {
+  text-decoration: none;
+  color: #bfac8a; }
 
 body {
   font-family: "Noto Sans", Arial;
@@ -76,12 +86,15 @@ body {
   box-sizing: border-box; }
 
 a {
-  color: inherit;
+  color: #333333;
   text-decoration: none; }
 
 h1, h2, h3, h4, h5 {
   font-family: "Noto Sans", Arial;
   font-weight: bold; }
+
+h1, h2, h3 {
+  text-transform: uppercase; }
 
 img {
   max-width: 100%; }
@@ -94,14 +107,24 @@ button:focus, input:focus, a:focus {
 
 .header {
   width: 100%;
-  padding: 15px 0;
+  height: 78px; }
+
+.header-scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #eeeeee;
+  border-bottom: 1px solid #333333;
   overflow: auto; }
-  .header .header-contain .logo {
+  .header-scroll .header-contain .logo {
     float: left; }
-  .header .header-contain .menu {
+  .header-scroll .header-contain .menu {
     float: right;
     margin: 8.5px 0; }
-    .header .header-contain .menu a:hover {
+    .header-scroll .header-contain .menu a:hover {
       background-color: #333333;
       color: #ffffff; }
 
@@ -118,6 +141,58 @@ button:focus, input:focus, a:focus {
   .footer .footer-contain .license {
     float: left;
     margin: 6.5px 10px; }
+    .footer .footer-contain .license a {
+      color: #ffffff; }
+
+.article-page .article {
+  background-color: #ffffff;
+  padding: 0; }
+  .article-page .article .article-header {
+    color: #ffffff;
+    background-color: #333333;
+    padding: 30px;
+    overflow: hidden; }
+    .article-page .article .article-header .follow-like {
+      margin-top: 30px; }
+  .article-page .article .article-body {
+    padding: 30px; }
+    .article-page .article .article-body .main-img {
+      text-align: center;
+      margin-bottom: 30px; }
+.article-page .aside {
+  padding: 0; }
+  .article-page .aside .about-user {
+    margin: 30px;
+    margin-right: 0;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 0 20px 20px; }
+    .article-page .aside .about-user h3, .article-page .aside .about-user h4 {
+      padding: 20px 0; }
+    .article-page .aside .about-user .follow {
+      margin-top: 20px; }
+    .article-page .aside .about-user .popular-article {
+      margin-top: 30px;
+      border-top: 1px solid #333333; }
+      .article-page .aside .about-user .popular-article ul {
+        text-align: left;
+        overflow: hidden; }
+        .article-page .aside .about-user .popular-article ul li {
+          overflow: hidden;
+          padding: 10px 0; }
+          .article-page .aside .about-user .popular-article ul li .item-img {
+            width: 64px;
+            height: 64px;
+            float: left; }
+            .article-page .aside .about-user .popular-article ul li .item-img img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover; }
+          .article-page .aside .about-user .popular-article ul li .item-title {
+            float: left;
+            width: calc(100% - 64px);
+            padding: 10px;
+            padding-right: 0; }
 
 .top-banner {
   width: 100%;
@@ -138,16 +213,15 @@ button:focus, input:focus, a:focus {
     border: 0; }
     .categories .navbar li {
       text-transform: uppercase; }
-      .categories .navbar li a:hover {
-        color: #ffffff;
-        background-color: #333333; }
 
 .container {
   min-height: 500px;
-  margin-top: 30px; }
+  margin-top: 30px;
+  overflow: hidden; }
   .container .item-article {
     min-height: 200px;
-    background-color: white; }
+    background-color: #ffffff;
+    overflow: hidden; }
     .container .item-article .article-img img {
       width: 100%;
       height: 100%;
@@ -155,13 +229,13 @@ button:focus, input:focus, a:focus {
     .container .item-article .article-img .arrow {
       position: absolute;
       width: 6%;
-      height: 6%;
+      height: 10%;
       background-color: #ffffff;
       right: -3%;
       top: 47%;
       transform: rotate(45deg); }
     .container .item-article .article-description .content {
-      padding: 15px; }
+      padding: 30px; }
       .container .item-article .article-description .content .user {
         position: relative;
         overflow: hidden;
@@ -174,55 +248,95 @@ button:focus, input:focus, a:focus {
           float: left; }
       .container .item-article .article-description .content .follow-like {
         position: absolute;
-        bottom: 15px; }
-        .container .item-article .article-description .content .follow-like a {
+        bottom: 30px; }
+        .container .item-article .article-description .content .follow-like .btn {
           padding: 2px 5px; }
-      .container .item-article .article-description .content p {
-        font-size: 12px; }
-    .container .item-article:nth-child(3) .article-img {
+    .container .item-article:nth-child(even) .article-img {
       float: right; }
-      .container .item-article:nth-child(3) .article-img .arrow {
+      .container .item-article:nth-child(even) .article-img .arrow {
         right: 97%; }
-    .container .item-article:nth-child(3) .article-description {
+    .container .item-article:nth-child(even) .article-description {
       float: left; }
-    .container .item-article:nth-child(4) .article-img {
-      float: right; }
-      .container .item-article:nth-child(4) .article-img .arrow {
-        right: 97%; }
-    .container .item-article:nth-child(4) .article-description {
-      float: left; }
-  .container .aside h2 {
-    margin-bottom: 10px; }
-  .container .aside .favorite-articles-list {
-    background-color: #ffffff;
-    margin-left: 15px;
-    padding: 15px;
-    overflow: hidden; }
-    .container .aside .favorite-articles-list ul li {
-      overflow: hidden;
-      padding: 10px 0;
-      border-top: 1px solid #eeeeee; }
-      .container .aside .favorite-articles-list ul li .like-count {
-        color: #f44336;
-        border: 1px solid #f44336;
-        border-radius: 5px;
-        text-align: center; }
-  .container .aside .popular-tags {
-    background-color: #ffffff;
-    margin: 15px 0 0 15px;
-    padding: 15px; }
-    .container .aside .popular-tags li {
-      margin-top: 5px;
-      padding: 0; }
-      .container .aside .popular-tags li a {
-        padding: 0 5px;
-        text-decoration: none;
-        border-radius: 10px;
-        border: 1px solid #333333;
-        color: #333333;
-        background-color: #ffffff; }
-        .container .aside .popular-tags li a:hover {
-          background-color: #333333;
-          color: #ffffff; }
+    .container .item-article p {
+      margin-top: 10px; }
+  .container .page-number {
+    text-align: center; }
+    .container .page-number .pagination {
+      margin: 30px 0; }
+      .container .page-number .pagination a {
+        background-color: #ffffff;
+        border-color: #333333; }
+  .container .aside {
+    padding-left: 15px; }
+    .container .aside h2 {
+      margin-bottom: 10px; }
+    .container .aside .favorite-articles-list {
+      background-color: #ffffff;
+      padding: 15px;
+      overflow: hidden; }
+      .container .aside .favorite-articles-list ul li {
+        overflow: hidden;
+        padding: 10px 0;
+        border-top: 1px solid #eeeeee; }
+        .container .aside .favorite-articles-list ul li .like-count {
+          color: #f44336;
+          border: 1px solid #f44336;
+          border-radius: 5px;
+          text-align: center; }
+    .container .aside .popular-tags {
+      background-color: #ffffff;
+      margin-top: 15px;
+      padding: 15px; }
+      .container .aside .popular-tags li {
+        margin-top: 5px;
+        padding: 0; }
+        .container .aside .popular-tags li a {
+          padding: 0 5px;
+          text-decoration: none;
+          border-radius: 10px;
+          border: 1px solid #333333;
+          color: #333333;
+          background-color: #ffffff; }
+          .container .aside .popular-tags li a:hover {
+            background-color: #333333;
+            color: #ffffff; }
+
+.login-container {
+  min-height: 497px; }
+  .login-container .login-form {
+    padding: 30px 0;
+    text-align: center; }
+    .login-container .login-form form {
+      margin-top: 30px; }
+      .login-container .login-form form input {
+        margin-bottom: 15px;
+        padding: 5px 10px; }
+      .login-container .login-form form button {
+        color: #ffffff;
+        background-color: #666666;
+        border: none; }
+        .login-container .login-form form button:hover {
+          background-color: #333333; }
+    .login-container .login-form p {
+      margin-top: 10px; }
+
+.signup-container {
+  min-height: 497px; }
+  .signup-container .signup-form {
+    padding: 30px 0;
+    text-align: center; }
+    .signup-container .signup-form form {
+      margin-top: 30px; }
+      .signup-container .signup-form form input {
+        margin-bottom: 15px;
+        padding: 5px 10px; }
+      .signup-container .signup-form form button {
+        color: #ffffff;
+        background-color: #666666;
+        border: none; }
+        .signup-container .signup-form form button:hover {
+          background-color: #333333; }
+    .signup-container .signup-form p {
+      margin-top: 10px; }
 
 /*# sourceMappingURL=style.css.map */
