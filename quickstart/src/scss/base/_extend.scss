@@ -23,13 +23,14 @@
   }
 }
 %active {
-  color: $color-primary;
   &:active, &:focus {
     color: $color-a;
     background-color: $color-primary;
   }
 }
 %text-hover {
+  color: $color-primary;
+  text-decoration: none;
   &:hover {
     text-decoration: none;
     color: $color-d;

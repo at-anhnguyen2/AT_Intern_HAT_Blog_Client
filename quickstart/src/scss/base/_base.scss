@@ -10,8 +10,6 @@ body {
 }
 
 a {
-  color: $color-primary;
-  text-decoration: none;
   @extend %text-hover;
 }
 h1, h2, h3, h4, h5 {

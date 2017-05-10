@@ -1,39 +1,35 @@
 {
-  "articles": [{
-    "title": "Test1",
-    "titleImg": "",
-    "contain": " Contain of Test1",
-    "tagList": ["test", "API"],
-    "createDay": "2017-05-01T03:22:56.637Z",
-    "updateDay": "2017-05-02T03:22:56.637Z",
-    "isLiked": false,
-    "isFollowed": false,
-    "likeCount": 0,
-    "followCount": 0,
-    "author": {
-      "userName": "anh",
-      "avatar": "",
-      "isFollowed": false,
-      "followCount": 0
+  "totals" : 2,
+  "limits" : 10,
+  "pagecurrent" : 1,
+  "articles" : [
+    {
+      "id" : 1,
+      "title" : "Angular",
+      "title_image" : "http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg",
+      "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+      "isLike" : true,
+      "isFollow" : true,
+      "likeCount": 1,
+      "user" : {
+        "id" : 1,
+        "username" : "AnhNguyen",
+        "avatar" : "https://avatars3.githubusercontent.com/u/26266654?v=3&s=400"
+      }
+    },
+    {
+      "id" : 2,
+      "title" : "Ruby",
+      "image_title" : "http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg",
+      "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+      "isLike" : true,
+      "isFollow" : true,
+      "likeCount": 1,
+      "user" : {
+        "id" : 1,
+        "username" : "AnhNguyen",
+        "avatar" : "https://avatars3.githubusercontent.com/u/26266654?v=3&s=400"
+      }
     }
-  },
-  {
-    "title": "Test2",
-    "titleImg": "",
-    "contain": " Contain of Test2",
-    "tagList": ["test", "API"],
-    "createDay": "2017-05-01T03:22:56.637Z",
-    "updateDay": "2017-05-02T03:22:56.637Z",
-    "isLiked": false,
-    "isFollowed": true,
-    "likeCount": 0,
-    "followCount": 1,
-    "author": {
-      "userName": "anh",
-      "avatar": "",
-      "isFollowed": false,
-      "followCount": 0
-    }
-  }],
-  "articlesCount": 2
+  ]
 }

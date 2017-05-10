@@ -21,10 +21,7 @@
       float: right;
       margin: 8.5px 0;
       a {
-        &:hover {
-          background-color: $color-primary;
-          color: $color-a;
-        }
+        @extend %active;
       }
     }
   }

@@ -1,0 +1,46 @@
+{
+  "article" : {
+    "id" : 1,
+    "title": "Getting start with Rspec",
+    "title_image" : "url",
+    "user_id" : 1,
+    "isLike" : true,
+    "isFollow" : true,
+    "createDay": "2017-05-01T03:22:56.637Z",
+    "updateDay": "2017-05-02T03:22:56.637Z",
+    "category" : {
+      "id" : 1,
+      "name" : "technical"
+    },
+    "tags" : [
+      {
+        "id" : 1,
+        "name" : "Ruby on rails"
+      },
+      {
+        "id" : 2,
+        "name" : "Rspec"
+      }
+    ],
+    "comments": [
+      {
+        "id" : 1,
+        "content" : "Very good!",
+        "user" : {
+          "id" : 1,
+          "username" : "abc",
+          "avatar": "url"
+        }
+      },
+      {
+        "id" : 2,
+        "content" : "This solution is good for me!",
+        "user" : {
+          "id" : 1,
+          "username" : "abc",
+          "avatar": "url"
+        }
+      }
+    ]
+  }
+}
