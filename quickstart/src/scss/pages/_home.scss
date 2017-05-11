@@ -15,7 +15,9 @@
 }
 
 .categories {
+  background-color: $color-c;
   border-bottom: 1px solid $color-primary;
+  height: 51px;
   .navbar {
     @extend %center-side;
     border: 0;
@@ -58,20 +60,8 @@
     .article-description {
       @extend %article-view;
       .content {
+        @include user-media(40px);
         padding: 30px;
-        .user {
-          position: relative;
-          overflow: hidden;
-          margin-bottom: 10px;
-          .user-avatar {
-            width: 30px;
-            float: left;
-          }
-          .user-profile {
-            margin-left: 10px;
-            float: left;
-          }
-        }
         .follow-like {
           position: absolute;
           bottom: 30px;
@@ -152,4 +142,17 @@
       }
     }
   }
+}
+
+.categories-fixed {
+  content: "";
+  position: fixed;
+  top: 78px;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 51px;
+  background-color: $color-c;
+  border-bottom: 1px solid $color-primary;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }

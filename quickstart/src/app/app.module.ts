@@ -12,19 +12,22 @@ import { UserProfileService } from './share/services/userprofile.service';
 import { ArticleService } from './share/services/article.service';
 import { ArticlesListService } from './share/services/articleslist.service';
 import { TagsListService } from './share/services/tagslist.service';
+import { CategoriesService } from './share/services/categorieslist.service';
 
 import { AppComponent }  from './app.component';
 import { HomePageComponent }  from './pages/home/home.component';
 import { ArticlePageComponent }  from './pages/article/article.component';
 import { LoginPageComponent }  from './pages/login/login.component';
 import { SignUpPageComponent }  from './pages/signup/signup.component';
+import { ProfilePageComponent }  from './pages/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: SignUpPageComponent },
-  { path: 'article', component: ArticlePageComponent }
+  { path: 'article', component: ArticlePageComponent },
+  { path: 'profile', component: ProfilePageComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);
@@ -47,7 +50,8 @@ export const routing = RouterModule.forRoot(routes);
     HomePageComponent,
     ArticlePageComponent,
     LoginPageComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
+    ProfilePageComponent
   ],
   bootstrap: [ AppComponent ],
   providers: [
@@ -55,7 +59,8 @@ export const routing = RouterModule.forRoot(routes);
     UserProfileService,
     ArticleService,
     ArticlesListService,
-    TagsListService
+    TagsListService,
+    CategoriesService
   ]
 })
 

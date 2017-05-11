@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
 })
 
 export class HomePageComponent  { 
+  public navIsFixed: boolean = false;
+  constructor(@Inject(DOCUMENT) private _document: Document) {}
 
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    let number = this._document.body.scrollTop;
+    if (number > 200) {
+      this.navIsFixed = true;
+    } else {
+      this.navIsFixed = false;
+    }
+  }
 }

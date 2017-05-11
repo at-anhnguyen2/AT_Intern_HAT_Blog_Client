@@ -1,0 +1,16 @@
+{
+  "category" : [
+    {
+      "id" : 1,
+      "name" : "technical"
+    },
+    {
+      "id" : 2,
+      "name" : "sociation"
+    },
+    {
+      "id" : 3,
+      "name" : "sport"
+    }
+  ]
+}

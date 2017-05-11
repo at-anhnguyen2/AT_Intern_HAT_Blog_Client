@@ -6,15 +6,17 @@
   </div>
 </div>
 <div class="categories">
-  <nav class="navbar">
-    <ul class="nav navbar-nav">
-      <li><a href="#">Global</a></li>
-      <li><a href="#">Technology</a></li>
-      <li><a href="#">Work</a></li>
-      <li><a href="#">Sport</a></li>
-      <li><a href="#">Life</a></li>
-    </ul>
-  </nav>
+  <div [class.categories-fixed]="navIsFixed">
+    <nav class="navbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Global</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Sport</a></li>
+        <li><a href="#">Life</a></li>
+      </ul>
+    </nav>
+  </div>
 </div>
 <div class="container">
   <div class="main col-sm-9">
@@ -36,7 +38,7 @@
               </a>
             </div>
             <div class="user-profile">
-              <h4><a href="#">Anh Nguyen</a>
+              <h4><a [routerLink]="['/profile']">Anh Nguyen</a>
               <br><small>May 8, 2017</small></h4>
             </div>
           </div>

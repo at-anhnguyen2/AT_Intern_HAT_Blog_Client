@@ -4,3 +4,18 @@
   -o-box-sizing: $type;
   box-sizing: $type;
 }
+
+@mixin user-media($width) {
+  .user {
+    overflow: hidden;
+    margin-bottom: 10px;
+    .user-avatar {
+      width: $width;
+      float: left;
+    }
+    .user-profile {
+      margin-left: 10px;
+      float: left;
+    }
+  }
+}

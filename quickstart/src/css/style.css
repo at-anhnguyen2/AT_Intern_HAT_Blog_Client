@@ -67,10 +67,10 @@ article, aside, details, figure, footer, header, menu, nav, section, summary {
   color: #ffffff;
   background-color: #333333; }
 
-a, .footer .footer-contain .license a, .container .page-number .pagination a, .login-container .login-form a, .signup-container .signup-form a {
+a, .footer .footer-contain .license a, .article-page .article .article-body p a, .container .page-number .pagination a, .login-container .login-form a, .signup-container .signup-form a {
   color: #333333;
   text-decoration: none; }
-  a:hover, .footer .footer-contain .license a:hover, .container .page-number .pagination a:hover, .login-container .login-form a:hover, .signup-container .signup-form a:hover {
+  a:hover, .footer .footer-contain .license a:hover, .article-page .article .article-body p a:hover, .container .page-number .pagination a:hover, .login-container .login-form a:hover, .signup-container .signup-form a:hover {
     text-decoration: none;
     color: #bfac8a; }
 
@@ -101,6 +101,10 @@ ul, ol {
 
 button:focus, input:focus, a:focus {
   outline: none; }
+
+.isActived {
+  color: #ffffff;
+  background-color: #333333; }
 
 .header {
   width: 100%;
@@ -153,6 +157,25 @@ button:focus, input:focus, a:focus {
     .article-page .article .article-body .main-img {
       text-align: center;
       margin-bottom: 30px; }
+    .article-page .article .article-body .article-tags {
+      margin: 30px 0; }
+      .article-page .article .article-body .article-tags li {
+        background-color: #eeeeee;
+        border-radius: 10px; }
+    .article-page .article .article-body .comments-list .comment-item {
+      padding: 15px 0;
+      border-top: 1px solid #eeeeee; }
+      .article-page .article .article-body .comments-list .comment-item .user {
+        overflow: hidden;
+        margin-bottom: 10px; }
+        .article-page .article .article-body .comments-list .comment-item .user .user-avatar {
+          width: 30px;
+          float: left; }
+        .article-page .article .article-body .comments-list .comment-item .user .user-profile {
+          margin-left: 10px;
+          float: left; }
+    .article-page .article .article-body p a {
+      color: #337ab7; }
 .article-page .aside {
   padding: 0; }
   .article-page .aside .about-user {
@@ -202,7 +225,9 @@ button:focus, input:focus, a:focus {
       font-size: 14px; }
 
 .categories {
-  border-bottom: 1px solid #333333; }
+  background-color: #eeeeee;
+  border-bottom: 1px solid #333333;
+  height: 51px; }
   .categories .navbar {
     border: 0; }
     .categories .navbar li {
@@ -231,11 +256,10 @@ button:focus, input:focus, a:focus {
     .container .item-article .article-description .content {
       padding: 30px; }
       .container .item-article .article-description .content .user {
-        position: relative;
         overflow: hidden;
         margin-bottom: 10px; }
         .container .item-article .article-description .content .user .user-avatar {
-          width: 30px;
+          width: 40px;
           float: left; }
         .container .item-article .article-description .content .user .user-profile {
           margin-left: 10px;
@@ -293,6 +317,18 @@ button:focus, input:focus, a:focus {
           .container .aside .popular-tags li a:hover {
             background-color: #333333;
             color: #ffffff; }
+
+.categories-fixed {
+  content: "";
+  position: fixed;
+  top: 78px;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 51px;
+  background-color: #eeeeee;
+  border-bottom: 1px solid #333333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); }
 
 .login-container {
   min-height: 510px; }

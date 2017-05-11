@@ -3,6 +3,7 @@
     "id" : 1,
     "title": "Getting start with Rspec",
     "title_image" : "url",
+    "content" : "Nulla facilisis, sapien non pharetra venenatis, tortor erat tempus est, sed accumsan odio ante ac elit. Nulla hendrerit a est vel ornare. Proin eu sapien a sapien dignissim feugiat non eget turpis. Proin at accumsan risus. Pellentesque nunc diam, congue ac lacus nec, volutpat tincidunt turpis. Lorem...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elementum viverra pharetra. Nulla facilisis, sapien non pharetra venenatis, tortor erat tempus est, sed accumsan odio ante ac elit. Nulla hendrerit a est vel ornare. Proin eu sapien a sapien dignissim feugiat non eget turpis. Proin at accumsan risus. Pellentesque nunc diam, congue ac lacus nec, volutpat tincidunt turpis. Lorem...",
     "user_id" : 1,
     "isLike" : true,
     "isFollow" : true,
@@ -22,10 +23,14 @@
         "name" : "Rspec"
       }
     ],
+    "comments-total" : 2,
+    "limit" : 5,
     "comments": [
       {
         "id" : 1,
         "content" : "Very good!",
+        "createDay" : "2017-05-02T03:22:56.637Z",
+        "updateDay" : "2017-05-02T03:22:56.637Z",
         "user" : {
           "id" : 1,
           "username" : "abc",
