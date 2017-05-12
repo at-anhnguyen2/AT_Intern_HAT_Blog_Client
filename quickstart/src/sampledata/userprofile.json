@@ -1,0 +1,11 @@
+{
+  "user": {
+    "id" : 1,
+    "fullname" : "Nguyen Toan Anh",
+    "username" : "AnhNguyen",
+    "birthday" : "04/30/1992",
+    "avatar" : "https://avatars3.githubusercontent.com/u/26266654?v=3&s=400",
+    "access" : false,
+    "email" : "anh.nguyen2@asiantech.vn"
+  }
+}

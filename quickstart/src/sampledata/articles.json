@@ -1,0 +1,35 @@
+{
+  "totals" : 2,
+  "limits" : 10,
+  "pagecurrent" : 1,
+  "articles" : [
+    {
+      "id" : 1,
+      "title" : "Angular",
+      "title_image" : "http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg",
+      "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+      "isLike" : true,
+      "isFollow" : true,
+      "likeCount": 1,
+      "user" : {
+        "id" : 1,
+        "username" : "AnhNguyen",
+        "avatar" : "https://avatars3.githubusercontent.com/u/26266654?v=3&s=400"
+      }
+    },
+    {
+      "id" : 2,
+      "title" : "Ruby",
+      "image_title" : "http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg",
+      "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+      "isLike" : true,
+      "isFollow" : true,
+      "likeCount": 1,
+      "user" : {
+        "id" : 1,
+        "username" : "AnhNguyen",
+        "avatar" : "https://avatars3.githubusercontent.com/u/26266654?v=3&s=400"
+      }
+    }
+  ]
+}

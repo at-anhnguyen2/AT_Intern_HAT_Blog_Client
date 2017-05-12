@@ -1,0 +1,36 @@
+body {
+  font-family: $font-family-body;
+  color: $color-primary;
+  font-size: 14px;
+  background-color: $color-c;
+}
+
+* {
+  @include box-sizing;
+}
+
+a {
+  @extend %text-hover;
+}
+h1, h2, h3, h4, h5 {
+  font-family: $font-family-header;
+  font-weight: bold;
+}
+h1, h2, h3 {
+  text-transform: uppercase;
+}
+img {
+  max-width: 100%;
+}
+ul, ol{
+  list-style: none;
+}
+button, input, a {
+  &:focus {
+    outline: none;
+  }
+}
+.isActived {
+  color: $color-a;
+  background-color: $color-primary;
+}
