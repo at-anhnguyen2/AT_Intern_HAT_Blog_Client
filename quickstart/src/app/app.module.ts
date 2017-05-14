@@ -5,6 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HeaderLayoutComponent } from './layouts/header/header.component';
 import { FooterLayoutComponent } from './layouts/footer/footer.component';
+import { LikeButtonComponent } from './layouts/buttons/likebutton.component';
+import { FollowButtonComponent } from './layouts/buttons/followbutton.component';
+import { MiniListArticlesComponent } from './layouts/articleslist/minilistarticles.component';
+import { UserMediaComponent } from './layouts/usermedia/usermedia.component';
 import { AvatarPipe } from './share/pipes/avatar.pipe';
 import { FullNamePipe } from './share/pipes/fullname.pipe';
 import { UserService } from './share/services/user.service';
@@ -43,6 +47,10 @@ export const routing = RouterModule.forRoot(routes);
     // share component
     HeaderLayoutComponent,
     FooterLayoutComponent,
+    LikeButtonComponent,
+    FollowButtonComponent,
+    MiniListArticlesComponent,
+    UserMediaComponent,
     AvatarPipe,
     FullNamePipe,
 

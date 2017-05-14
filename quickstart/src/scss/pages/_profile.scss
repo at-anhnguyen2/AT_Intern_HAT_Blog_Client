@@ -1,0 +1,34 @@
+.profile-page {
+	.profile {
+		width: 100%;
+		height: 200px;
+		background-color: $color-primary;
+		.user {
+			@extend %center-side;
+			height: 100%;
+			padding: 30px 200px;
+			.user-avatar {
+				float: left;
+				width: 140px;
+				img {
+					border-radius: 50%;
+				}
+			}
+			.user-profile {
+				float: left;
+				margin-left: 10px;
+				padding: 15px 30px;
+				color: $color-a;
+				.follow-like {
+					padding: 15px 0;
+				}
+			}
+		}
+	}
+	.involves-user {
+		@extend %center-side;
+		background-color: $color-a;
+		padding: 30px;
+		overflow: hidden;
+	}
+}

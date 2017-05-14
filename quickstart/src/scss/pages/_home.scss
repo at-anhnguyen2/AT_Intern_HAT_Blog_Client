@@ -26,7 +26,7 @@
       a {
         @extend %active;
       }
-    } 
+    }
   }
 }
 
@@ -49,10 +49,10 @@
       }
       .arrow {
         position: absolute;
-        width: 6%;
+        width: 7%;
         height: 10%;
         background-color: $color-a;
-        right: -3%;
+        right: -3.5%;
         top: 47%;
         transform: rotate(45deg);
       }
@@ -60,14 +60,10 @@
     .article-description {
       @extend %article-view;
       .content {
-        @include user-media(40px);
         padding: 30px;
         .follow-like {
           position: absolute;
           bottom: 30px;
-          .btn {
-            padding: 2px 5px;
-          }
         }
       }
     }
@@ -75,7 +71,7 @@
       .article-img {
         float: right;
         .arrow {
-          right: 97%;
+          right: 96.5%;
         }
       }
       .article-description {
@@ -99,7 +95,7 @@
     }
   }
   .aside {
-    padding-left: 15px;
+    padding-left: 30px;
     h3 {
       margin-bottom: 10px;
     }
@@ -107,23 +103,10 @@
       background-color: $color-a;
       padding: 15px;
       overflow: hidden;
-      ul {
-        li {
-          overflow: hidden;
-          padding: 10px 0;
-          border-top: 1px solid $color-c;
-          .like-count {
-            color: $color-e;
-            border: 1px solid $color-e;
-            border-radius: 5px;
-            text-align: center;
-          }
-        }
-      }
     }
     .popular-tags {
       background-color: $color-a;
-      margin-top: 15px;
+      margin-top: 30px;
       padding: 15px;
       li {
         margin-top: 5px;

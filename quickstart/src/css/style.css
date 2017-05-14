@@ -42,7 +42,7 @@ article, aside, details, figure, footer, header, menu, nav, section, summary {
 
 @font-face {
   font-family: 'Noto Sans', sans-serif; }
-.header-scroll .header-contain, .footer .footer-contain, .article-page, .categories .navbar, .container, .login-container, .signup-container {
+.header-scroll .header-contain, .footer .footer-contain, .article-page, .categories .navbar, .container, .login-container, .signup-container, .profile-page .profile .user, .profile-page .involves-user {
   max-width: 1140px;
   margin: 0 auto;
   width: 100%; }
@@ -57,7 +57,7 @@ article, aside, details, figure, footer, header, menu, nav, section, summary {
   .container .item-article .article-img:after, .container .item-article .article-description:after {
     content: "";
     display: block;
-    padding-bottom: 60%; }
+    padding-bottom: 70%; }
   .container .item-article .article-img .content, .container .item-article .article-description .content {
     position: absolute;
     width: 100%;
@@ -67,10 +67,10 @@ article, aside, details, figure, footer, header, menu, nav, section, summary {
   color: #ffffff;
   background-color: #333333; }
 
-a, .footer .footer-contain .license a, .article-page .article .article-body p a, .container .page-number .pagination a, .login-container .login-form a, .signup-container .signup-form a {
+a, .link-text, .footer .footer-contain .license a, .container .page-number .pagination a {
   color: #333333;
   text-decoration: none; }
-  a:hover, .footer .footer-contain .license a:hover, .article-page .article .article-body p a:hover, .container .page-number .pagination a:hover, .login-container .login-form a:hover, .signup-container .signup-form a:hover {
+  a:hover, .link-text:hover, .footer .footer-contain .license a:hover, .container .page-number .pagination a:hover {
     text-decoration: none;
     color: #bfac8a; }
 
@@ -102,9 +102,46 @@ ul, ol {
 button:focus, input:focus, a:focus {
   outline: none; }
 
+.link-text {
+  color: #337ab7; }
+
 .isActived {
   color: #ffffff;
   background-color: #333333; }
+
+.like-button, .follow-button {
+  padding: 2px 5px; }
+
+.user-media {
+  overflow: hidden;
+  margin-bottom: 10px; }
+  .user-media .user-avatar {
+    width: 30px;
+    float: left; }
+  .user-media .user-profile {
+    margin-left: 10px;
+    float: left; }
+
+.mini-list-articles ul {
+  text-align: left;
+  overflow: hidden; }
+  .mini-list-articles ul li {
+    overflow: hidden;
+    padding: 10px 0;
+    border-top: 1px solid #eeeeee; }
+    .mini-list-articles ul li .item-img {
+      width: 64px;
+      height: 64px;
+      float: left; }
+      .mini-list-articles ul li .item-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
+    .mini-list-articles ul li .item-content {
+      float: left;
+      width: calc(100% - 64px);
+      padding: 10px;
+      padding-right: 0; }
 
 .header {
   width: 100%;
@@ -153,6 +190,7 @@ button:focus, input:focus, a:focus {
     .article-page .article .article-header .follow-like {
       margin-top: 30px; }
   .article-page .article .article-body {
+    overflow: auto;
     padding: 30px; }
     .article-page .article .article-body .main-img {
       text-align: center;
@@ -165,17 +203,11 @@ button:focus, input:focus, a:focus {
     .article-page .article .article-body .comments-list .comment-item {
       padding: 15px 0;
       border-top: 1px solid #eeeeee; }
-      .article-page .article .article-body .comments-list .comment-item .user {
-        overflow: hidden;
-        margin-bottom: 10px; }
-        .article-page .article .article-body .comments-list .comment-item .user .user-avatar {
-          width: 30px;
-          float: left; }
-        .article-page .article .article-body .comments-list .comment-item .user .user-profile {
-          margin-left: 10px;
-          float: left; }
-    .article-page .article .article-body p a {
-      color: #337ab7; }
+    .article-page .article .article-body .comment-field {
+      margin-top: 30px; }
+      .article-page .article .article-body .comment-field button {
+        float: right;
+        margin-top: 10px; }
 .article-page .aside {
   padding: 0; }
   .article-page .aside .about-user {
@@ -191,25 +223,6 @@ button:focus, input:focus, a:focus {
     .article-page .aside .about-user .popular-article {
       margin-top: 30px;
       border-top: 1px solid #333333; }
-      .article-page .aside .about-user .popular-article ul {
-        text-align: left;
-        overflow: hidden; }
-        .article-page .aside .about-user .popular-article ul li {
-          overflow: hidden;
-          padding: 10px 0; }
-          .article-page .aside .about-user .popular-article ul li .item-img {
-            width: 64px;
-            height: 64px;
-            float: left; }
-            .article-page .aside .about-user .popular-article ul li .item-img img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover; }
-          .article-page .aside .about-user .popular-article ul li .item-title {
-            float: left;
-            width: calc(100% - 64px);
-            padding: 10px;
-            padding-right: 0; }
 
 .top-banner {
   width: 100%;
@@ -247,32 +260,21 @@ button:focus, input:focus, a:focus {
       object-fit: cover; }
     .container .item-article .article-img .arrow {
       position: absolute;
-      width: 6%;
+      width: 7%;
       height: 10%;
       background-color: #ffffff;
-      right: -3%;
+      right: -3.5%;
       top: 47%;
       transform: rotate(45deg); }
     .container .item-article .article-description .content {
       padding: 30px; }
-      .container .item-article .article-description .content .user {
-        overflow: hidden;
-        margin-bottom: 10px; }
-        .container .item-article .article-description .content .user .user-avatar {
-          width: 40px;
-          float: left; }
-        .container .item-article .article-description .content .user .user-profile {
-          margin-left: 10px;
-          float: left; }
       .container .item-article .article-description .content .follow-like {
         position: absolute;
         bottom: 30px; }
-        .container .item-article .article-description .content .follow-like .btn {
-          padding: 2px 5px; }
     .container .item-article:nth-child(even) .article-img {
       float: right; }
       .container .item-article:nth-child(even) .article-img .arrow {
-        right: 97%; }
+        right: 96.5%; }
     .container .item-article:nth-child(even) .article-description {
       float: left; }
     .container .item-article p {
@@ -285,25 +287,16 @@ button:focus, input:focus, a:focus {
         background-color: #ffffff;
         border-color: #333333; }
   .container .aside {
-    padding-left: 15px; }
+    padding-left: 30px; }
     .container .aside h3 {
       margin-bottom: 10px; }
     .container .aside .favorite-articles-list {
       background-color: #ffffff;
       padding: 15px;
       overflow: hidden; }
-      .container .aside .favorite-articles-list ul li {
-        overflow: hidden;
-        padding: 10px 0;
-        border-top: 1px solid #eeeeee; }
-        .container .aside .favorite-articles-list ul li .like-count {
-          color: #f44336;
-          border: 1px solid #f44336;
-          border-radius: 5px;
-          text-align: center; }
     .container .aside .popular-tags {
       background-color: #ffffff;
-      margin-top: 15px;
+      margin-top: 30px;
       padding: 15px; }
       .container .aside .popular-tags li {
         margin-top: 5px;
@@ -346,8 +339,6 @@ button:focus, input:focus, a:focus {
         border: none; }
         .login-container .login-form form button:hover {
           background-color: #333333; }
-    .login-container .login-form a {
-      color: #337ab7; }
     .login-container .login-form p {
       margin-top: 10px; }
 
@@ -367,9 +358,31 @@ button:focus, input:focus, a:focus {
         border: none; }
         .signup-container .signup-form form button:hover {
           background-color: #333333; }
-    .signup-container .signup-form a {
-      color: #337ab7; }
     .signup-container .signup-form p {
       margin-top: 10px; }
+
+.profile-page .profile {
+  width: 100%;
+  height: 200px;
+  background-color: #333333; }
+  .profile-page .profile .user {
+    height: 100%;
+    padding: 30px 200px; }
+    .profile-page .profile .user .user-avatar {
+      float: left;
+      width: 140px; }
+      .profile-page .profile .user .user-avatar img {
+        border-radius: 50%; }
+    .profile-page .profile .user .user-profile {
+      float: left;
+      margin-left: 10px;
+      padding: 15px 30px;
+      color: #ffffff; }
+      .profile-page .profile .user .user-profile .follow-like {
+        padding: 15px 0; }
+.profile-page .involves-user {
+  background-color: #ffffff;
+  padding: 30px;
+  overflow: hidden; }
 
 /*# sourceMappingURL=style.css.map */

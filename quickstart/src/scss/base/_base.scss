@@ -30,7 +30,53 @@ button, input, a {
     outline: none;
   }
 }
+.link-text {
+  @extend %text-hover;
+  color: $color-link;
+}
 .isActived {
   color: $color-a;
   background-color: $color-primary;
+}
+.like-button, .follow-button {
+  padding: 2px 5px;
+}
+.user-media {
+  overflow: hidden;
+  margin-bottom: 10px;
+  .user-avatar {
+    width: 30px;
+    float: left;
+  }
+  .user-profile {
+    margin-left: 10px;
+    float: left;
+  }
+}
+.mini-list-articles {
+  ul {
+    text-align: left;
+    overflow: hidden;
+    li {
+      overflow: hidden;
+      padding: 10px 0;
+      border-top: 1px solid $color-c;
+      .item-img {
+        width: 64px;
+        height: 64px;
+        float: left;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .item-content {
+        float: left;
+        width: calc(100% - 64px);
+        padding: 10px;
+        padding-right: 0;
+      }
+    }
+  }
 }

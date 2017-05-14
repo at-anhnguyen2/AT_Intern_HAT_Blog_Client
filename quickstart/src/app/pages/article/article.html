@@ -10,13 +10,8 @@
         <small>0 Likes</small>
       </h3>
       <div class="follow-like">
-        <span class="btn btn-sm btn-primary">
-          <span class="glyphicon glyphicon-ok"></span>
-          Follow
-        </span>
-        <span class="btn btn-sm btn-success">
-          <span class="glyphicon glyphicon-heart"></span>
-        </span>
+        <app-follow-button></app-follow-button>
+        <app-like-button></app-like-button>
       </div>
     </div>
     <div class="article-body">
@@ -36,15 +31,7 @@
       <div class="comments-list">
         <div class="comment-item">
           <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h5><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h5>
-            </div>
+            <app-user-media></app-user-media>
           </div>
           <div class="comment-content">
             <p>Proin eu sapien a sapien dignissim feugiat non eget turpis.</p>
@@ -52,15 +39,7 @@
         </div>
         <div class="comment-item">
           <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h5><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h5>
-            </div>
+            <app-user-media></app-user-media>
           </div>
           <div class="comment-content">
             <p>Proin eu sapien a sapien dignissim feugiat non eget turpis.</p>
@@ -68,22 +47,27 @@
         </div>
         <div class="comment-item">
           <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h5><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h5>
-            </div>
+            <app-user-media></app-user-media>
           </div>
           <div class="comment-content">
             <p>Proin eu sapien a sapien dignissim feugiat non eget turpis.</p>
           </div>
         </div>
       </div>
-      <p><a href="">View more...</a></p>
+      <p><a href="" class="link-text">View more...</a></p>
+      <div class="comment-field">
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea class="form-control" rows="5" id="comment"></textarea>
+          <button type="button" class="btn btn-default">Send</button>
+        </div>
+        <span [hidden]="true">
+          <a href="" class="link-text">Sign in</a>
+           or 
+          <a href="" class="link-text">Sign up</a>
+           to add comments on this article.
+        </span>
+      </div>
     </div>
   </div>
   <div class="aside col-sm-4">
@@ -98,65 +82,11 @@
       </h4>
       <p>Proin at accumsan risus. Pellentesque nunc diam, congue ac lacus nec, volutpat tincidunt turpis.</p>
       <div class="follow">
-        <span class="btn btn-sm btn-primary">
-          <span class="glyphicon glyphicon-ok"></span>
-          Follow
-        </span>
+        <app-follow-button></app-follow-button>
       </div>
       <div class="popular-article">
         <h3>popular articles</h3>
-        <ul>
-          <li>
-            <a href="">
-              <div class="item-img">
-                <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-              </div>
-              <div class="item-title">
-                <h5>Nulla elementum viverra pharetra.</h5>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <div class="item-img">
-                <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-              </div>
-              <div class="item-title">
-                <h5>Nulla elementum viverra pharetra.</h5>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <div class="item-img">
-                <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-              </div>
-              <div class="item-title">
-                <h5>Nulla elementum viverra pharetra.</h5>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <div class="item-img">
-                <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-              </div>
-              <div class="item-title">
-                <h5>Nulla elementum viverra pharetra.</h5>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <div class="item-img">
-                <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-              </div>
-              <div class="item-title">
-                <h5>Nulla elementum viverra pharetra.</h5>
-              </div>
-            </a>
-          </li>
-        </ul>
+        <app-minilist-articles></app-minilist-articles>
       </div>
     </div>
   </div>
