@@ -1,17 +1,11 @@
-.signup-container {
+.editor-container {
   min-height: 510px;
-  .signup-form {
+  .editor-form {
     padding: 30px 0;
-    h2, p, .buttons {
-      text-align: center;
-    }
     form {
       margin-top: 30px;
-      .my-input {
-        margin-bottom: 15px;
-        span {
-          color: #d9534f;
-        }
+      input, select, textarea {
+        margin-bottom: 20px;
       }
       button {
         color: $color-a;
@@ -21,9 +15,6 @@
           background-color: $color-primary;
         }
       }
-    }
-    p {
-      margin-top: 10px;
     }
   }
 }

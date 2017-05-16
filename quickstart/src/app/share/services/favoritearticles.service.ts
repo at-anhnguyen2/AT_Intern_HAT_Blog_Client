@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 
-export class TagsListService {
+export class FavoriteArticlesService {
   
   constructor(private _http: Http) {
     // code...
   }
 
-  getTags() : Observable<any> {
-    return this._http.get('./sampledata/tagslist.json')
-    .map((res: Response) => {
+  getArticles() : Observable<any> {
+    return this._http.get('./sampledata/favoritearticles.json')
+    .map((res: any) => {
       return res.json();
-    });
+    })
   }
 }

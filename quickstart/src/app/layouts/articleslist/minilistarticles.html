@@ -1,48 +1,15 @@
 <div class="mini-list-articles">
 	<ul>
-	  <li>
+	  <li *ngFor="let articleItem of arrayArticles">
 	    <a href="">
 	    	<div class="item-img">
-          <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
+          <img src="{{articleItem.title_image}}" alt="article img">
         </div>
 	      <div class="item-content">
-	        <h5>Nulla elementum viverra pharetra.</h5>
-	        <p><small>Anh Nguyen - 3 Likes - 5 Comments</small></p>
+	        <h5>{{articleItem.title}}</h5>
+	        <p><small>{{articleItem.user.username}} - {{articleItem.count_like}} Likes - {{articleItem.count_comment}} Comments</small></p>
 	      </div>
 	    </a>
 	  </li>
-	  <li>
-	    <a href="">
-	    	<div class="item-img">
-          <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-        </div>
-	      <div class="item-content">
-	        <h5>Nulla elementum viverra pharetra.</h5>
-	        <p><small>Anh Nguyen - 3 Likes - 5 Comments</small></p>
-	      </div>
-	    </a>
-	  </li>
-	  <li>
-	    <a href="">
-	    	<div class="item-img">
-          <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-        </div>
-	      <div class="item-content">
-	        <h5>Nulla elementum viverra pharetra.</h5>
-	        <p><small>Anh Nguyen - 3 Likes - 5 Comments</small></p>
-	      </div>
-	    </a>
-	  </li>
-	  <li>
-	    <a href="">
-	    	<div class="item-img">
-          <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-        </div>
-	      <div class="item-content">
-	        <h5>Nulla elementum viverra pharetra.</h5>
-	        <p><small>Anh Nguyen - 3 Likes - 5 Comments</small></p>
-	      </div>
-	    </a>
-	  </li> 
 	</ul>
 </div>

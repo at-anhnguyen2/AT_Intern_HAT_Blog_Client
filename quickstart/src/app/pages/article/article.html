@@ -12,6 +12,14 @@
       <div class="follow-like">
         <app-follow-button></app-follow-button>
         <app-like-button></app-like-button>
+        <a [routerLink]="['/editor']" class="btn btn-sm btn-info setting-button">
+          <span class="glyphicon glyphicon-edit"></span> 
+          <span>Edit</span>
+        </a>
+        <a [routerLink]="['/home']" class="btn btn-sm btn-danger like-button">
+          <span class="glyphicon glyphicon-remove"></span>
+          <span>Delete</span>
+        </a>
       </div>
     </div>
     <div class="article-body">

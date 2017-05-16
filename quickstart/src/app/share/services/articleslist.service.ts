@@ -11,8 +11,8 @@ export class ArticlesListService {
     // code...
   }
 
-  getUser() : Observable<any> {
-    return this._http.get('./sampledata/articles.json')
+  getArticles() : Observable<any> {
+    return this._http.get('./sampledata/articles.json')//http://172.16.28.91:3000/api/v1/articles')
     .map((res: any) => {
       return res.json();
     })

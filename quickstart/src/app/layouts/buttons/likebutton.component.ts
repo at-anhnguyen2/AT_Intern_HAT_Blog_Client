@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-like-button',
@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
 })
 
 export class LikeButtonComponent {
-  
+  @Input() value: boolean = false;
+  @Input() count: number = 0;
+  isLiked: boolean;
+  countLike: number;
+  constructor() {
+  	this.isLiked = false;
+  	this.countLike = 0;
+  }
+  ngOnChanges() {
+  	this.isLiked = this.value;
+  	this.countLike = this.count;
+  }
 }

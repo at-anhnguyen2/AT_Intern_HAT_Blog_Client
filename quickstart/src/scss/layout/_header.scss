@@ -20,8 +20,8 @@
     .menu {
       float: right;
       margin: 8.5px 0;
-      a {
-        @extend %active;
+      .isHidden {
+        display: none;
       }
     }
   }

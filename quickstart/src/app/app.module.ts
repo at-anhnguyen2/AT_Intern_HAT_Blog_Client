@@ -1,6 +1,9 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CKEditorModule } from 'ng2-ckeditor';
 // import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { HeaderLayoutComponent } from './layouts/header/header.component';
@@ -11,10 +14,12 @@ import { MiniListArticlesComponent } from './layouts/articleslist/minilistarticl
 import { UserMediaComponent } from './layouts/usermedia/usermedia.component';
 import { AvatarPipe } from './share/pipes/avatar.pipe';
 import { FullNamePipe } from './share/pipes/fullname.pipe';
+import { ArrayNumberPipe } from './share/pipes/arraynumber.pipe';
 import { UserService } from './share/services/user.service';
 import { UserProfileService } from './share/services/userprofile.service';
 import { ArticleService } from './share/services/article.service';
 import { ArticlesListService } from './share/services/articleslist.service';
+import { FavoriteArticlesService } from './share/services/favoritearticles.service';
 import { TagsListService } from './share/services/tagslist.service';
 import { CategoriesService } from './share/services/categorieslist.service';
 
@@ -24,6 +29,8 @@ import { ArticlePageComponent }  from './pages/article/article.component';
 import { LoginPageComponent }  from './pages/login/login.component';
 import { SignUpPageComponent }  from './pages/signup/signup.component';
 import { ProfilePageComponent }  from './pages/profile/profile.component';
+import { EditorPageComponent }  from './pages/editor/editor.component';
+import { SettingPageComponent }  from './pages/setting/setting.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,7 +38,9 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: SignUpPageComponent },
   { path: 'article', component: ArticlePageComponent },
-  { path: 'profile', component: ProfilePageComponent }
+  { path: 'profile', component: ProfilePageComponent },
+  { path: 'editor', component: EditorPageComponent },
+  { path: 'setting', component: SettingPageComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);
@@ -39,7 +48,11 @@ export const routing = RouterModule.forRoot(routes);
 @NgModule({
   imports: [
     BrowserModule,
-    routing
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
+    routing,
+    CKEditorModule
   ],
   declarations: [
     AppComponent,
@@ -53,13 +66,16 @@ export const routing = RouterModule.forRoot(routes);
     UserMediaComponent,
     AvatarPipe,
     FullNamePipe,
+    ArrayNumberPipe,
 
     // pages component
     HomePageComponent,
     ArticlePageComponent,
     LoginPageComponent,
     SignUpPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    EditorPageComponent,
+    SettingPageComponent
   ],
   bootstrap: [ AppComponent ],
   providers: [
@@ -67,6 +83,7 @@ export const routing = RouterModule.forRoot(routes);
     UserProfileService,
     ArticleService,
     ArticlesListService,
+    FavoriteArticlesService,
     TagsListService,
     CategoriesService
   ]
@@ -75,4 +92,4 @@ export const routing = RouterModule.forRoot(routes);
 export class AppModule { }
 
 // platformBrowserDynamic().bootstrapModule(AppModule)
-  // .catch((err: any) => console.error(err));
+//   .catch((err: any) => console.error(err));

@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-sm btn-success like-button">
+<button type="button" class="btn btn-sm btn-success like-button" [class.btn-danger]="isLiked">
 	<span class="glyphicon glyphicon-heart"></span>
-	<span>3</span>
+	<span>{{countLike}}</span>
 </button>

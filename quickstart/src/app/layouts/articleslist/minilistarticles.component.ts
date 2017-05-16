@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-minilist-articles',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
 })
 
 export class MiniListArticlesComponent {
-  
+  @Input() inputArticles: any = null;
+  arrayArticles: any;
+  constructor() {
+  	this.arrayArticles = null;
+  }
+  ngOnChanges() {
+  	this.arrayArticles = this.inputArticles;
+  }
 }

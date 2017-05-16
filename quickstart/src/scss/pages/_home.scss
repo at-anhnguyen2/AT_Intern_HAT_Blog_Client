@@ -23,9 +23,6 @@
     border: 0;
     li {
       text-transform: uppercase;
-      a {
-        @extend %active;
-      }
     }
   }
 }
@@ -87,7 +84,6 @@
     .pagination {
       margin: 30px 0;
       a {
-        @extend %active;
         @extend %text-hover;
         background-color: $color-a;
         border-color: $color-primary;

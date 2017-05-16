@@ -11,8 +11,8 @@ export class UserService {
     // code...
   }
 
-  getUser() : Observable<any> {
-    return this._http.get('./sampledata/user.json')
+  getUser(id: number) : Observable<any> {
+    return this._http.get("http://172.16.28.91:3000/api/v1/user/" + id)
     .map((res: any) => {
       return res.json();
     })

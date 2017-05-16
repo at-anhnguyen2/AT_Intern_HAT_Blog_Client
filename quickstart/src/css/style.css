@@ -42,7 +42,7 @@ article, aside, details, figure, footer, header, menu, nav, section, summary {
 
 @font-face {
   font-family: 'Noto Sans', sans-serif; }
-.header-scroll .header-contain, .footer .footer-contain, .article-page, .categories .navbar, .container, .login-container, .signup-container, .profile-page .profile .user, .profile-page .involves-user {
+.header-scroll .header-contain, .footer .footer-contain, .article-page, .categories .navbar, .container, .login-container, .profile-page .profile .user, .profile-page .involves-user {
   max-width: 1140px;
   margin: 0 auto;
   width: 100%; }
@@ -62,10 +62,6 @@ article, aside, details, figure, footer, header, menu, nav, section, summary {
     position: absolute;
     width: 100%;
     height: 100%; }
-
-.header-scroll .header-contain .menu a:active, .categories .navbar li a:active, .container .page-number .pagination a:active, .header-scroll .header-contain .menu a:focus, .categories .navbar li a:focus, .container .page-number .pagination a:focus {
-  color: #ffffff;
-  background-color: #333333; }
 
 a, .link-text, .footer .footer-contain .license a, .container .page-number .pagination a {
   color: #333333;
@@ -105,11 +101,22 @@ button:focus, input:focus, a:focus {
 .link-text {
   color: #337ab7; }
 
+.error-input {
+  border: 1px solid #d9534f;
+  box-shadow: 0px 0px 8px 0 #d9534f; }
+
+.isHidden {
+  display: none; }
+
 .isActived {
   color: #ffffff;
   background-color: #333333; }
 
-.like-button, .follow-button {
+.isLiked {
+  background-color: #d9534f;
+  border: 1px solid #d9534f; }
+
+.like-button, .follow-button, .setting-button {
   padding: 2px 5px; }
 
 .user-media {
@@ -162,6 +169,8 @@ button:focus, input:focus, a:focus {
   .header-scroll .header-contain .menu {
     float: right;
     margin: 8.5px 0; }
+    .header-scroll .header-contain .menu .isHidden {
+      display: none; }
 
 .footer {
   width: 100%;
@@ -345,13 +354,15 @@ button:focus, input:focus, a:focus {
 .signup-container {
   min-height: 510px; }
   .signup-container .signup-form {
-    padding: 30px 0;
-    text-align: center; }
+    padding: 30px 0; }
+    .signup-container .signup-form h2, .signup-container .signup-form p, .signup-container .signup-form .buttons {
+      text-align: center; }
     .signup-container .signup-form form {
       margin-top: 30px; }
-      .signup-container .signup-form form input {
-        margin-bottom: 15px;
-        padding: 5px 10px; }
+      .signup-container .signup-form form .my-input {
+        margin-bottom: 15px; }
+        .signup-container .signup-form form .my-input span {
+          color: #d9534f; }
       .signup-container .signup-form form button {
         color: #ffffff;
         background-color: #666666;
@@ -384,5 +395,37 @@ button:focus, input:focus, a:focus {
   background-color: #ffffff;
   padding: 30px;
   overflow: hidden; }
+
+.editor-container {
+  min-height: 510px; }
+  .editor-container .editor-form {
+    padding: 30px 0; }
+    .editor-container .editor-form form {
+      margin-top: 30px; }
+      .editor-container .editor-form form input, .editor-container .editor-form form select, .editor-container .editor-form form textarea {
+        margin-bottom: 20px; }
+      .editor-container .editor-form form button {
+        color: #ffffff;
+        background-color: #666666;
+        border: none; }
+        .editor-container .editor-form form button:hover {
+          background-color: #333333; }
+
+.setting-container {
+  min-height: 510px; }
+  .setting-container .setting-form {
+    padding: 30px 0; }
+    .setting-container .setting-form h2, .setting-container .setting-form .buttons {
+      text-align: center; }
+    .setting-container .setting-form form {
+      margin-top: 30px; }
+      .setting-container .setting-form form input {
+        margin-bottom: 15px; }
+      .setting-container .setting-form form button {
+        color: #ffffff;
+        background-color: #666666;
+        border: none; }
+        .setting-container .setting-form form button:hover {
+          background-color: #333333; }
 
 /*# sourceMappingURL=style.css.map */

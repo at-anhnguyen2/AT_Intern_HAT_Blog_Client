@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-follow-button',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
 })
 
 export class FollowButtonComponent {
-  
+  @Input() value: boolean = false;
+  isFollowed: boolean;
+  constructor() {
+  	this.isFollowed = false;
+  }
+  ngOnChanges() {
+  	this.isFollowed = this.value;
+  }
 }
