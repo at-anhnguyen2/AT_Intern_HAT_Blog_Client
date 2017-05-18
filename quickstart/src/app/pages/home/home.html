@@ -23,7 +23,7 @@
     <div *ngFor="let articleItem of arrayArticles" class="item-article">
       <div class="article-img col-sm-6">
         <div class="content">
-          <a [routerLink]="['/article']">
+          <a [routerLink]="['/article', articleItem.id]">
             <img src="{{articleItem.title_image}}" alt="article img">
           </a>
           <div class="arrow"></div>

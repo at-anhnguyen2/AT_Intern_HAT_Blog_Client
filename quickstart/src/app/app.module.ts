@@ -12,6 +12,7 @@ import { LikeButtonComponent } from './layouts/buttons/likebutton.component';
 import { FollowButtonComponent } from './layouts/buttons/followbutton.component';
 import { MiniListArticlesComponent } from './layouts/articleslist/minilistarticles.component';
 import { UserMediaComponent } from './layouts/usermedia/usermedia.component';
+import { MessagesComponent } from './layouts/validationmessage/validationmessage.component';
 import { AvatarPipe } from './share/pipes/avatar.pipe';
 import { FullNamePipe } from './share/pipes/fullname.pipe';
 import { ArrayNumberPipe } from './share/pipes/arraynumber.pipe';
@@ -20,8 +21,10 @@ import { UserProfileService } from './share/services/userprofile.service';
 import { ArticleService } from './share/services/article.service';
 import { ArticlesListService } from './share/services/articleslist.service';
 import { FavoriteArticlesService } from './share/services/favoritearticles.service';
+import { PopularArticlesService } from './share/services/populararticles.service';
 import { TagsListService } from './share/services/tagslist.service';
 import { CategoriesService } from './share/services/categorieslist.service';
+import { ValidationService } from './share/services/validation.service';
 
 import { AppComponent }  from './app.component';
 import { HomePageComponent }  from './pages/home/home.component';
@@ -37,8 +40,8 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: SignUpPageComponent },
-  { path: 'article', component: ArticlePageComponent },
-  { path: 'profile', component: ProfilePageComponent },
+  { path: 'article/:id', component: ArticlePageComponent },
+  { path: 'profile/:username', component: ProfilePageComponent },
   { path: 'editor', component: EditorPageComponent },
   { path: 'setting', component: SettingPageComponent }
 ];
@@ -64,6 +67,7 @@ export const routing = RouterModule.forRoot(routes);
     FollowButtonComponent,
     MiniListArticlesComponent,
     UserMediaComponent,
+    MessagesComponent,
     AvatarPipe,
     FullNamePipe,
     ArrayNumberPipe,
@@ -84,8 +88,10 @@ export const routing = RouterModule.forRoot(routes);
     ArticleService,
     ArticlesListService,
     FavoriteArticlesService,
+    PopularArticlesService,
     TagsListService,
-    CategoriesService
+    CategoriesService,
+    ValidationService
   ]
 })
 

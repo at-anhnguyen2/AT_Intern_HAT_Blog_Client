@@ -5,14 +5,14 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 
-export class ArticleService {
+export class PopularArticlesService {
   
   constructor(private _http: Http) {
     // code...
   }
 
-  getArticle() : Observable<any> {
-    return this._http.get('./sampledata/singlearticle.json')
+  getArticles() : Observable<any> {
+    return this._http.get('./sampledata/populararticles.json')
     .map((res: any) => {
       return res.json();
     })

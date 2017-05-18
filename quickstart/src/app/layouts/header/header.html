@@ -9,32 +9,32 @@
       <nav class="menu">
         <ul class="nav nav-pills">
           <li>
-            <a [class.isActived]="true" [routerLink]="['/home']">
+            <a [class.isActived]="isHome" [routerLink]="['/home']">
               <span class="glyphicon glyphicon-home"></span> Home
             </a>
           </li>
-          <li [class.isHidden]="true">
-            <a [routerLink]="['/login']">
+          <li [class.isHidden]="isLogined">
+            <a [routerLink]="['/login']" [class.isActived]="isSignIn">
               <span class="glyphicon glyphicon-log-in"></span> Sign in
             </a>
           </li>
-          <li [class.isHidden]="true">
-            <a [routerLink]="['/register']">
+          <li [class.isHidden]="isLogined">
+            <a [routerLink]="['/register']" [class.isActived]="isSignUp">
               <span class="glyphicon glyphicon-plus"></span> Sign up
             </a>
           </li>
-          <li [class.isHidden]="false">
-            <a [routerLink]="['/editor']">
+          <li [class.isHidden]="!isLogined">
+            <a [routerLink]="['/editor']" [class.isActived]="isEditor">
               <span class="glyphicon glyphicon-pencil"></span> New article
             </a>
           </li>
-          <li [class.isHidden]="false">
+          <li [class.isHidden]="!isLogined">
             <a [routerLink]="['/profile']">
               <span class="glyphicon glyphicon-user"></span> Anh Nguyen T.
             </a>
           </li>
-          <li [class.isHidden]="false">
-            <a href="">
+          <li [class.isHidden]="!isLogined">
+            <a [routerLink]="['/home']">
               <span class="glyphicon glyphicon-log-out"></span> Sign out
             </a>
           </li>

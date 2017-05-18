@@ -42,7 +42,7 @@ article, aside, details, figure, footer, header, menu, nav, section, summary {
 
 @font-face {
   font-family: 'Noto Sans', sans-serif; }
-.header-scroll .header-contain, .footer .footer-contain, .article-page, .categories .navbar, .container, .login-container, .profile-page .profile .user, .profile-page .involves-user {
+.header-scroll .header-contain, .footer .footer-contain, .article-page, .categories .navbar, .container, .login-container, .profile-page .profile .user, .profile-page .information {
   max-width: 1140px;
   margin: 0 auto;
   width: 100%; }
@@ -90,7 +90,8 @@ h1, h2, h3 {
   text-transform: uppercase; }
 
 img {
-  max-width: 100%; }
+  max-width: 100%;
+  object-fit: cover; }
 
 ul, ol {
   list-style: none; }
@@ -108,9 +109,9 @@ button:focus, input:focus, a:focus {
 .isHidden {
   display: none; }
 
-.isActived {
+.isActived, .isActived:active, .isActived:focus {
   color: #ffffff;
-  background-color: #333333; }
+  background-color: #333333 !important; }
 
 .isLiked {
   background-color: #d9534f;
@@ -124,7 +125,11 @@ button:focus, input:focus, a:focus {
   margin-bottom: 10px; }
   .user-media .user-avatar {
     width: 30px;
+    height: 30px;
     float: left; }
+    .user-media .user-avatar img {
+      width: 100%;
+      height: 100%; }
   .user-media .user-profile {
     margin-left: 10px;
     float: left; }
@@ -391,10 +396,40 @@ button:focus, input:focus, a:focus {
       color: #ffffff; }
       .profile-page .profile .user .user-profile .follow-like {
         padding: 15px 0; }
-.profile-page .involves-user {
-  background-color: #ffffff;
-  padding: 30px;
+.profile-page .information {
   overflow: hidden; }
+  .profile-page .information .about-me {
+    padding: 30px;
+    background-color: #ffffff;
+    border-right: 30px solid #eeeeee; }
+    .profile-page .information .about-me > p {
+      margin-bottom: 10px; }
+    .profile-page .information .about-me > h3 {
+      margin-bottom: 20px;
+      text-align: center; }
+    .profile-page .information .about-me .statistical {
+      margin-top: 10px;
+      border: 1px solid #eeeeee;
+      overflow: hidden; }
+      .profile-page .information .about-me .statistical .statistical-articles, .profile-page .information .about-me .statistical .statistical-followers {
+        text-align: center;
+        padding: 20px; }
+  .profile-page .information .involves-user {
+    padding: 30px;
+    background-color: #ffffff; }
+    .profile-page .information .involves-user .nav {
+      border-bottom: 1px solid #333333; }
+      .profile-page .information .involves-user .nav a:hover {
+        cursor: pointer;
+        border: 1px solid #333333;
+        background-color: #ffffff; }
+    .profile-page .information .involves-user .articles-list, .profile-page .information .involves-user .articles-followed-list {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #333333;
+      border-top: none; }
+      .profile-page .information .involves-user .articles-list h3, .profile-page .information .involves-user .articles-followed-list h3 {
+        margin-bottom: 10px; }
 
 .editor-container {
   min-height: 510px; }
