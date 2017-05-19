@@ -25,13 +25,13 @@ export class SignUpPageComponent  {
       Validators.required,
       ValidationService.emailValidator
     ]);
-  	this.password = new FormControl("123456", [
+  	this.password = new FormControl("123456abc", [
       Validators.required,
       Validators.minLength(6),
       Validators.maxLength(24),
       ValidationService.passwordValidator
     ]);
-    this.passwordConfirm = new FormControl("123456", [
+    this.passwordConfirm = new FormControl("123456abc", [
       Validators.required,
       ValidationService.passwordConfirmValidator
     ]);
@@ -49,6 +49,7 @@ export class SignUpPageComponent  {
     user.username = this.userName.value;
     user.email = this.email.value;
     user.password = this.password.value;
+    user.password_confirmation = this.passwordConfirm.value;
     user.fullname = "";
     user.avatar = "";
     user.birthday = "";
@@ -56,6 +57,10 @@ export class SignUpPageComponent  {
     this._userService.createUser(user)
     .subscribe((data: any) => {
       console.log(data);
+      console.log(data.user.access_token);
+      console.log(data.user.id);
+      console.log(data.user.username);
+      console.log(data.user.email);
     });
     return false;
   }

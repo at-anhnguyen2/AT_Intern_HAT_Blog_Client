@@ -13,14 +13,14 @@ export class UserService {
   }
 
   getUser(id: number) : Observable<any> {
-    return this._http.get("http://172.16.28.91:3000/api/v1/user/" + id)
+    return this._http.get("http://172.16.28.91:3000/api/v1/users/" + id)
     .map((res: any) => {
       return res.json();
     })
   }
   createUser(user: User) {
   	console.log(user);
-  	return this._http.post('http://172.16.29.13:3000/api/v1/signup', user, this.jwt())
+  	return this._http.post('http://172.16.19.136:3000/api/v1/signup', {"user": user}, this.jwt())
   	.map((res: Response) => {
   		return res.json();
   	})

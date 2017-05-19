@@ -1,8 +1,7 @@
 import { Component, HostListener, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 
-import { ArticlesListService } from '../../share/services/articleslist.service';
-import { FavoriteArticlesService } from '../../share/services/favoritearticles.service';
+import { ArticleService } from '../../share/services/article.service';
 import { TagsListService } from '../../share/services/tagslist.service';
 
 @Component({
@@ -20,18 +19,17 @@ export class HomePageComponent  {
   arrayTags: any;
   constructor(
     @Inject(DOCUMENT) private _document: Document,
-    private _articlesListService: ArticlesListService,
-    private _favoriteArticles: FavoriteArticlesService,
+    private _articleService: ArticleService,
     private _tagsListService: TagsListService
   ) {
-    this._articlesListService.getArticles()
+    this._articleService.getArticles()
     .subscribe((data: any) => {
       this.total = data.meta.total;
       this.limit = data.meta.limit;
       this.arrayArticles = data.articles;
       this.totalPages = this.total / this.limit;
     });
-    this._favoriteArticles.getArticles()
+    this._articleService.getFavoriteArticles()
     .subscribe((data: any) => {
       this.arrayFavoriteArticles = data.articles;
     });

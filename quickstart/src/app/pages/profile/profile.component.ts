@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { PopularArticlesService } from '../../share/services/populararticles.service';
-import { UserProfileService } from '../../share/services/userprofile.service';
+import { ArticleService } from '../../share/services/article.service';
+import { UserService } from '../../share/services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,16 +13,16 @@ export class ProfilePageComponent  {
   showArticles: boolean;
   showFollowing: boolean;
   constructor(
-  	private _popularArticlesService: PopularArticlesService,
-  	private _userProfileService: UserProfileService
+  	private _articleService: ArticleService,
+  	private _userService: UserService
   ) {
   	this.showArticles = true;
   	this.showFollowing = false;
-  	this._userProfileService.getUserProfile()
+  	this._userService.getUser(1)
   	.subscribe((data: any) => {
   		this.userProfile = data.user;
   	});
-  	this._popularArticlesService.getArticles()
+  	this._articleService.getPopularArticles()
   	.subscribe((data: any) => {
   		this.arrayPopularArticles = data.articles;
   	});

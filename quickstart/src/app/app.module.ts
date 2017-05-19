@@ -16,15 +16,14 @@ import { MessagesComponent } from './layouts/validationmessage/validationmessage
 import { AvatarPipe } from './share/pipes/avatar.pipe';
 import { FullNamePipe } from './share/pipes/fullname.pipe';
 import { ArrayNumberPipe } from './share/pipes/arraynumber.pipe';
+import { ShortContentPipe } from './share/pipes/shortcontent.pipe';
 import { UserService } from './share/services/user.service';
-import { UserProfileService } from './share/services/userprofile.service';
+// import { UserProfileService } from './share/services/userprofile.service';
 import { ArticleService } from './share/services/article.service';
-import { ArticlesListService } from './share/services/articleslist.service';
-import { FavoriteArticlesService } from './share/services/favoritearticles.service';
-import { PopularArticlesService } from './share/services/populararticles.service';
 import { TagsListService } from './share/services/tagslist.service';
 import { CategoriesService } from './share/services/categorieslist.service';
 import { ValidationService } from './share/services/validation.service';
+import { AuthenticationService } from './share/services/authentication.service';
 
 import { AppComponent }  from './app.component';
 import { HomePageComponent }  from './pages/home/home.component';
@@ -43,7 +42,8 @@ const routes: Routes = [
   { path: 'article/:id', component: ArticlePageComponent },
   { path: 'profile/:username', component: ProfilePageComponent },
   { path: 'editor', component: EditorPageComponent },
-  { path: 'setting', component: SettingPageComponent }
+  { path: 'setting', component: SettingPageComponent },
+  { path: 'api/v1/users/:confirm_token/confirm_email', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 export const routing = RouterModule.forRoot(routes);
@@ -71,6 +71,7 @@ export const routing = RouterModule.forRoot(routes);
     AvatarPipe,
     FullNamePipe,
     ArrayNumberPipe,
+    ShortContentPipe,
 
     // pages component
     HomePageComponent,
@@ -84,14 +85,12 @@ export const routing = RouterModule.forRoot(routes);
   bootstrap: [ AppComponent ],
   providers: [
     UserService,
-    UserProfileService,
+    // UserProfileService,
     ArticleService,
-    ArticlesListService,
-    FavoriteArticlesService,
-    PopularArticlesService,
     TagsListService,
     CategoriesService,
-    ValidationService
+    ValidationService,
+    AuthenticationService
   ]
 })
 

@@ -3,6 +3,7 @@ export class User {
   username: string;
   email: string;
   password: string;
+  password_confirmation: string;
   fullname: string;
   avatar: string;
   birthday: string;

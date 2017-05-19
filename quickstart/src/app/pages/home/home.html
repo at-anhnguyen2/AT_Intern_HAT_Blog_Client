@@ -35,7 +35,7 @@
             <app-user-media [inputUser]="articleItem.user" [inputDate]="articleItem.created_at"></app-user-media>
           </div>
           <h4><a [routerLink]="['/article']">{{articleItem.title}}</a></h4>
-          <p>{{articleItem.content}}</p>
+          <p>{{articleItem.content | shortcontentpipe}}</p>
           <p><small><a href="#">Read more...</a></small></p>
           <div class="follow-like">
             <app-follow-button [value]="articleItem.attentions[0].isFollowed"></app-follow-button>

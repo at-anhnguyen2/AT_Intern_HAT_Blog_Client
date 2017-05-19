@@ -12,7 +12,25 @@ export class ArticleService {
   }
 
   getArticle() : Observable<any> {
-    return this._http.get('./sampledata/singlearticle.json')
+    return this._http.get('http://172.16.19.136:3000/api/v1/articles/3')
+    .map((res: any) => {
+      return res.json();
+    })
+  }
+  getArticles() : Observable<any> {
+    return this._http.get('http://172.16.19.136:3000/api/v1/articles')
+    .map((res: any) => {
+      return res.json();
+    })
+  }
+  getFavoriteArticles() : Observable<any> {
+    return this._http.get('http://172.16.19.136:3000/api/v1/articles')
+    .map((res: any) => {
+      return res.json();
+    })
+  }
+  getPopularArticles() : Observable<any> {
+    return this._http.get('http://172.16.19.136:3000/api/v1/articles')
     .map((res: any) => {
       return res.json();
     })
