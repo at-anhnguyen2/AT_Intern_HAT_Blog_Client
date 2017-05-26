@@ -1,0 +1,45 @@
+<div class="header">
+  <div class="header-scroll">
+    <div class="header-contain">
+      <div class="logo">
+        <a [routerLink]="['home']">
+          <img src="../img/logo.png" alt="logo img">
+        </a>
+      </div>
+      <nav class="menu">
+        <ul class="nav nav-pills">
+          <li>
+            <a [routerLink]="['/home']" routerLinkActive="isActived">
+              <span class="glyphicon glyphicon-home"></span> Home
+            </a>
+          </li>
+          <li [class.isHidden]="isLogined">
+            <a [routerLink]="['/login']" routerLinkActive="isActived">
+              <span class="glyphicon glyphicon-log-in"></span> Sign in
+            </a>
+          </li>
+          <li [class.isHidden]="isLogined">
+            <a [routerLink]="['/register']" routerLinkActive="isActived">
+              <span class="glyphicon glyphicon-plus"></span> Sign up
+            </a>
+          </li>
+          <li [class.isHidden]="!isLogined">
+            <a [routerLink]="['/editor']" routerLinkActive="isActived">
+              <span class="glyphicon glyphicon-pencil"></span> New article
+            </a>
+          </li>
+          <li [class.isHidden]="!isLogined" *ngIf="currentUser">
+            <a [routerLink]="['/profile/AnhNguyen']">
+              <span class="glyphicon glyphicon-user"></span> {{currentUser.username}}
+            </a>
+          </li>
+          <li [class.isHidden]="!isLogined">
+            <a [routerLink]="['/home']" (click)="logout()">
+              <span class="glyphicon glyphicon-log-out"></span> Sign out
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

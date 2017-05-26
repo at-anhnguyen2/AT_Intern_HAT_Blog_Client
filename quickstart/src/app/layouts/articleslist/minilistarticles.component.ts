@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-minilist-articles',
-  templateUrl: './minilistarticles.html'
+  templateUrl: './minilistarticles.component.html'
 })
 
 export class MiniListArticlesComponent {

@@ -4,7 +4,7 @@ import { UserService } from '../../share/services/user.service';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.html'
+  templateUrl: './profile.component.html'
 })
 
 export class ProfilePageComponent  { 

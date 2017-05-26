@@ -13,8 +13,8 @@ export class AuthenticationService {
       password: password
     }
     let headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
-    console.log(JSON.stringify(body));
-    return this.http.post('http://172.16.19.136:3000/api/v1/signin', JSON.stringify(body), {headers: headers})
+    // console.log(JSON.stringify(body));
+    return this.http.post('http://172.17.19.122:3000/api/v1/signin', JSON.stringify(body), {headers: headers})
     .map((response: Response) => {
       // login successful if there's a jwt token in the response
       let user = response.json();

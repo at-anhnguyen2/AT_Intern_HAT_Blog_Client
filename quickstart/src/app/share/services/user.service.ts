@@ -13,7 +13,8 @@ export class UserService {
   }
 
   getUser(id: number) : Observable<any> {
-    return this._http.get("http://172.16.28.91:3000/api/v1/users/" + id)
+    // return this._http.get("http://172.16.28.91:3000/api/v1/users/" + id)
+    return this._http.get('./sampledata/userprofile.json')
     .map((res: any) => {
       return res.json();
     })
@@ -41,7 +42,7 @@ export class UserService {
   private jwt() {
     // create authorization header with jwt token
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser && currentUser.token) {
+    if (currentUser && currentUser.access_token) {
       let headers = new Headers({ 'access_token': currentUser.token });
       return new RequestOptions({ headers: headers });
     }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-setting',
-  templateUrl: './setting.html'
+  templateUrl: './setting.component.html'
 })
 
 export class SettingPageComponent  { 

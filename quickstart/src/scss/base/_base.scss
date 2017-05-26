@@ -1,43 +1,16 @@
-body {
-  font-family: $font-family-body;
-  color: $color-primary;
-  font-size: 14px;
-  background-color: $color-c;
-}
-
-* {
-  @include box-sizing;
-}
-
-a {
-  @extend %text-hover;
-}
-h1, h2, h3, h4, h5 {
-  font-family: $font-family-header;
+.text-bold {
   font-weight: bold;
 }
-h1, h2, h3 {
+.text-uppercase {
   text-transform: uppercase;
-}
-img {
-  max-width: 100%;
-  object-fit: cover;
-}
-ul, ol{
-  list-style: none;
-}
-button, input, a {
-  &:focus {
-    outline: none;
-  }
 }
 .link-text {
   @extend %text-hover;
   color: $color-link;
 }
 .error-input {
-  border: 1px solid #d9534f;
-  box-shadow: 0px 0px 8px 0 #d9534f;
+  border: 1px solid $color-red;
+  box-shadow: 0px 0px 8px 0 $color-red;
 }
 .isHidden {
   display: none;
@@ -46,12 +19,20 @@ button, input, a {
   color: $color-a;
   background-color: $color-primary !important;
 }
-.isLiked {
-  background-color: #d9534f;
-  border: 1px solid #d9534f;
-}
-.like-button, .follow-button, .setting-button {
+.like-button, .follow-button, .setting-button, .edit-button, .delete-button {
   padding: 2px 5px;
+}
+.follow-button {
+  @include my-button($color-blue);
+}
+.like-button {
+  @include my-button($color-green);
+}
+.isLiked, .delete-button {
+  @include my-button($color-red);
+}
+.setting-button, .edit-button {
+  @include my-button($color-blue2);
 }
 .user-media {
   overflow: hidden;

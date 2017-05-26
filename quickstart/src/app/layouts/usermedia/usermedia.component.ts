@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-user-media',
-  templateUrl: './usermedia.html'
+  templateUrl: './usermedia.component.html'
 })
 
 export class UserMediaComponent  {
@@ -10,6 +10,7 @@ export class UserMediaComponent  {
 	@Input() inputDate: any = null;
 	user: any;
 	date: any;
+	apiURL: string;
 	constructor() {
 		this.user = null;
 		this.date = null;

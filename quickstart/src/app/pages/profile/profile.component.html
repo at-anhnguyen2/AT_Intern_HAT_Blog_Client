@@ -1,0 +1,52 @@
+<div *ngIf="userProfile" class="profile-page">
+  <div class="profile">
+    <div class="user">
+      <div class="user-avatar">
+        <img src="{{userProfile.avatar}}">
+      </div>
+      <div class="user-profile">
+        <h2 class="text-bold">{{userProfile.username}}
+        <br><small>{{userProfile.fullname}} &minus; {{userProfile.birthday | date:'MMM d, y'}}</small></h2>
+        <div class="follow-like">
+          <app-follow-button></app-follow-button>
+          <a [routerLink]="['/setting']" class="btn btn-sm btn-info setting-button">
+            <span class="glyphicon glyphicon-cog"></span> 
+            <span>Setting</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="information">
+    <div class="about-me col-sm-4">
+      <h3 class="text-bold">About me</h3>
+      <p><strong>Full Name:</strong> {{userProfile.fullname}}</p>
+      <p><strong>Birthday:</strong> {{userProfile.birthday | date:'MMM d, y'}}</p>
+      <p>Proin at accumsan risus. Pellentesque nunc diam, congue ac lacus nec, volutpat tincidunt turpis.</p>
+      <div class="statistical">
+        <div class="statistical-articles col-sm-6">
+          <h3>45</h3>
+          <p>Articles</p>
+        </div>
+        <div class="statistical-followers col-sm-6">
+          <h3>132</h3>
+          <p>Followers</p>
+        </div>
+      </div>
+    </div>
+    <div class="involves-user col-sm-8">
+      <ul class="nav nav-tabs">
+        <li><a [class.isActived]="showArticles" (click)="clickArticles()">Articles</a></li>
+        <li><a [class.isActived]="showFollowing" (click)="clickFollowing()">Following User</a></li>
+      </ul>
+      <div class="articles-list" [class.isHidden]="!showArticles">
+        <h3>popular articles</h3>
+        <app-minilist-articles [inputArticles]="arrayPopularArticles"></app-minilist-articles>
+      </div>
+      <div class="articles-followed-list" [class.isHidden]="!showFollowing">
+        <h3>articles followed</h3>
+        <app-minilist-articles [inputArticles]="arrayPopularArticles"></app-minilist-articles>
+      </div>
+    </div>
+  </div>
+</div>

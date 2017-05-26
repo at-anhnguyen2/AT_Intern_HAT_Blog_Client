@@ -1,0 +1,67 @@
+<div class="top-banner">
+  <div class="banner-contain">
+    <p>the state of</p>
+    <h2>Social media <span>in</span></h2>
+    <h2>small company</h2>
+  </div>
+</div>
+<div class="categories">
+  <div [class.categories-fixed]="navIsFixed">
+    <nav class="navbar">
+      <ul class="nav navbar-nav">
+        <li><a [class.isActived]="true" href="#">Global</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Sport</a></li>
+        <li><a href="#">Life</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<div class="container">
+  <div class="main col-sm-8">
+    <div *ngFor="let articleItem of arrayArticles" class="item-article">
+      <div class="article-img col-sm-6">
+        <div class="content">
+          <a [routerLink]="['/article', articleItem.slug]">
+            <img src="{{apiUrl}}{{articleItem.title_image.url}}" alt="article img">
+          </a>
+          <div class="arrow"></div>
+        </div>
+      </div>
+      <div class="article-description col-sm-6">
+        <div class="content">
+          <div class="user">
+            <app-user-media [inputUser]="articleItem.user" [inputDate]="articleItem.created_at"></app-user-media>
+          </div>
+          <h4 class="text-bold"><a [routerLink]="['/article', articleItem.slug]">{{articleItem.title}}</a></h4>
+          <p>{{articleItem.content | shortcontentpipe}}</p>
+          <p><small><a href="#">Read more...</a></small></p>
+          <div class="follow-like">
+            <app-follow-button [value]="articleItem.attentions"></app-follow-button>
+            <app-like-button [value]="articleItem.attentions" [count]="articleItem.count_like"></app-like-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-number">
+      <ul class="pagination">
+        <li *ngFor="let number of totalPages | arraynumber">
+          <a href="">{{number}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="aside col-sm-4">
+    <div class="favorite-articles-list">
+      <h3 class="text-bold">Favorite Articles</h3>
+      <app-minilist-articles [inputArticles]="arrayFavoriteArticles"></app-minilist-articles>
+    </div>
+    <div class="popular-tags">
+      <h3 class="text-bold">Popular Tags</h3>
+      <ul class="list-inline">
+        <li *ngFor="let tagItem of arrayTags"><a href="">{{tagItem.name}}</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

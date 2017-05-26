@@ -1,0 +1,82 @@
+<div *ngIf="article" class="article-page">
+  <div class="article col-sm-8">
+    <div class="article-header">
+      <h2 class="text-bold">{{article.title}}</h2>
+      <h3>
+        <small>{{article.created_at | date:'MMM d, y'}}</small>
+        <small>&minus;</small>
+        <small>{{article.count_comment}} Comments</small>
+      </h3>
+      <div class="follow-like">
+        <app-follow-button [value]="article.attentions"></app-follow-button>
+        <app-like-button [value]="article.attentions" [count]="article.count_like"></app-like-button>
+        <a [routerLink]="['/editor', article.slug]" class="btn btn-sm edit-button">
+          <span class="glyphicon glyphicon-edit"></span> 
+          <span>Edit</span>
+        </a>
+        <a [routerLink]="['/home']" class="btn btn-sm delete-button">
+          <span class="glyphicon glyphicon-remove"></span>
+          <span>Delete</span>
+        </a>
+      </div>
+    </div>
+    <div class="article-body">
+      <div class="main-img">
+        <img src="{{apiURL}}{{article.title_image.url}}">
+      </div>
+      <div class="article-content">
+        <p class="text-justify">{{article.content}}</p>
+      </div>
+      <div class="article-tags">
+        <ul class="list-inline">
+          <li *ngFor="let tagItem of article.tags">#{{tagItem.name}}</li>
+        </ul>
+      </div>
+      <h4 class="text-bold">Comments</h4>
+      <div class="comments-list">
+        <div *ngFor="let commentItem of article.comments" class="comment-item">
+          <div class="user">
+            <app-user-media [inputUser]="commentItem.user" [inputDate]="commentItem.created_at"></app-user-media>
+          </div>
+          <div class="comment-content">
+            <p>{{commentItem.content}}</p>
+          </div>
+        </div>
+      </div>
+      <p><a href="" class="link-text">View more...</a></p>
+      <div class="comment-field">
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea class="form-control" rows="5" id="comment"></textarea>
+          <button type="button" class="btn btn-default">Send</button>
+        </div>
+        <span [hidden]="true">
+          <a href="" class="link-text">Sign in</a>
+           or 
+          <a href="" class="link-text">Sign up</a>
+           to add comments on this article.
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="aside col-sm-4">
+    <div class="about-user">
+      <h3 class="text-bold">About author</h3>
+      <a href="">
+        <img src="{{article.user.avatar.url | avatarpipe}}" class="img-circle" alt="Cinque Terre" width="200" height="200">
+      </a>
+      <h4><a [routerLink]="['/profile', article.user.username]">{{article.user.username}}</a>
+      <br>
+      <small>{{article.user.fullname}} &minus; {{article.user.birthday | date:'MMM d, y'}}</small>
+      </h4>
+      <p>{{article.user.description}}</p>
+      <div class="follow">
+        <!-- <app-follow-button [value]="true"></app-follow-button> -->
+      </div>
+      <div class="popular-article">
+        <h3 class="text-bold">Popular articles</h3>
+        <app-minilist-articles [inputArticles]="arrayPopularArticles"></app-minilist-articles>
+      </div>
+    </div>
+  </div>
+</div>

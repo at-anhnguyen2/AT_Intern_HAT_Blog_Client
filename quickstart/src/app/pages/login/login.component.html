@@ -1,0 +1,13 @@
+<div class="login-container">
+  <div class="login-form col-md-4 col-md-offset-4">
+    <h2 class="text-bold">Sign in</h2>
+    <p><a href="#" class="link-text">Create new account.</a></p>
+    <form [formGroup]="loginForm">
+    	<input type="text" name="email" class="form-control" placeholder="Email" formControlName="email" [class.error-input]="(email.invalid && email.touched)">
+      <app-messages [control]="loginForm.controls.email"></app-messages>
+      <input type="password" name="password" class="form-control" placeholder="Password" formControlName="password" [class.error-input]="(password.invalid && password.touched)">
+      <app-messages [control]="loginForm.controls.password"></app-messages>
+      <button type="submit" class="btn btn-default" (click)="login()" (enter)="login()">Sign in</button>
+    </form>
+  </div>
+</div>

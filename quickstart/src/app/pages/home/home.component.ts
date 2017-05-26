@@ -6,7 +6,7 @@ import { TagsListService } from '../../share/services/tagslist.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.html'
+  templateUrl: './home.component.html'
 })
 
 export class HomePageComponent  {
@@ -17,11 +17,13 @@ export class HomePageComponent  {
   arrayArticles: any;
   arrayFavoriteArticles: any;
   arrayTags: any;
+  apiUrl: string;
   constructor(
     @Inject(DOCUMENT) private _document: Document,
     private _articleService: ArticleService,
     private _tagsListService: TagsListService
   ) {
+    this.apiUrl = 'http://172.17.19.122:3000';
     this._articleService.getArticles()
     .subscribe((data: any) => {
       this.total = data.meta.total;
@@ -49,4 +51,8 @@ export class HomePageComponent  {
     }
   }
 
+  goToPageNumber(number: number) {
+    console.log(number);
+    console.log("abc");
+  }
 }

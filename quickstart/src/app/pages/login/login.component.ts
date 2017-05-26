@@ -6,10 +6,10 @@ import { AuthenticationService } from '../../share/services/authentication.servi
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.html'
+  templateUrl: './login.component.html'
 })
 
-export class LoginPageComponent  { 
+export class LoginPageComponent { 
   email: FormControl;
 	password: FormControl;
 	loginForm: FormGroup;
@@ -20,11 +20,11 @@ export class LoginPageComponent  {
     private router: Router,
 		private _authenticationService: AuthenticationService
 	) {
-    this.email = new FormControl("anh.nguyen2@asiantech.vn", [
+    this.email = new FormControl("thap.spdn@gmail.com", [
       Validators.required,
       ValidationService.emailValidator
     ]);
-  	this.password = new FormControl("123456abc", [
+  	this.password = new FormControl("1234567", [
       Validators.required,
       // Validators.minLength(6),
       // Validators.maxLength(24),

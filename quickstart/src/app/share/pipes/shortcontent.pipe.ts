@@ -6,8 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class ShortContentPipe implements PipeTransform{
   transform(inputContent: string){
-  	if (inputContent.length > 30) {
-	    return inputContent.substring(0, 30) + "...";
+  	if (inputContent.length > 50) {
+	    return inputContent.substring(0, 50) + "...";
   	} else {
   		return inputContent;
   	}

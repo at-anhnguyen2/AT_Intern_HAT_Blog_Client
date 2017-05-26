@@ -4,3 +4,13 @@
   -o-box-sizing: $type;
   box-sizing: $type;
 }
+
+@mixin my-button($color) {
+	background-color: transparent;
+  color: $color;
+  border: 1px solid $color;
+  &:hover {
+    color: $color-a;
+    background-color: $color;
+  }
+}

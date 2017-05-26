@@ -2,6 +2,7 @@
   "article": {
     "id": 1,
     "title": "Getting start with Rspec",
+    "slug": "getting-start-with-rspec",
     "content": "Rspec is gem in rails.It help write Test",
     "title_image": "https://lh3.googleusercontent.com/-Avn6oA4xT6g/Vs_Tbdjh8nI/AAAAAAAAWr0/-G-ShgGntZI/s650-Ic42/c%2525C3%2525A1ch-nu%2525C3%2525B4i-ch%2525C3%2525B3-ngao-t%2525C3%2525A2y-t%2525E1%2525BA%2525A1ng-%2525E1%2525BB%25259F-Vi%2525E1%2525BB%252587t-Nam-2.jpg",
     "created_at": "2017-05-15T00:00:00.000Z",
@@ -24,7 +25,7 @@
     ],
     "category": {
       "id": 1,
-      "name": "Rails"
+      "name": "Life"
     },
     "comments": [
       {

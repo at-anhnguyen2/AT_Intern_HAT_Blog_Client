@@ -6,7 +6,7 @@ import { User } from '../../models/user';
 
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup.html'
+  templateUrl: './signup.component.html'
 })
 
 export class SignUpPageComponent  {

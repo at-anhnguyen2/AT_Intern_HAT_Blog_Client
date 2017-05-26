@@ -18,7 +18,6 @@ import { FullNamePipe } from './share/pipes/fullname.pipe';
 import { ArrayNumberPipe } from './share/pipes/arraynumber.pipe';
 import { ShortContentPipe } from './share/pipes/shortcontent.pipe';
 import { UserService } from './share/services/user.service';
-// import { UserProfileService } from './share/services/userprofile.service';
 import { ArticleService } from './share/services/article.service';
 import { TagsListService } from './share/services/tagslist.service';
 import { CategoriesService } from './share/services/categorieslist.service';
@@ -33,16 +32,21 @@ import { SignUpPageComponent }  from './pages/signup/signup.component';
 import { ProfilePageComponent }  from './pages/profile/profile.component';
 import { EditorPageComponent }  from './pages/editor/editor.component';
 import { SettingPageComponent }  from './pages/setting/setting.component';
+import { WelcomePageComponent }  from './pages/welcome/welcome.component';
+import { AboutUsPageComponent }  from './pages/aboutus/aboutus.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: SignUpPageComponent },
-  { path: 'article/:id', component: ArticlePageComponent },
+  { path: 'article/:slug', component: ArticlePageComponent },
   { path: 'profile/:username', component: ProfilePageComponent },
   { path: 'editor', component: EditorPageComponent },
+  { path: 'editor/:slug', component: EditorPageComponent },
   { path: 'setting', component: SettingPageComponent },
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'aboutus', component: AboutUsPageComponent },
   { path: 'api/v1/users/:confirm_token/confirm_email', redirectTo: 'home', pathMatch: 'full' }
 ];
 
@@ -80,12 +84,13 @@ export const routing = RouterModule.forRoot(routes);
     SignUpPageComponent,
     ProfilePageComponent,
     EditorPageComponent,
-    SettingPageComponent
+    SettingPageComponent,
+    WelcomePageComponent,
+    AboutUsPageComponent
   ],
   bootstrap: [ AppComponent ],
   providers: [
     UserService,
-    // UserProfileService,
     ArticleService,
     TagsListService,
     CategoriesService,
