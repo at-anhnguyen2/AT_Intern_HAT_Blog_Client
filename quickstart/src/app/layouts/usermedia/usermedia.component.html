@@ -1,7 +1,7 @@
 <div class="user-media">
 	<div class="user-avatar">
-	  <a href="#">
-	    <img src="{{user.avatar.url | avatarpipe}}">
+	  <a [routerLink]="['/profile', user.username]">
+	    <img src="{{user.avatar | avatarpipe}}">
 	  </a>
 	</div>
 	<div class="user-profile">

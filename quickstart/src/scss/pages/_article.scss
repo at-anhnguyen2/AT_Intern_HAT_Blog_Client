@@ -29,10 +29,40 @@
           border-radius: 10px;
         }
       }
+      h4 {
+        margin-bottom: 15px;
+      }
       .comments-list {
+        margin-top: 15px;
         .comment-item {
+          position: relative;
           padding: 15px 0;
           border-top: 1px solid $color-c;
+          .btn-edit-comment {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 10px;
+            right: 0;
+            text-align: center;
+            border-radius: 2px;
+            &:hover {
+              color: $color-d;
+              cursor: pointer;
+            }
+            .caret {
+              margin: 0;
+            }
+          }
+          .edit-comment {
+            position: absolute;
+            width: 100%;
+            background-color: $color-a;
+            top: 30px;
+            padding: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 10 !important;
+          }
         }
       }
       .comment-field {

@@ -1,10 +1,22 @@
 <div class="header">
   <div class="header-scroll">
     <div class="header-contain">
-      <div class="logo">
+      <div class="logo wow flipInY">
         <a [routerLink]="['home']">
           <img src="../img/logo.png" alt="logo img">
         </a>
+      </div>
+      <div class="input-group search-field">
+        <input type="text" class="form-control" 
+        [(ngModel)]="inputSearch"
+        (ngModelChange)="inputSearchChange($event)" placeholder="Search ..">
+        <div class="search-result" 
+          [class.isHidden]="!showSearchResult">
+          <span [class.isHidden]="haveSearchResult">No result...</span>
+          <app-minilist-articles
+            [inputArticles]="arraySearchResult">
+          </app-minilist-articles>
+        </div>
       </div>
       <nav class="menu">
         <ul class="nav nav-pills">
@@ -23,14 +35,27 @@
               <span class="glyphicon glyphicon-plus"></span> Sign up
             </a>
           </li>
+          <li [class.isHidden]="!isLogined" *ngIf="currentUser">
+            <a [routerLink]="['/profile', currentUser.username]"
+              routerLinkActive="isActived">
+              <span class="glyphicon glyphicon-user"></span> {{currentUser.username}}
+            </a>
+          </li>
+          <li [class.isHidden]="!isLogined" class="notification">
+            <a (click)="clickNotification()">
+              <span class="glyphicon glyphicon-globe"></span>
+              <div class="notification-number"
+                [class.isHidden]="!haveNotification">{{numberNotification}}</div>
+            </a>
+            <app-notification
+              [class.isHidden]="!showNotification"
+              [inputNotification]="notificationsOutput"
+              (result)="getNumberNotification($event)">
+            </app-notification>
+          </li>
           <li [class.isHidden]="!isLogined">
             <a [routerLink]="['/editor']" routerLinkActive="isActived">
               <span class="glyphicon glyphicon-pencil"></span> New article
-            </a>
-          </li>
-          <li [class.isHidden]="!isLogined" *ngIf="currentUser">
-            <a [routerLink]="['/profile/AnhNguyen']">
-              <span class="glyphicon glyphicon-user"></span> {{currentUser.username}}
             </a>
           </li>
           <li [class.isHidden]="!isLogined">

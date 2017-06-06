@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ValidationService } from '../../share/services/validation.service';
-import { UserService } from '../../share/services/user.service';
+import { APIService } from '../../share/services/api.service';
 import { User } from '../../models/user';
 
 @Component({
@@ -15,7 +16,11 @@ export class SignUpPageComponent  {
 	email: FormControl;
 	password: FormControl;
 	passwordConfirm: FormControl;
-  constructor(_formBuider: FormBuilder, private _userService: UserService) {
+  constructor(_formBuider: FormBuilder,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _apiService: APIService
+  ) {
   	this.userName = new FormControl("anhnguyen", [
       Validators.required,
       Validators.minLength(4),
@@ -25,13 +30,13 @@ export class SignUpPageComponent  {
       Validators.required,
       ValidationService.emailValidator
     ]);
-  	this.password = new FormControl("123456abc", [
+  	this.password = new FormControl("abcd1234", [
       Validators.required,
       Validators.minLength(6),
       Validators.maxLength(24),
       ValidationService.passwordValidator
     ]);
-    this.passwordConfirm = new FormControl("123456abc", [
+    this.passwordConfirm = new FormControl("abcd1234", [
       Validators.required,
       ValidationService.passwordConfirmValidator
     ]);
@@ -54,13 +59,13 @@ export class SignUpPageComponent  {
     user.avatar = "";
     user.birthday = "";
     user.description = "";
-    this._userService.createUser(user)
+    this._apiService.createUser(user)
     .subscribe((data: any) => {
-      console.log(data);
-      console.log(data.user.access_token);
-      console.log(data.user.id);
-      console.log(data.user.username);
-      console.log(data.user.email);
+      let user = data.user;
+      if (user && user.access_token) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+      }
+      this._router.navigate(['/welcome']);
     });
     return false;
   }

@@ -8,13 +8,23 @@
         <small>{{article.count_comment}} Comments</small>
       </h3>
       <div class="follow-like">
-        <app-follow-button [value]="article.attentions"></app-follow-button>
-        <app-like-button [value]="article.attentions" [count]="article.count_like"></app-like-button>
-        <a [routerLink]="['/editor', article.slug]" class="btn btn-sm edit-button">
+        <app-subscribe-button [value]="article.attention"
+          [article]="article">
+        </app-subscribe-button>
+        <app-like-button [value]="article.attention"
+          [slug]="article.slug"
+          [count]="article.count_like">
+        </app-like-button>
+        <a [routerLink]="['/editor', article.slug]"
+          class="btn btn-sm edit-button" 
+          [class.isHidden]="!isCurrentUser">
           <span class="glyphicon glyphicon-edit"></span> 
           <span>Edit</span>
         </a>
-        <a [routerLink]="['/home']" class="btn btn-sm delete-button">
+        <a [routerLink]="['/home']"
+          class="btn btn-sm delete-button"
+          [class.isHidden]="!isCurrentUser"
+          (click)="deleteArticle()">
           <span class="glyphicon glyphicon-remove"></span>
           <span>Delete</span>
         </a>
@@ -22,10 +32,10 @@
     </div>
     <div class="article-body">
       <div class="main-img">
-        <img src="{{apiURL}}{{article.title_image.url}}">
+        <img src="{{article.title_image.url | imagepipe}}">
       </div>
       <div class="article-content">
-        <p class="text-justify">{{article.content}}</p>
+        <p [innerHTML]="article.content | safepipe:'html'" class="text-justify"></p>
       </div>
       <div class="article-tags">
         <ul class="list-inline">
@@ -33,27 +43,47 @@
         </ul>
       </div>
       <h4 class="text-bold">Comments</h4>
+      <p [class.isHidden]="isViewAllComment">
+        <a [routerLink]="['/article', article.slug]" 
+        class="link-text"
+        (click)="viewAllComments()">View older comments...</a>
+      </p>
       <div class="comments-list">
         <div *ngFor="let commentItem of article.comments" class="comment-item">
           <div class="user">
-            <app-user-media [inputUser]="commentItem.user" [inputDate]="commentItem.created_at"></app-user-media>
+            <app-user-media [inputUser]="commentItem.user"
+              [inputDate]="commentItem.created_at">
+            </app-user-media>
           </div>
           <div class="comment-content">
             <p>{{commentItem.content}}</p>
           </div>
+          <div class="btn-edit-comment" (click)="editComment(commentItem.id)"
+            [class.isHidden]="!(currentUser && (currentUser.username === commentItem.user.username))">
+            <span class="caret"></span>
+          </div>
+          <app-edit-comment 
+            [inputComment]="commentItem"
+            [inputID]="idComment"
+            [inputSlug]="article.slug"
+            (result)="resultEditComment($event)">
+          </app-edit-comment>
         </div>
       </div>
-      <p><a href="" class="link-text">View more...</a></p>
       <div class="comment-field">
-        <div class="form-group">
+        <div class="form-group" [class.isHidden]="!currentUser">
           <label for="comment">Comment:</label>
-          <textarea class="form-control" rows="5" id="comment"></textarea>
-          <button type="button" class="btn btn-default">Send</button>
+          <textarea class="form-control" rows="5" id="comment"
+            [(ngModel)]="inputComment"
+            (keypress)="keyHandle($event)">
+          </textarea>
+          <button type="button" class="btn btn-default"
+            (click)="sendComment()">Send</button>
         </div>
-        <span [hidden]="true">
-          <a href="" class="link-text">Sign in</a>
+        <span [hidden]="currentUser">
+          <a [routerLink]="['/login']" class="link-text">Sign in</a>
            or 
-          <a href="" class="link-text">Sign up</a>
+          <a [routerLink]="['/register']" class="link-text">Sign up</a>
            to add comments on this article.
         </span>
       </div>
@@ -62,8 +92,8 @@
   <div class="aside col-sm-4">
     <div class="about-user">
       <h3 class="text-bold">About author</h3>
-      <a href="">
-        <img src="{{article.user.avatar.url | avatarpipe}}" class="img-circle" alt="Cinque Terre" width="200" height="200">
+      <a [routerLink]="['/profile', article.user.username]">
+        <img src="{{article.user.avatar | avatarpipe}}" class="img-circle" alt="Cinque Terre" width="200" height="200">
       </a>
       <h4><a [routerLink]="['/profile', article.user.username]">{{article.user.username}}</a>
       <br>
@@ -71,7 +101,7 @@
       </h4>
       <p>{{article.user.description}}</p>
       <div class="follow">
-        <!-- <app-follow-button [value]="true"></app-follow-button> -->
+        <app-follow-button [value]="article.user"></app-follow-button>
       </div>
       <div class="popular-article">
         <h3 class="text-bold">Popular articles</h3>

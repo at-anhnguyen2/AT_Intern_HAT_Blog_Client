@@ -101,6 +101,12 @@ button:focus, input:focus, a:focus {
 .text-uppercase {
   text-transform: uppercase; }
 
+.text-none {
+  text-transform: none; }
+
+.text-notice {
+  color: #0275d8; }
+
 .link-text {
   color: #337ab7; }
 
@@ -109,10 +115,10 @@ button:focus, input:focus, a:focus {
   box-shadow: 0px 0px 8px 0 #d9534f; }
 
 .isHidden {
-  display: none; }
+  display: none !important; }
 
-.isActived, .isActived:active, .isActived:focus {
-  color: #ffffff;
+.isActived {
+  color: #ffffff !important;
   background-color: #333333 !important; }
 
 .like-button, .follow-button, .setting-button, .edit-button, .delete-button {
@@ -125,6 +131,9 @@ button:focus, input:focus, a:focus {
   .follow-button:hover {
     color: #ffffff;
     background-color: #0275d8; }
+  .follow-button:focus {
+    background-color: transparent !important;
+    color: #0275d8 !important; }
 
 .like-button {
   background-color: transparent;
@@ -133,6 +142,9 @@ button:focus, input:focus, a:focus {
   .like-button:hover {
     color: #ffffff;
     background-color: #5cb85c; }
+  .like-button:focus {
+    background-color: transparent !important;
+    color: #5cb85c !important; }
 
 .isLiked, .delete-button {
   background-color: transparent;
@@ -141,6 +153,9 @@ button:focus, input:focus, a:focus {
   .isLiked:hover, .delete-button:hover {
     color: #ffffff;
     background-color: #d9534f; }
+  .isLiked:focus, .delete-button:focus {
+    background-color: transparent !important;
+    color: #d9534f !important; }
 
 .setting-button, .edit-button {
   background-color: transparent;
@@ -149,6 +164,9 @@ button:focus, input:focus, a:focus {
   .setting-button:hover, .edit-button:hover {
     color: #ffffff;
     background-color: #5bc0de; }
+  .setting-button:focus, .edit-button:focus {
+    background-color: transparent !important;
+    color: #5bc0de !important; }
 
 .user-media {
   overflow: hidden;
@@ -201,11 +219,52 @@ button:focus, input:focus, a:focus {
   overflow: auto; }
   .header-scroll .header-contain .logo {
     float: left; }
+  .header-scroll .header-contain .search-field {
+    width: 30%;
+    float: left;
+    padding: 12px 30px; }
+    .header-scroll .header-contain .search-field input {
+      border-radius: 5px; }
+    .header-scroll .header-contain .search-field .search-result {
+      position: fixed;
+      z-index: 10;
+      top: 65px;
+      left: 200px;
+      width: 500px;
+      max-height: 500px;
+      overflow: auto;
+      background-color: #ffffff;
+      border-radius: 5px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); }
   .header-scroll .header-contain .menu {
     float: right;
     margin: 8.5px 0; }
     .header-scroll .header-contain .menu .isHidden {
       display: none; }
+    .header-scroll .header-contain .menu .notification {
+      position: relative;
+      z-index: 20;
+      height: 40px; }
+      .header-scroll .header-contain .menu .notification .glyphicon-globe {
+        font-size: 20px; }
+      .header-scroll .header-contain .menu .notification .notification-number {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        padding: 0px 5px;
+        background-color: #d9534f;
+        border-radius: 50%;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 10px; }
+      .header-scroll .header-contain .menu .notification:hover {
+        cursor: pointer; }
+      .header-scroll .header-contain .menu .notification app-notification {
+        position: fixed;
+        top: 55px;
+        left: 650px;
+        z-index: 10; }
 
 .footer {
   width: 100%;
@@ -222,6 +281,29 @@ button:focus, input:focus, a:focus {
     margin: 6.5px 10px; }
     .footer .footer-contain .license a {
       color: #ffffff; }
+
+.notification-modal {
+  width: 500px;
+  max-height: 500px;
+  overflow: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  background-color: #ffffff; }
+  .notification-modal a {
+    overflow: hidden; }
+  .notification-modal .img-notification {
+    float: left;
+    width: 40px;
+    height: 40px; }
+    .notification-modal .img-notification img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .notification-modal .content-notification {
+    float: left;
+    max-width: 410px;
+    margin-left: 15px; }
 
 .about-us-container {
   min-height: 510px;
@@ -255,9 +337,35 @@ button:focus, input:focus, a:focus {
       .article-page .article .article-body .article-tags li {
         background-color: #eeeeee;
         border-radius: 10px; }
-    .article-page .article .article-body .comments-list .comment-item {
-      padding: 15px 0;
-      border-top: 1px solid #eeeeee; }
+    .article-page .article .article-body h4 {
+      margin-bottom: 15px; }
+    .article-page .article .article-body .comments-list {
+      margin-top: 15px; }
+      .article-page .article .article-body .comments-list .comment-item {
+        position: relative;
+        padding: 15px 0;
+        border-top: 1px solid #eeeeee; }
+        .article-page .article .article-body .comments-list .comment-item .btn-edit-comment {
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          top: 10px;
+          right: 0;
+          text-align: center;
+          border-radius: 2px; }
+          .article-page .article .article-body .comments-list .comment-item .btn-edit-comment:hover {
+            color: #bfac8a;
+            cursor: pointer; }
+          .article-page .article .article-body .comments-list .comment-item .btn-edit-comment .caret {
+            margin: 0; }
+        .article-page .article .article-body .comments-list .comment-item .edit-comment {
+          position: absolute;
+          width: 100%;
+          background-color: #ffffff;
+          top: 30px;
+          padding: 5px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          z-index: 10 !important; }
     .article-page .article .article-body .comment-field {
       margin-top: 30px; }
       .article-page .article .article-body .comment-field button {
@@ -300,6 +408,8 @@ button:focus, input:focus, a:focus {
     border: 0; }
     .categories .navbar li {
       text-transform: uppercase; }
+      .categories .navbar li a:hover {
+        cursor: pointer; }
 
 .container {
   min-height: 500px;
@@ -318,11 +428,18 @@ button:focus, input:focus, a:focus {
       top: 0;
       left: 0;
       background-color: rgba(0, 0, 0, 0.2);
-      z-index: 5; }
+      z-index: 5;
+      transition: background-color 500ms; }
+    .container .item-article .article-img a:hover:before {
+      background-color: rgba(0, 0, 0, 0.5); }
+    .container .item-article .article-img a:hover img {
+      width: 110%;
+      height: 110%; }
     .container .item-article .article-img img {
       width: 100%;
       height: 100%;
-      object-fit: cover; }
+      object-fit: cover;
+      transition: all 0.5s; }
     .container .item-article .article-img .arrow {
       position: absolute;
       width: 7%;
@@ -352,6 +469,8 @@ button:focus, input:focus, a:focus {
       .container .page-number .pagination a {
         background-color: #ffffff;
         border-color: #333333; }
+        .container .page-number .pagination a:hover {
+          cursor: pointer; }
   .container .aside {
     padding-left: 30px; }
     .container .aside h3 {
@@ -374,6 +493,7 @@ button:focus, input:focus, a:focus {
           color: #333333;
           background-color: #ffffff; }
           .container .aside .popular-tags li a:hover {
+            cursor: pointer;
             background-color: #333333;
             color: #ffffff; }
 
@@ -382,7 +502,7 @@ button:focus, input:focus, a:focus {
   position: fixed;
   top: 78px;
   left: 0;
-  z-index: 10;
+  z-index: 9;
   width: 100%;
   height: 51px;
   background-color: #eeeeee;
@@ -435,12 +555,15 @@ button:focus, input:focus, a:focus {
   background-color: #333333; }
   .profile-page .profile .user {
     height: 100%;
-    padding: 30px 200px; }
+    padding: 30px 300px; }
     .profile-page .profile .user .user-avatar {
       float: left;
-      width: 140px; }
+      width: 140px;
+      height: 140px; }
       .profile-page .profile .user .user-avatar img {
-        border-radius: 50%; }
+        border-radius: 50%;
+        width: 100%;
+        height: 100%; }
     .profile-page .profile .user .user-profile {
       float: left;
       margin-left: 10px;
@@ -475,13 +598,37 @@ button:focus, input:focus, a:focus {
         cursor: pointer;
         border: 1px solid #333333;
         background-color: #ffffff; }
-    .profile-page .information .involves-user .articles-list, .profile-page .information .involves-user .articles-followed-list {
+    .profile-page .information .involves-user .articles-list, .profile-page .information .involves-user .following-user {
       width: 100%;
       padding: 15px;
       border: 1px solid #333333;
       border-top: none; }
-      .profile-page .information .involves-user .articles-list h3, .profile-page .information .involves-user .articles-followed-list h3 {
+      .profile-page .information .involves-user .articles-list h3, .profile-page .information .involves-user .following-user h3 {
         margin-bottom: 10px; }
+    .profile-page .information .involves-user .list-following-user {
+      padding: 15px 0;
+      border-top: 1px solid #eeeeee;
+      overflow: hidden; }
+      .profile-page .information .involves-user .list-following-user .user-item {
+        float: left;
+        width: calc(100% / 3); }
+        .profile-page .information .involves-user .list-following-user .user-item .user-media {
+          overflow: hidden;
+          margin-bottom: 15px;
+          text-align: center; }
+          .profile-page .information .involves-user .list-following-user .user-item .user-media .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            float: none;
+            margin-left: calc(50% - 40px); }
+            .profile-page .information .involves-user .list-following-user .user-item .user-media .user-avatar img {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%; }
+          .profile-page .information .involves-user .list-following-user .user-item .user-media .user-profile {
+            margin-left: 0;
+            float: none; }
 
 .editor-container {
   min-height: 510px; }
@@ -502,9 +649,18 @@ button:focus, input:focus, a:focus {
 
 .setting-container {
   min-height: 510px; }
+  .setting-container .avatar {
+    padding: 30px 0;
+    text-align: center; }
+    .setting-container .avatar input {
+      margin: 0 auto; }
+    .setting-container .avatar img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover; }
   .setting-container .setting-form {
     padding: 30px 0; }
-    .setting-container .setting-form h2, .setting-container .setting-form .buttons {
+    .setting-container .setting-form .buttons {
       text-align: center; }
     .setting-container .setting-form form {
       margin-top: 30px; }

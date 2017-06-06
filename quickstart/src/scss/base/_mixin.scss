@@ -13,4 +13,8 @@
     color: $color-a;
     background-color: $color;
   }
+  &:focus {
+    background-color: transparent !important;
+    color: $color !important;
+  }
 }

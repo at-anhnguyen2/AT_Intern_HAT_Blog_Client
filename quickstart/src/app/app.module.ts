@@ -5,22 +5,25 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
 // import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppConfig } from './share/app.config';
 
 import { HeaderLayoutComponent } from './layouts/header/header.component';
 import { FooterLayoutComponent } from './layouts/footer/footer.component';
 import { LikeButtonComponent } from './layouts/buttons/likebutton.component';
 import { FollowButtonComponent } from './layouts/buttons/followbutton.component';
+import { SubscribeButtonComponent } from './layouts/buttons/subscribebutton.component';
 import { MiniListArticlesComponent } from './layouts/articleslist/minilistarticles.component';
 import { UserMediaComponent } from './layouts/usermedia/usermedia.component';
 import { MessagesComponent } from './layouts/validationmessage/validationmessage.component';
+import { EditCommentComponent } from './layouts/editcomment/editcomment.component';
+import { NotificationComponent } from './layouts/notification/notification.component';
 import { AvatarPipe } from './share/pipes/avatar.pipe';
+import { ImagePipe } from './share/pipes/image.pipe';
 import { FullNamePipe } from './share/pipes/fullname.pipe';
 import { ArrayNumberPipe } from './share/pipes/arraynumber.pipe';
 import { ShortContentPipe } from './share/pipes/shortcontent.pipe';
-import { UserService } from './share/services/user.service';
-import { ArticleService } from './share/services/article.service';
-import { TagsListService } from './share/services/tagslist.service';
-import { CategoriesService } from './share/services/categorieslist.service';
+import { SafePipe } from './share/pipes/safe.pipe';
+import { APIService } from './share/services/api.service';
 import { ValidationService } from './share/services/validation.service';
 import { AuthenticationService } from './share/services/authentication.service';
 
@@ -44,7 +47,7 @@ const routes: Routes = [
   { path: 'profile/:username', component: ProfilePageComponent },
   { path: 'editor', component: EditorPageComponent },
   { path: 'editor/:slug', component: EditorPageComponent },
-  { path: 'setting', component: SettingPageComponent },
+  { path: 'settings', component: SettingPageComponent },
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'aboutus', component: AboutUsPageComponent },
   { path: 'api/v1/users/:confirm_token/confirm_email', redirectTo: 'home', pathMatch: 'full' }
@@ -69,13 +72,18 @@ export const routing = RouterModule.forRoot(routes);
     FooterLayoutComponent,
     LikeButtonComponent,
     FollowButtonComponent,
+    SubscribeButtonComponent,
     MiniListArticlesComponent,
     UserMediaComponent,
     MessagesComponent,
+    EditCommentComponent,
+    NotificationComponent,
     AvatarPipe,
+    ImagePipe,
     FullNamePipe,
     ArrayNumberPipe,
     ShortContentPipe,
+    SafePipe,
 
     // pages component
     HomePageComponent,
@@ -90,16 +98,14 @@ export const routing = RouterModule.forRoot(routes);
   ],
   bootstrap: [ AppComponent ],
   providers: [
-    UserService,
-    ArticleService,
-    TagsListService,
-    CategoriesService,
+    APIService,
     ValidationService,
-    AuthenticationService
+    AuthenticationService,
+    AppConfig
   ]
 })
 
 export class AppModule { }
 
 // platformBrowserDynamic().bootstrapModule(AppModule)
-//   .catch((err: any) => console.error(err));
+  // .catch((err: any) => console.error(err));

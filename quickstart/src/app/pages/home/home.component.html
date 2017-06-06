@@ -9,22 +9,29 @@
   <div [class.categories-fixed]="navIsFixed">
     <nav class="navbar">
       <ul class="nav navbar-nav">
-        <li><a [class.isActived]="true" href="#">Global</a></li>
-        <li><a href="#">Technology</a></li>
-        <li><a href="#">Work</a></li>
-        <li><a href="#">Sport</a></li>
-        <li><a href="#">Life</a></li>
+        <li><a class="wow bounceInRight" 
+          [class.isActived]="currentIDCategory === 0"
+          (click)="clickGlobal()">Global</a>
+        </li>
+        <li class="wow bounceInRight" *ngFor="let categoryItem of arrayCategories">
+          <a [class.isActived]="categoryItem.id === currentIDCategory" (click)="clickCategory(categoryItem.id)">
+            {{categoryItem.name}}
+          </a>
+        </li>
+        <li [class.isHidden]="currentTagID === 0">
+          <a class="isActived text-none wow bounceInRight">#{{currentTag}}</a>
+        </li>
       </ul>
     </nav>
   </div>
 </div>
 <div class="container">
   <div class="main col-sm-8">
-    <div *ngFor="let articleItem of arrayArticles" class="item-article">
+    <div *ngFor="let articleItem of arrayArticles" class="item-article wow slideInUp">
       <div class="article-img col-sm-6">
         <div class="content">
           <a [routerLink]="['/article', articleItem.slug]">
-            <img src="{{apiUrl}}{{articleItem.title_image.url}}" alt="article img">
+            <img src="{{articleItem.title_image.url | imagepipe}}" alt="article img">
           </a>
           <div class="arrow"></div>
         </div>
@@ -32,14 +39,23 @@
       <div class="article-description col-sm-6">
         <div class="content">
           <div class="user">
-            <app-user-media [inputUser]="articleItem.user" [inputDate]="articleItem.created_at"></app-user-media>
+            <app-user-media [inputUser]="articleItem.user"
+              [inputDate]="articleItem.created_at">
+            </app-user-media>
           </div>
-          <h4 class="text-bold"><a [routerLink]="['/article', articleItem.slug]">{{articleItem.title}}</a></h4>
+          <h4 class="text-bold">
+            <a [routerLink]="['/article', articleItem.slug]">{{articleItem.title}}</a>
+          </h4>
           <p>{{articleItem.content | shortcontentpipe}}</p>
-          <p><small><a href="#">Read more...</a></small></p>
+          <p><small><a [routerLink]="['/article', articleItem.slug]">Read more...</a></small></p>
           <div class="follow-like">
-            <app-follow-button [value]="articleItem.attentions"></app-follow-button>
-            <app-like-button [value]="articleItem.attentions" [count]="articleItem.count_like"></app-like-button>
+            <app-subscribe-button [value]="articleItem.attention"
+              [article]="articleItem">
+            </app-subscribe-button>
+            <app-like-button [value]="articleItem.attention"
+              [slug]="articleItem.slug"
+              [count]="articleItem.count_like">
+            </app-like-button>
           </div>
         </div>
       </div>
@@ -47,7 +63,9 @@
     <div class="page-number">
       <ul class="pagination">
         <li *ngFor="let number of totalPages | arraynumber">
-          <a href="">{{number}}</a>
+          <a class="wow slideInUp"
+          (click)="goToPageNumber(number)" 
+          [class.isActived]="currentPageNumber === number">{{number}}</a>
         </li>
       </ul>
     </div>
@@ -60,7 +78,7 @@
     <div class="popular-tags">
       <h3 class="text-bold">Popular Tags</h3>
       <ul class="list-inline">
-        <li *ngFor="let tagItem of arrayTags"><a href="">{{tagItem.name}}</a></li>
+        <li *ngFor="let tagItem of arrayTags"><a (click)="clickTag(tagItem.id, tagItem.name)">{{tagItem.name}}</a></li>
       </ul>
     </div>
   </div>

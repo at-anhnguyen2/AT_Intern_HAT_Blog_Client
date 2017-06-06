@@ -2,16 +2,18 @@
   <div class="profile">
     <div class="user">
       <div class="user-avatar">
-        <img src="{{userProfile.avatar}}">
+        <img src="{{userProfile.avatar | avatarpipe}}">
       </div>
       <div class="user-profile">
         <h2 class="text-bold">{{userProfile.username}}
         <br><small>{{userProfile.fullname}} &minus; {{userProfile.birthday | date:'MMM d, y'}}</small></h2>
         <div class="follow-like">
-          <app-follow-button></app-follow-button>
-          <a [routerLink]="['/setting']" class="btn btn-sm btn-info setting-button">
+          <app-follow-button [value]="userProfile"></app-follow-button>
+          <a [routerLink]="['/settings']"
+            class="btn btn-sm btn-info setting-button"
+            [class.isHidden]="!isCurrentUser">
             <span class="glyphicon glyphicon-cog"></span> 
-            <span>Setting</span>
+            <span>Settings</span>
           </a>
         </div>
       </div>
@@ -36,16 +38,26 @@
     </div>
     <div class="involves-user col-sm-8">
       <ul class="nav nav-tabs">
-        <li><a [class.isActived]="showArticles" (click)="clickArticles()">Articles</a></li>
-        <li><a [class.isActived]="showFollowing" (click)="clickFollowing()">Following User</a></li>
+        <li><a [class.isActived]="showArticles"
+          (click)="clickArticles()">Articles</a>
+        </li>
+        <li><a [class.isActived]="showFollowing"
+          (click)="clickFollowing()">Following User</a>
+        </li>
       </ul>
       <div class="articles-list" [class.isHidden]="!showArticles">
-        <h3>popular articles</h3>
+        <h3>Popular articles</h3>
         <app-minilist-articles [inputArticles]="arrayPopularArticles"></app-minilist-articles>
       </div>
-      <div class="articles-followed-list" [class.isHidden]="!showFollowing">
-        <h3>articles followed</h3>
-        <app-minilist-articles [inputArticles]="arrayPopularArticles"></app-minilist-articles>
+      <div class="following-user" [class.isHidden]="!showFollowing">
+        <h3>Following user</h3>
+        <div class="list-following-user" *ngIf="arrayFollowingUser">
+          <div *ngFor="let userItem of arrayFollowingUser" class="user-item">
+            <app-user-media [inputUser]="userItem"
+              [inputDate]="userItem.birthday">
+            </app-user-media>
+          </div>
+        </div>
       </div>
     </div>
   </div>

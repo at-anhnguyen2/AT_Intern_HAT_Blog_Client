@@ -1,6 +1,7 @@
-<button type="button" class="btn btn-sm follow-button">
+<div type="button" class="btn btn-sm follow-button"
+	(click)="clickFollow()">
 	<span [class.isHidden]="!isFollowed" class="glyphicon glyphicon-ok"></span>
 	<span>
 		Follow<span [class.isHidden]="!isFollowed">ed</span>
 	</span>
-</button>
+</div>

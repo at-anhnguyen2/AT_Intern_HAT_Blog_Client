@@ -1,27 +1,39 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map'
+import { AppConfig } from '../../share/app.config';
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: Http) { }
+  authStatus = new BehaviorSubject(false);
+  authStatus$ = this.authStatus.asObservable();
+  constructor(private http: Http, private _appConfig: AppConfig) {
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if( currentUser ) {
+      this.authStatus.next(true);
+    } else {
+      this.authStatus.next(false);
+    }
+  }
 
-  login(email: string, password: string) {
+  login(email: string, password: string) : Observable<boolean> {
     let body = {
       email: email,
       password: password
     }
     let headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
-    // console.log(JSON.stringify(body));
-    return this.http.post('http://172.17.19.122:3000/api/v1/signin', JSON.stringify(body), {headers: headers})
+    return this.http.post(this._appConfig.APIUrl + 'authorizations', JSON.stringify(body), {headers: headers})
     .map((response: Response) => {
       // login successful if there's a jwt token in the response
-      let user = response.json();
+      let user = response.json().user;
       console.log(user);
       if (user && user.access_token) {
+        console.log('1');
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
+        this.authStatus.next(true);
       }
       return user;
     });
@@ -30,5 +42,6 @@ export class AuthenticationService {
   logout() {
       // remove user from local storage to log user out
       localStorage.removeItem('currentUser');
+      this.authStatus.next(false);
   }
 }
