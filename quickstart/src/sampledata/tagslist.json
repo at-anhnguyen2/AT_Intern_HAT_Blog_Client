@@ -2,15 +2,35 @@
   "tags": [
     {
       "id" : 1,
-      "name" : "Ruby",
+      "name" : "ruby"
     },
     {
       "id" : 2,
-      "name" : "Rails",
+      "name" : "rails"
     },
     {
       "id" : 3,
-      "name" : "C++",
+      "name" : "angular"
+    },
+    {
+      "id" : 4,
+      "name" : "asiantech"
+    },
+    {
+      "id" : 5,
+      "name" : "life"
+    },
+    {
+      "id" : 6,
+      "name" : "sport"
+    },
+    {
+      "id" : 7,
+      "name" : "work"
+    },
+    {
+      "id" : 8,
+      "name" : "technology"
     }
   ]
 }

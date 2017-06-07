@@ -1,162 +1,81 @@
-<div class="article-page">
+<div *ngIf="article" class="article-page">
   <div class="article col-sm-8">
     <div class="article-header">
-      <h2>Title</h2>
+      <h2>{{article.title}}</h2>
       <h3>
-        <small>May 8, 2017</small>
-        <small>-</small>
-        <small>0 Comments</small>
-        <small>-</small>
-        <small>0 Likes</small>
+        <small>{{article.created_at | date:'MMM d, y'}}</small>
+        <small>&minus;</small>
+        <small>{{article.count_comment}} Comments</small>
       </h3>
       <div class="follow-like">
-        <span class="btn btn-sm btn-primary">
-          <span class="glyphicon glyphicon-ok"></span>
-          Follow
-        </span>
-        <span class="btn btn-sm btn-success">
-          <span class="glyphicon glyphicon-heart"></span>
-        </span>
+        <app-follow-button [value]="article.attentions[0].isFollowed"></app-follow-button>
+        <app-like-button [value]="article.attentions[0].isLiked" [count]="article.count_like"></app-like-button>
+        <a [routerLink]="['/editor']" class="btn btn-sm btn-info setting-button">
+          <span class="glyphicon glyphicon-edit"></span> 
+          <span>Edit</span>
+        </a>
+        <a [routerLink]="['/home']" class="btn btn-sm btn-danger like-button">
+          <span class="glyphicon glyphicon-remove"></span>
+          <span>Delete</span>
+        </a>
       </div>
     </div>
     <div class="article-body">
       <div class="main-img">
-        <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
+        <img src="{{article.title_image}}">
       </div>
       <div class="article-content">
-        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elementum viverra pharetra. Nulla facilisis, sapien non pharetra venenatis, tortor erat tempus est, sed accumsan odio ante ac elit. Nulla hendrerit a est vel ornare. Proin eu sapien a sapien dignissim feugiat non eget turpis. Proin at accumsan risus. Pellentesque nunc diam, congue ac lacus nec, volutpat tincidunt turpis. Lorem...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elementum viverra pharetra. Nulla facilisis, sapien non pharetra venenatis, tortor erat tempus est, sed accumsan odio ante ac elit. Nulla hendrerit a est vel ornare. Proin eu sapien a sapien dignissim feugiat non eget turpis. Proin at accumsan risus. Pellentesque nunc diam, congue ac lacus nec, volutpat tincidunt turpis. Lorem...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elementum viverra pharetra. Nulla facilisis, sapien non pharetra venenatis, tortor erat tempus est, sed accumsan odio ante ac elit. Nulla hendrerit a est vel ornare. Proin eu sapien a sapien dignissim feugiat non eget turpis. Proin at accumsan risus. Pellentesque nunc diam, congue ac lacus nec, volutpat tincidunt turpis. Lorem...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elementum viverra pharetra. Nulla facilisis, sapien non pharetra venenatis, tortor erat tempus est, sed accumsan odio ante ac elit. Nulla hendrerit a est vel ornare. Proin eu sapien a sapien dignissim feugiat non eget turpis. Proin at accumsan risus. Pellentesque nunc diam, congue ac lacus nec, volutpat tincidunt turpis. Lorem...</p>
+        <p class="text-justify">{{article.content}}</p>
       </div>
       <div class="article-tags">
         <ul class="list-inline">
-          <li>#angular</li>
-          <li>#article</li>
+          <li *ngFor="let tagItem of article.tags">#{{tagItem.name}}</li>
         </ul>
       </div>
       <h4>Comments</h4>
       <div class="comments-list">
-        <div class="comment-item">
+        <div *ngFor="let commentItem of article.comments" class="comment-item">
           <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h5><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h5>
-            </div>
+            <app-user-media [inputUser]="commentItem.user" [inputDate]="commentItem.created_at"></app-user-media>
           </div>
           <div class="comment-content">
-            <p>Proin eu sapien a sapien dignissim feugiat non eget turpis.</p>
-          </div>
-        </div>
-        <div class="comment-item">
-          <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h5><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h5>
-            </div>
-          </div>
-          <div class="comment-content">
-            <p>Proin eu sapien a sapien dignissim feugiat non eget turpis.</p>
-          </div>
-        </div>
-        <div class="comment-item">
-          <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h5><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h5>
-            </div>
-          </div>
-          <div class="comment-content">
-            <p>Proin eu sapien a sapien dignissim feugiat non eget turpis.</p>
+            <p>{{commentItem.content}}</p>
           </div>
         </div>
       </div>
-      <p><a href="">View more...</a></p>
+      <p><a href="" class="link-text">View more...</a></p>
+      <div class="comment-field">
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea class="form-control" rows="5" id="comment"></textarea>
+          <button type="button" class="btn btn-default">Send</button>
+        </div>
+        <span [hidden]="true">
+          <a href="" class="link-text">Sign in</a>
+           or 
+          <a href="" class="link-text">Sign up</a>
+           to add comments on this article.
+        </span>
+      </div>
     </div>
   </div>
   <div class="aside col-sm-4">
     <div class="about-user">
       <h3>About me</h3>
       <a href="">
-        <img src="../img/default-avatar.png" class="img-circle" alt="Cinque Terre" width="200">
+        <img src="{{article.user.avatar}}" class="img-circle" alt="Cinque Terre" width="200" height="200">
       </a>
-      <h4><a href="#">AnhNguyen</a>
+      <h4><a [routerLink]="['/profile', article.user.username]">{{article.user.username}}</a>
       <br>
-      <small>Anh Nguyen T. &minus; Apr 30, 1992</small>
+      <small>{{article.user.fullname}} &minus; {{article.user.birthday | date:'MMM d, y'}}</small>
       </h4>
-      <p>Proin at accumsan risus. Pellentesque nunc diam, congue ac lacus nec, volutpat tincidunt turpis.</p>
+      <p>{{article.user.description}}</p>
       <div class="follow">
-        <span class="btn btn-sm btn-primary">
-          <span class="glyphicon glyphicon-ok"></span>
-          Follow
-        </span>
+        <app-follow-button [value]="true"></app-follow-button>
       </div>
       <div class="popular-article">
         <h3>popular articles</h3>
-        <ul>
-          <li>
-            <a href="">
-              <div class="item-img">
-                <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-              </div>
-              <div class="item-title">
-                <h5>Nulla elementum viverra pharetra.</h5>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <div class="item-img">
-                <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-              </div>
-              <div class="item-title">
-                <h5>Nulla elementum viverra pharetra.</h5>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <div class="item-img">
-                <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-              </div>
-              <div class="item-title">
-                <h5>Nulla elementum viverra pharetra.</h5>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <div class="item-img">
-                <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-              </div>
-              <div class="item-title">
-                <h5>Nulla elementum viverra pharetra.</h5>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <div class="item-img">
-                <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-              </div>
-              <div class="item-title">
-                <h5>Nulla elementum viverra pharetra.</h5>
-              </div>
-            </a>
-          </li>
-        </ul>
+        <app-minilist-articles [inputArticles]="arrayPopularArticles"></app-minilist-articles>
       </div>
     </div>
   </div>

@@ -1,0 +1,7 @@
+<div class="edit-comment" [class.isHidden]="!showEdit">
+  <textarea class="form-control" rows="3"
+    [(ngModel)]="inputEditComment">
+  </textarea>
+  <button type="button" class="btn btn-default" (click)="updateComment()">Update</button>
+  <button type="button" class="btn btn-default" (click)="deleteComment()">Delete</button>
+</div>

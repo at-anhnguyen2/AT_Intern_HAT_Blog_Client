@@ -14,7 +14,7 @@
   &:after {
     content: "";
     display: block;
-    padding-bottom: 60%;
+    padding-bottom: 70%;
   }
   .content {
     position: absolute;
@@ -22,12 +22,12 @@
     height: 100%;
   }
 }
-%active {
-  &:active, &:focus {
-    color: $color-a;
-    background-color: $color-primary;
-  }
-}
+// %active {
+//   &:active, &:focus {
+//     color: $color-a;
+//     background-color: $color-primary;
+//   }
+// }
 %text-hover {
   color: $color-primary;
   text-decoration: none;

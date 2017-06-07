@@ -1,0 +1,11 @@
+<div class="user-media">
+	<div class="user-avatar">
+	  <a href="#">
+	    <img src="{{user.avatar | avatarpipe}}">
+	  </a>
+	</div>
+	<div class="user-profile">
+	  <h5><a [routerLink]="['/profile', user.username]">{{user.username}}</a>
+	  <br><small>{{date | date:'MMM d, y'}}</small></h5>
+	</div>
+</div>

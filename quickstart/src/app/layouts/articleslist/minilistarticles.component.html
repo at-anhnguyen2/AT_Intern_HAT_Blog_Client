@@ -1,0 +1,15 @@
+<div class="mini-list-articles">
+	<ul>
+	  <li *ngFor="let articleItem of arrayArticles">
+	    <a [routerLink]="['/article', articleItem.slug]" title="{{articleItem.title}}">
+	    	<div class="item-img">
+          <img src="{{articleItem.title_image.url | imagepipe}}" alt="article img">
+        </div>
+	      <div class="item-content">
+	        <h5 class="text-bold">{{articleItem.title | shortcontentpipe}}</h5>
+	        <p><small>{{articleItem.user.username}} - {{articleItem.count_like}} Likes - {{articleItem.count_comment}} Comments</small></p>
+	      </div>
+	    </a>
+	  </li>
+	</ul>
+</div>

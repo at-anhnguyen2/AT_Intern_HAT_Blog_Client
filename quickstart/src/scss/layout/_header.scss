@@ -17,11 +17,60 @@
     .logo {
       float: left;
     }
+    .search-field {
+      width: 30%;
+      float: left;
+      padding: 12px 30px;
+      input {
+        border-radius: 5px;
+      }
+      .search-result {
+        position: fixed;
+        z-index: 10;
+        top: 65px;
+        left: 200px;
+        width: 500px;
+        max-height: 500px;
+        overflow: auto;
+        background-color: $color-a;
+        border-radius: 5px;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+    }
     .menu {
       float: right;
       margin: 8.5px 0;
-      a {
-        @extend %active;
+      .isHidden {
+        display: none;
+      }
+      .notification {
+        position: relative;
+        z-index: 20;
+        height: 40px;
+        .glyphicon-globe {
+          font-size: 20px;
+        }
+        .notification-number {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          padding: 0px 5px;
+          background-color: $color-red;
+          border-radius: 50%;
+          color: $color-a;
+          font-weight: bold;
+          font-size: 10px;
+        }
+        &:hover {
+          cursor: pointer;
+        }
+        app-notification {
+          position: fixed;
+          top: 55px;
+          left: 650px;
+          z-index: 10;
+        }
       }
     }
   }

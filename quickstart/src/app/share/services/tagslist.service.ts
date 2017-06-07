@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -11,10 +11,10 @@ export class TagsListService {
     // code...
   }
 
-  getUser() : Observable<any> {
+  getTags() : Observable<any> {
     return this._http.get('./sampledata/tagslist.json')
-    .map((res: any) => {
+    .map((res: Response) => {
       return res.json();
-    })
+    });
   }
 }

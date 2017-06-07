@@ -9,7 +9,7 @@
   <div [class.categories-fixed]="navIsFixed">
     <nav class="navbar">
       <ul class="nav navbar-nav">
-        <li><a href="#">Global</a></li>
+        <li><a [class.isActived]="true" href="#">Global</a></li>
         <li><a href="#">Technology</a></li>
         <li><a href="#">Work</a></li>
         <li><a href="#">Sport</a></li>
@@ -19,12 +19,12 @@
   </div>
 </div>
 <div class="container">
-  <div class="main col-sm-9">
-    <div class="item-article">
+  <div class="main col-sm-8">
+    <div *ngFor="let articleItem of arrayArticles" class="item-article">
       <div class="article-img col-sm-6">
         <div class="content">
-          <a [routerLink]="['/article']">
-            <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
+          <a [routerLink]="['/article', articleItem.id]">
+            <img src="{{articleItem.title_image}}" alt="article img">
           </a>
           <div class="arrow"></div>
         </div>
@@ -32,473 +32,35 @@
       <div class="article-description col-sm-6">
         <div class="content">
           <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h4><a [routerLink]="['/profile']">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h4>
-            </div>
+            <app-user-media [inputUser]="articleItem.user" [inputDate]="articleItem.created_at"></app-user-media>
           </div>
-          <h4><a href="">Angular</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+          <h4><a [routerLink]="['/article']">{{articleItem.title}}</a></h4>
+          <p>{{articleItem.content | shortcontentpipe}}</p>
           <p><small><a href="#">Read more...</a></small></p>
           <div class="follow-like">
-            <span class="btn btn-sm btn-primary">
-              <span class="glyphicon glyphicon-ok"></span>
-              Follow
-            </span>
-            <span class="btn btn-sm btn-success">
-              <span class="glyphicon glyphicon-heart"></span>
-               3
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item-article">
-      <div class="article-img col-sm-6">
-        <div class="content">
-          <a href="#">
-            <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-          </a>
-          <div class="arrow"></div>
-        </div>
-      </div>
-      <div class="article-description col-sm-6">
-        <div class="content">
-          <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h4><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h4>
-            </div>
-          </div>
-          <h4><a href="">Angular</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-          <p><small><a href="#">Read more...</a></small></p>
-          <div class="follow-like">
-            <span class="btn btn-sm btn-primary">
-              <span class="glyphicon glyphicon-ok"></span>
-              Follow
-            </span>
-            <span class="btn btn-sm btn-success">
-              <span class="glyphicon glyphicon-heart"></span>
-               3
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item-article">
-      <div class="article-img col-sm-6">
-        <div class="content">
-          <a href="#">
-            <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-          </a>
-          <div class="arrow"></div>
-        </div>
-      </div>
-      <div class="article-description col-sm-6">
-        <div class="content">
-          <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h4><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h4>
-            </div>
-          </div>
-          <h4><a href="">Angular</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-          <p><small><a href="#">Read more...</a></small></p>
-          <div class="follow-like">
-            <span class="btn btn-sm btn-primary">
-              <span class="glyphicon glyphicon-ok"></span>
-              Follow
-            </span>
-            <span class="btn btn-sm btn-success">
-              <span class="glyphicon glyphicon-heart"></span>
-               3
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item-article">
-      <div class="article-img col-sm-6">
-        <div class="content">
-          <a href="#">
-            <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-          </a>
-          <div class="arrow"></div>
-        </div>
-      </div>
-      <div class="article-description col-sm-6">
-        <div class="content">
-          <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h4><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h4>
-            </div>
-          </div>
-          <h4><a href="">Angular</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-          <p><small><a href="#">Read more...</a></small></p>
-          <div class="follow-like">
-            <span class="btn btn-sm btn-primary">
-              <span class="glyphicon glyphicon-ok"></span>
-              Follow
-            </span>
-            <span class="btn btn-sm btn-success">
-              <span class="glyphicon glyphicon-heart"></span>
-               3
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item-article">
-      <div class="article-img col-sm-6">
-        <div class="content">
-          <a href="#">
-            <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-          </a>
-          <div class="arrow"></div>
-        </div>
-      </div>
-      <div class="article-description col-sm-6">
-        <div class="content">
-          <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h4><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h4>
-            </div>
-          </div>
-          <h4><a href="">Angular</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-          <p><small><a href="#">Read more...</a></small></p>
-          <div class="follow-like">
-            <span class="btn btn-sm btn-primary">
-              <span class="glyphicon glyphicon-ok"></span>
-              Follow
-            </span>
-            <span class="btn btn-sm btn-success">
-              <span class="glyphicon glyphicon-heart"></span>
-               3
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item-article">
-      <div class="article-img col-sm-6">
-        <div class="content">
-          <a href="#">
-            <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-          </a>
-          <div class="arrow"></div>
-        </div>
-      </div>
-      <div class="article-description col-sm-6">
-        <div class="content">
-          <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h4><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h4>
-            </div>
-          </div>
-          <h4><a href="">Angular</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-          <p><small><a href="#">Read more...</a></small></p>
-          <div class="follow-like">
-            <span class="btn btn-sm btn-primary">
-              <span class="glyphicon glyphicon-ok"></span>
-              Follow
-            </span>
-            <span class="btn btn-sm btn-success">
-              <span class="glyphicon glyphicon-heart"></span>
-               3
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item-article">
-      <div class="article-img col-sm-6">
-        <div class="content">
-          <a href="#">
-            <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-          </a>
-          <div class="arrow"></div>
-        </div>
-      </div>
-      <div class="article-description col-sm-6">
-        <div class="content">
-          <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h4><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h4>
-            </div>
-          </div>
-          <h4><a href="">Angular</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-          <p><small><a href="#">Read more...</a></small></p>
-          <div class="follow-like">
-            <span class="btn btn-sm btn-primary">
-              <span class="glyphicon glyphicon-ok"></span>
-              Follow
-            </span>
-            <span class="btn btn-sm btn-success">
-              <span class="glyphicon glyphicon-heart"></span>
-               3
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item-article">
-      <div class="article-img col-sm-6">
-        <div class="content">
-          <a href="#">
-            <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-          </a>
-          <div class="arrow"></div>
-        </div>
-      </div>
-      <div class="article-description col-sm-6">
-        <div class="content">
-          <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h4><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h4>
-            </div>
-          </div>
-          <h4><a href="">Angular</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-          <p><small><a href="#">Read more...</a></small></p>
-          <div class="follow-like">
-            <span class="btn btn-sm btn-primary">
-              <span class="glyphicon glyphicon-ok"></span>
-              Follow
-            </span>
-            <span class="btn btn-sm btn-success">
-              <span class="glyphicon glyphicon-heart"></span>
-               3
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item-article">
-      <div class="article-img col-sm-6">
-        <div class="content">
-          <a href="#">
-            <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-          </a>
-          <div class="arrow"></div>
-        </div>
-      </div>
-      <div class="article-description col-sm-6">
-        <div class="content">
-          <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h4><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h4>
-            </div>
-          </div>
-          <h4><a href="">Angular</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-          <p><small><a href="#">Read more...</a></small></p>
-          <div class="follow-like">
-            <span class="btn btn-sm btn-primary">
-              <span class="glyphicon glyphicon-ok"></span>
-              Follow
-            </span>
-            <span class="btn btn-sm btn-success">
-              <span class="glyphicon glyphicon-heart"></span>
-               3
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item-article">
-      <div class="article-img col-sm-6">
-        <div class="content">
-          <a href="#">
-            <img src="http://3.bp.blogspot.com/-XU97--AU4Y0/UzbAq0t_LQI/AAAAAAAAA5w/4CUqMygZjBs/s1600/anh+dep+de+thuong+4.jpg" alt="article img">
-          </a>
-          <div class="arrow"></div>
-        </div>
-      </div>
-      <div class="article-description col-sm-6">
-        <div class="content">
-          <div class="user">
-            <div class="user-avatar">
-              <a href="#">
-                <img src="../img/default-avatar.png">
-              </a>
-            </div>
-            <div class="user-profile">
-              <h4><a href="#">Anh Nguyen</a>
-              <br><small>May 8, 2017</small></h4>
-            </div>
-          </div>
-          <h4><a href="">Angular</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-          <p><small><a href="#">Read more...</a></small></p>
-          <div class="follow-like">
-            <span class="btn btn-sm btn-primary">
-              <span class="glyphicon glyphicon-ok"></span>
-              Follow
-            </span>
-            <span class="btn btn-sm btn-success">
-              <span class="glyphicon glyphicon-heart"></span>
-               3
-            </span>
+            <app-follow-button [value]="articleItem.attentions[0].isFollowed"></app-follow-button>
+            <app-like-button [value]="articleItem.attentions[0].isLiked" [count]="articleItem.count_like"></app-like-button>
           </div>
         </div>
       </div>
     </div>
     <div class="page-number">
       <ul class="pagination">
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
+        <li *ngFor="let number of totalPages | arraynumber">
+          <a href="">{{number}}</a>
+        </li>
       </ul>
     </div>
   </div>
-  <div class="aside col-sm-3">
+  <div class="aside col-sm-4">
     <div class="favorite-articles-list">
       <h3>Favorite Articles</h3>
-      <ul>
-        <li>
-          <a href="">
-            <div class="item-content col-sm-10">
-              <h5>Angular</h5>
-              <p><small>Anh Nguyen</small></p>
-            </div>
-            <div class="col-sm-2">
-              <div class="like-count">
-                <span class="glyphicon glyphicon-heart"></span>
-                3
-              </div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <div class="item-content col-sm-10">
-              <h5>Angular</h5>
-              <p><small>Thap Nguyen</small></p>
-            </div>
-            <div class="col-sm-2">
-              <div class="like-count">
-                <span class="glyphicon glyphicon-heart"></span>
-                3
-              </div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <div class="item-content col-sm-10">
-              <h5>Angular</h5>
-              <p><small>Anh Nguyen</small></p>
-            </div>
-            <div class="col-sm-2">
-              <div class="like-count">
-                <span class="glyphicon glyphicon-heart"></span>
-                3
-              </div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <div class="item-content col-sm-10">
-              <h5>Angular</h5>
-              <p><small>Huy Nguyen</small></p>
-            </div>
-            <div class="col-sm-2">
-              <div class="like-count">
-                <span class="glyphicon glyphicon-heart"></span>
-                3
-              </div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <div class="item-content col-sm-10">
-              <h5>Angular</h5>
-              <p><small>Huy Nguyen</small></p>
-            </div>
-            <div class="col-sm-2">
-              <div class="like-count">
-                <span class="glyphicon glyphicon-heart"></span>
-                3
-              </div>
-            </div>
-          </a>
-        </li>
-      </ul>
+      <app-minilist-articles [inputArticles]="arrayFavoriteArticles"></app-minilist-articles>
     </div>
     <div class="popular-tags">
       <h3>Popular Tags</h3>
       <ul class="list-inline">
-        <li><a href="">angular</a></li>
-        <li><a href="">article</a></li>
-        <li><a href="">asiantech</a></li>
-        <li><a href="">development</a></li>
-        <li><a href="">life</a></li>
-        <li><a href="">ruby</a></li>
-        <li><a href="">sport</a></li>
-        <li><a href="">traning</a></li>
-        <li><a href="">technology</a></li>
-        <li><a href="">work</a></li>
+        <li *ngFor="let tagItem of arrayTags"><a href="">{{tagItem.name}}</a></li>
       </ul>
     </div>
   </div>

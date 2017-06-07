@@ -1,0 +1,71 @@
+<div class="header">
+  <div class="header-scroll">
+    <div class="header-contain">
+      <div class="logo wow flipInY">
+        <a [routerLink]="['home']">
+          <img src="../img/logo.png" alt="logo img">
+        </a>
+      </div>
+      <div class="input-group search-field">
+        <input type="text" class="form-control" 
+        [(ngModel)]="inputSearch"
+        (ngModelChange)="inputSearchChange($event)" placeholder="Search ..">
+        <div class="search-result"
+          [class.isHidden]="!showSearchResult">
+          <span [class.isHidden]="haveSearchResult">No result...</span>
+          <app-minilist-articles
+            [inputArticles]="arraySearchResult">
+          </app-minilist-articles>
+        </div>
+      </div>
+      <nav class="menu">
+        <ul class="nav nav-pills">
+          <li>
+            <a [routerLink]="['/home']" routerLinkActive="isActived">
+              <span class="glyphicon glyphicon-home"></span> Home
+            </a>
+          </li>
+          <li [class.isHidden]="isLogined">
+            <a [routerLink]="['/login']" routerLinkActive="isActived">
+              <span class="glyphicon glyphicon-log-in"></span> Sign in
+            </a>
+          </li>
+          <li [class.isHidden]="isLogined">
+            <a [routerLink]="['/register']" routerLinkActive="isActived">
+              <span class="glyphicon glyphicon-plus"></span> Sign up
+            </a>
+          </li>
+          <li [class.isHidden]="!isLogined" *ngIf="currentUser">
+            <a [routerLink]="['/profile', currentUser.username]"
+              routerLinkActive="isActived">
+              <span class="glyphicon glyphicon-user"></span> {{currentUser.username}}
+            </a>
+          </li>
+          <li [class.isHidden]="!isLogined" class="notification">
+            <a (click)="clickNotification()" class="click-notification">
+              <span class="glyphicon glyphicon-globe"></span>
+              <div class="notification-number"
+                [class.isHidden]="!haveNotification">{{numberNotification}}</div>
+            </a>
+            <app-notification
+              [class.isHidden]="!showNotification"
+              [inputNotification]="notificationsOutput"
+              (result)="getNumberNotification($event)"
+              (hiddenNotification)="hideNotification($event)">
+            </app-notification>
+          </li>
+          <li [class.isHidden]="!isLogined">
+            <a [routerLink]="['/editor']" routerLinkActive="isActived">
+              <span class="glyphicon glyphicon-pencil"></span> New article
+            </a>
+          </li>
+          <li [class.isHidden]="!isLogined">
+            <a [routerLink]="['/home']" (click)="logout()">
+              <span class="glyphicon glyphicon-log-out"></span> Sign out
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

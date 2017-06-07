@@ -1,12 +1,32 @@
 <div class="signup-container">
   <div class="signup-form col-md-4 col-md-offset-4">
     <h2>Sign up</h2>
-    <p><a href="#">Have an account?</a></p>
-    <form>
-      <input type="text" name="username" class="form-control" placeholder="Username">
-      <input type="text" name="email" class="form-control" placeholder="Email">
-      <input type="password" name="password" class="form-control" placeholder="Password">
-      <button type="submit" class="btn btn-default">Sign up</button>
+    <p><a [routerLink]="['/login']" class="link-text">Have an account?</a></p>
+    <form [formGroup]="newUserForm" (ngSubmit)=register(newUserForm)>
+      <div class="my-input">
+        <label for="username">Username:</label>
+        <input type="text" name="userName" class="form-control" placeholder="Username" formControlName="userName" [class.error-input]="(userName.invalid && userName.touched)">
+        <app-messages [control]="newUserForm.controls.userName"></app-messages>
+      </div>
+      <div class="my-input">
+        <label for="email">Email:</label>
+        <input type="text" name="email" class="form-control" placeholder="Email" formControlName="email" [class.error-input]="(email.invalid && email.touched)">
+        <app-messages [control]="newUserForm.controls.email"></app-messages>
+      </div>
+      <div class="my-input">
+        <label for="password">Password:</label>
+        <input type="password" name="password" class="form-control" placeholder="Password" formControlName="password" [class.error-input]="(password.invalid && password.touched)">
+        <app-messages [control]="newUserForm.controls.password"></app-messages>
+      </div>
+      <div class="my-input">
+        <label for="passwordConfirm">Password confirm:</label>
+        <input type="password" name="passwordConfirm" class="form-control" placeholder="Password confirm" formControlName="passwordConfirm" [class.error-input]="(passwordConfirm.invalid && passwordConfirm.touched)">
+        <app-messages [control]="newUserForm.controls.passwordConfirm"></app-messages>
+        
+      </div>
+      <div class="buttons">
+        <button type="button" class="btn btn-default" [disabled]="!newUserForm.valid" (click)="registerUser()">Sign up</button>
+      </div>
     </form>
   </div>
 </div>

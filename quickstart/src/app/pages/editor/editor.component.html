@@ -1,0 +1,48 @@
+<div class="editor-container">
+  <div class="editor-form col-md-6 col-md-offset-3">
+    <h2 class="text-bold">Article</h2>
+    <form [formGroup]="articleForm">
+      <div class="my-input">
+        <label for="title">Title:</label>
+        <input type="text" name="title" class="form-control" placeholder="Title..." formControlName="title" [class.error-input]="(title.invalid && title.touched)">
+        <app-messages [control]="articleForm.controls.title"></app-messages>
+      </div>
+      <div class="my-input">
+        <label for="content">Content:</label>
+        <textarea class="form-control" rows="8" id="comment" formControlName="content" [class.error-input]="(content.invalid && content.touched)"></textarea>
+          <!-- [(ngModel)]="ckeditorContent" -->
+          <!-- (focus)="onFocus($event)" -->
+          <!-- (blur)="onBlur($event)" -->
+       <!--  <ckeditor
+          (change)="onChange($event)"
+          debounce="500" formControlName="content">
+        </ckeditor> -->
+        <app-messages [control]="articleForm.controls.content"></app-messages>
+      </div>
+      <div class="my-input">
+        <label for="titleimg">Cover:</label>
+        <input type="file" name="title-img" formDataName="title_image" accept=".jpg, .png" (change)="fileChange($event)" [class.error-input]="(title_image.invalid && title_image.touched)">
+        <app-messages [control]="articleForm.controls.title_image"></app-messages>
+        <img src="{{imageSrc}}" height="200" [class.isHidden]="!loaded">
+      </div>
+      <div class="my-input">
+        <label for="category">Category:</label>
+        <select class="form-control" id="select-category" formControlName="category" [class.error-input]="(category.invalid && category.touched)">
+          <!-- <option value="1">Technology</option>
+          <option value="2">Work</option>
+          <option value="3">Sport</option>
+          <option value="4">Life</option> -->
+          <option *ngFor="let categoryItem of arrayCategories" value="{{categoryItem.id}}">{{categoryItem.name}}
+          </option>
+        </select>
+        <app-messages [control]="articleForm.controls.category"></app-messages>
+      </div>
+      <div class="my-input">
+        <label for="tags">Tags:</label>
+        <input type="text" name="tags" class="form-control" placeholder="Example: #ruby #angular2" formControlName="tags" [class.error-input]="(tags.invalid && tags.touched)">
+        <app-messages [control]="articleForm.controls.tags"></app-messages>
+      </div>
+      <button type="button" class="btn btn-default" [disabled]="!articleForm.valid" (click)="save()">Save</button>
+    </form>
+  </div>
+</div>

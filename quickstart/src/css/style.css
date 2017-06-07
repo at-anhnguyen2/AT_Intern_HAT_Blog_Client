@@ -1,4 +1,34 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans");
+@font-face {
+  font-family: 'Noto Sans', sans-serif; }
+.header-scroll .header-contain, .footer .footer-contain, .article-page, .categories .navbar, .container, .login-container, .profile-page .profile .user, .profile-page .information {
+  max-width: 1140px;
+  margin: 0 auto;
+  width: 100%; }
+
+.container {
+  padding: 0; }
+  .container * {
+    padding: 0; }
+
+.container .item-article .article-img, .container .item-article .article-description {
+  position: relative; }
+  .container .item-article .article-img:after, .container .item-article .article-description:after {
+    content: "";
+    display: block;
+    padding-bottom: 70%; }
+  .container .item-article .article-img .content, .container .item-article .article-description .content {
+    position: absolute;
+    width: 100%;
+    height: 100%; }
+
+a, .link-text, .footer .footer-contain .license a, .container .page-number .pagination a {
+  color: #333333;
+  text-decoration: none; }
+  a:hover, .link-text:hover, .footer .footer-contain .license a:hover, .container .page-number .pagination a:hover {
+    text-decoration: none;
+    color: #bfac8a; }
+
 html, body, div, span, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, address,
@@ -40,40 +70,6 @@ a img {
 article, aside, details, figure, footer, header, menu, nav, section, summary {
   display: block; }
 
-@font-face {
-  font-family: 'Noto Sans', sans-serif; }
-.header-scroll .header-contain, .footer .footer-contain, .article-page, .categories .navbar, .container, .login-container, .signup-container {
-  max-width: 1140px;
-  margin: 0 auto;
-  width: 100%; }
-
-.container {
-  padding: 0; }
-  .container * {
-    padding: 0; }
-
-.container .item-article .article-img, .container .item-article .article-description {
-  position: relative; }
-  .container .item-article .article-img:after, .container .item-article .article-description:after {
-    content: "";
-    display: block;
-    padding-bottom: 60%; }
-  .container .item-article .article-img .content, .container .item-article .article-description .content {
-    position: absolute;
-    width: 100%;
-    height: 100%; }
-
-.header-scroll .header-contain .menu a:active, .categories .navbar li a:active, .container .page-number .pagination a:active, .header-scroll .header-contain .menu a:focus, .categories .navbar li a:focus, .container .page-number .pagination a:focus {
-  color: #ffffff;
-  background-color: #333333; }
-
-a, .footer .footer-contain .license a, .article-page .article .article-body p a, .container .page-number .pagination a, .login-container .login-form a, .signup-container .signup-form a {
-  color: #333333;
-  text-decoration: none; }
-  a:hover, .footer .footer-contain .license a:hover, .article-page .article .article-body p a:hover, .container .page-number .pagination a:hover, .login-container .login-form a:hover, .signup-container .signup-form a:hover {
-    text-decoration: none;
-    color: #bfac8a; }
-
 body {
   font-family: "Noto Sans", Arial;
   color: #333333;
@@ -87,14 +83,11 @@ body {
   box-sizing: border-box; }
 
 h1, h2, h3, h4, h5 {
-  font-family: "Noto Sans", Arial;
-  font-weight: bold; }
-
-h1, h2, h3 {
-  text-transform: uppercase; }
+  font-family: "Noto Sans", Arial; }
 
 img {
-  max-width: 100%; }
+  max-width: 100%;
+  object-fit: cover; }
 
 ul, ol {
   list-style: none; }
@@ -102,9 +95,113 @@ ul, ol {
 button:focus, input:focus, a:focus {
   outline: none; }
 
+.text-bold {
+  font-weight: bold; }
+
+.text-uppercase {
+  text-transform: uppercase; }
+
+.text-none {
+  text-transform: none; }
+
+.text-notice {
+  color: #0275d8; }
+
+.link-text {
+  color: #337ab7; }
+
+.error-input {
+  border: 1px solid #d9534f;
+  box-shadow: 0px 0px 8px 0 #d9534f; }
+
+.isHidden {
+  display: none !important; }
+
 .isActived {
-  color: #ffffff;
-  background-color: #333333; }
+  color: #ffffff !important;
+  background-color: #333333 !important; }
+
+.like-button, .follow-button, .setting-button, .edit-button, .delete-button {
+  padding: 2px 5px; }
+
+.follow-button {
+  background-color: transparent;
+  color: #0275d8;
+  border: 1px solid #0275d8; }
+  .follow-button:hover {
+    color: #ffffff;
+    background-color: #0275d8; }
+  .follow-button:focus {
+    background-color: transparent !important;
+    color: #0275d8 !important; }
+
+.like-button {
+  background-color: transparent;
+  color: #5cb85c;
+  border: 1px solid #5cb85c; }
+  .like-button:hover {
+    color: #ffffff;
+    background-color: #5cb85c; }
+  .like-button:focus {
+    background-color: transparent !important;
+    color: #5cb85c !important; }
+
+.isLiked, .delete-button {
+  background-color: transparent;
+  color: #d9534f;
+  border: 1px solid #d9534f; }
+  .isLiked:hover, .delete-button:hover {
+    color: #ffffff;
+    background-color: #d9534f; }
+  .isLiked:focus, .delete-button:focus {
+    background-color: transparent !important;
+    color: #d9534f !important; }
+
+.setting-button, .edit-button {
+  background-color: transparent;
+  color: #5bc0de;
+  border: 1px solid #5bc0de; }
+  .setting-button:hover, .edit-button:hover {
+    color: #ffffff;
+    background-color: #5bc0de; }
+  .setting-button:focus, .edit-button:focus {
+    background-color: transparent !important;
+    color: #5bc0de !important; }
+
+.user-media {
+  overflow: hidden;
+  margin-bottom: 10px; }
+  .user-media .user-avatar {
+    width: 30px;
+    height: 30px;
+    float: left; }
+    .user-media .user-avatar img {
+      width: 100%;
+      height: 100%; }
+  .user-media .user-profile {
+    margin-left: 10px;
+    float: left; }
+
+.mini-list-articles ul {
+  text-align: left;
+  overflow: hidden; }
+  .mini-list-articles ul li {
+    overflow: hidden;
+    padding: 10px 0;
+    border-top: 1px solid #eeeeee; }
+    .mini-list-articles ul li .item-img {
+      width: 64px;
+      height: 64px;
+      float: left; }
+      .mini-list-articles ul li .item-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
+    .mini-list-articles ul li .item-content {
+      float: left;
+      width: calc(100% - 64px);
+      padding: 10px;
+      padding-right: 0; }
 
 .header {
   width: 100%;
@@ -122,9 +219,52 @@ button:focus, input:focus, a:focus {
   overflow: auto; }
   .header-scroll .header-contain .logo {
     float: left; }
+  .header-scroll .header-contain .search-field {
+    width: 30%;
+    float: left;
+    padding: 12px 30px; }
+    .header-scroll .header-contain .search-field input {
+      border-radius: 5px; }
+    .header-scroll .header-contain .search-field .search-result {
+      position: fixed;
+      z-index: 10;
+      top: 65px;
+      left: 200px;
+      width: 500px;
+      max-height: 500px;
+      overflow: auto;
+      background-color: #ffffff;
+      border-radius: 5px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); }
   .header-scroll .header-contain .menu {
     float: right;
     margin: 8.5px 0; }
+    .header-scroll .header-contain .menu .isHidden {
+      display: none; }
+    .header-scroll .header-contain .menu .notification {
+      position: relative;
+      z-index: 20;
+      height: 40px; }
+      .header-scroll .header-contain .menu .notification .glyphicon-globe {
+        font-size: 20px; }
+      .header-scroll .header-contain .menu .notification .notification-number {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        padding: 0px 5px;
+        background-color: #d9534f;
+        border-radius: 50%;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 10px; }
+      .header-scroll .header-contain .menu .notification:hover {
+        cursor: pointer; }
+      .header-scroll .header-contain .menu .notification app-notification {
+        position: fixed;
+        top: 55px;
+        left: 650px;
+        z-index: 10; }
 
 .footer {
   width: 100%;
@@ -142,6 +282,39 @@ button:focus, input:focus, a:focus {
     .footer .footer-contain .license a {
       color: #ffffff; }
 
+.notification-modal {
+  width: 500px;
+  max-height: 500px;
+  overflow: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #ffffff; }
+  .notification-modal span {
+    padding: 15px; }
+  .notification-modal a {
+    overflow: hidden; }
+  .notification-modal .img-notification {
+    float: left;
+    width: 40px;
+    height: 40px; }
+    .notification-modal .img-notification img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .notification-modal .content-notification {
+    float: left;
+    max-width: 410px;
+    margin-left: 15px; }
+
+.about-us-container {
+  min-height: 510px;
+  text-align: center;
+  padding: 50px; }
+  .about-us-container .information {
+    margin-top: 30px; }
+    .about-us-container .information > .col-sm-4 * {
+      margin-bottom: 20px; }
+
 .article-page .article {
   background-color: #ffffff;
   padding: 0; }
@@ -153,29 +326,52 @@ button:focus, input:focus, a:focus {
     .article-page .article .article-header .follow-like {
       margin-top: 30px; }
   .article-page .article .article-body {
+    overflow: auto;
     padding: 30px; }
     .article-page .article .article-body .main-img {
       text-align: center;
       margin-bottom: 30px; }
+      .article-page .article .article-body .main-img img {
+        max-height: 500px; }
     .article-page .article .article-body .article-tags {
       margin: 30px 0; }
       .article-page .article .article-body .article-tags li {
         background-color: #eeeeee;
         border-radius: 10px; }
-    .article-page .article .article-body .comments-list .comment-item {
-      padding: 15px 0;
-      border-top: 1px solid #eeeeee; }
-      .article-page .article .article-body .comments-list .comment-item .user {
-        overflow: hidden;
-        margin-bottom: 10px; }
-        .article-page .article .article-body .comments-list .comment-item .user .user-avatar {
-          width: 30px;
-          float: left; }
-        .article-page .article .article-body .comments-list .comment-item .user .user-profile {
-          margin-left: 10px;
-          float: left; }
-    .article-page .article .article-body p a {
-      color: #337ab7; }
+    .article-page .article .article-body h4 {
+      margin-bottom: 15px; }
+    .article-page .article .article-body .comments-list {
+      margin-top: 15px; }
+      .article-page .article .article-body .comments-list .comment-item {
+        position: relative;
+        padding: 15px 0;
+        border-top: 1px solid #eeeeee; }
+        .article-page .article .article-body .comments-list .comment-item .btn-edit-comment {
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          top: 10px;
+          right: 0;
+          text-align: center;
+          border-radius: 2px; }
+          .article-page .article .article-body .comments-list .comment-item .btn-edit-comment:hover {
+            color: #bfac8a;
+            cursor: pointer; }
+          .article-page .article .article-body .comments-list .comment-item .btn-edit-comment .caret {
+            margin: 0; }
+        .article-page .article .article-body .comments-list .comment-item .edit-comment {
+          position: absolute;
+          width: 100%;
+          background-color: #ffffff;
+          top: 30px;
+          padding: 5px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          z-index: 10 !important; }
+    .article-page .article .article-body .comment-field {
+      margin-top: 30px; }
+      .article-page .article .article-body .comment-field button {
+        float: right;
+        margin-top: 10px; }
 .article-page .aside {
   padding: 0; }
   .article-page .aside .about-user {
@@ -191,25 +387,6 @@ button:focus, input:focus, a:focus {
     .article-page .aside .about-user .popular-article {
       margin-top: 30px;
       border-top: 1px solid #333333; }
-      .article-page .aside .about-user .popular-article ul {
-        text-align: left;
-        overflow: hidden; }
-        .article-page .aside .about-user .popular-article ul li {
-          overflow: hidden;
-          padding: 10px 0; }
-          .article-page .aside .about-user .popular-article ul li .item-img {
-            width: 64px;
-            height: 64px;
-            float: left; }
-            .article-page .aside .about-user .popular-article ul li .item-img img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover; }
-          .article-page .aside .about-user .popular-article ul li .item-title {
-            float: left;
-            width: calc(100% - 64px);
-            padding: 10px;
-            padding-right: 0; }
 
 .top-banner {
   width: 100%;
@@ -232,6 +409,8 @@ button:focus, input:focus, a:focus {
     border: 0; }
     .categories .navbar li {
       text-transform: uppercase; }
+      .categories .navbar li a:hover {
+        cursor: pointer; }
 
 .container {
   min-height: 500px;
@@ -241,38 +420,45 @@ button:focus, input:focus, a:focus {
     min-height: 200px;
     background-color: #ffffff;
     overflow: hidden; }
+    .container .item-article .article-img a:before {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.2);
+      z-index: 5;
+      transition: background-color 500ms; }
+    .container .item-article .article-img a:hover:before {
+      background-color: rgba(0, 0, 0, 0.5); }
+    .container .item-article .article-img a:hover img {
+      width: 110%;
+      height: 110%; }
     .container .item-article .article-img img {
       width: 100%;
       height: 100%;
-      object-fit: cover; }
+      object-fit: cover;
+      transition: all 0.5s; }
     .container .item-article .article-img .arrow {
       position: absolute;
-      width: 6%;
+      width: 7%;
       height: 10%;
       background-color: #ffffff;
-      right: -3%;
+      right: -3.5%;
       top: 47%;
-      transform: rotate(45deg); }
+      transform: rotate(45deg);
+      z-index: 8; }
     .container .item-article .article-description .content {
       padding: 30px; }
-      .container .item-article .article-description .content .user {
-        overflow: hidden;
-        margin-bottom: 10px; }
-        .container .item-article .article-description .content .user .user-avatar {
-          width: 40px;
-          float: left; }
-        .container .item-article .article-description .content .user .user-profile {
-          margin-left: 10px;
-          float: left; }
       .container .item-article .article-description .content .follow-like {
         position: absolute;
         bottom: 30px; }
-        .container .item-article .article-description .content .follow-like .btn {
-          padding: 2px 5px; }
     .container .item-article:nth-child(even) .article-img {
       float: right; }
       .container .item-article:nth-child(even) .article-img .arrow {
-        right: 97%; }
+        right: 96.5%; }
     .container .item-article:nth-child(even) .article-description {
       float: left; }
     .container .item-article p {
@@ -284,26 +470,19 @@ button:focus, input:focus, a:focus {
       .container .page-number .pagination a {
         background-color: #ffffff;
         border-color: #333333; }
+        .container .page-number .pagination a:hover {
+          cursor: pointer; }
   .container .aside {
-    padding-left: 15px; }
+    padding-left: 30px; }
     .container .aside h3 {
       margin-bottom: 10px; }
     .container .aside .favorite-articles-list {
       background-color: #ffffff;
       padding: 15px;
       overflow: hidden; }
-      .container .aside .favorite-articles-list ul li {
-        overflow: hidden;
-        padding: 10px 0;
-        border-top: 1px solid #eeeeee; }
-        .container .aside .favorite-articles-list ul li .like-count {
-          color: #f44336;
-          border: 1px solid #f44336;
-          border-radius: 5px;
-          text-align: center; }
     .container .aside .popular-tags {
       background-color: #ffffff;
-      margin-top: 15px;
+      margin-top: 30px;
       padding: 15px; }
       .container .aside .popular-tags li {
         margin-top: 5px;
@@ -315,6 +494,7 @@ button:focus, input:focus, a:focus {
           color: #333333;
           background-color: #ffffff; }
           .container .aside .popular-tags li a:hover {
+            cursor: pointer;
             background-color: #333333;
             color: #ffffff; }
 
@@ -323,12 +503,12 @@ button:focus, input:focus, a:focus {
   position: fixed;
   top: 78px;
   left: 0;
-  z-index: 10;
+  z-index: 9;
   width: 100%;
   height: 51px;
   background-color: #eeeeee;
   border-bottom: 1px solid #333333;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); }
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); }
 
 .login-container {
   min-height: 510px; }
@@ -346,30 +526,160 @@ button:focus, input:focus, a:focus {
         border: none; }
         .login-container .login-form form button:hover {
           background-color: #333333; }
-    .login-container .login-form a {
-      color: #337ab7; }
     .login-container .login-form p {
       margin-top: 10px; }
 
 .signup-container {
   min-height: 510px; }
   .signup-container .signup-form {
-    padding: 30px 0;
-    text-align: center; }
+    padding: 30px 0; }
+    .signup-container .signup-form h2, .signup-container .signup-form p, .signup-container .signup-form .buttons {
+      text-align: center; }
     .signup-container .signup-form form {
       margin-top: 30px; }
-      .signup-container .signup-form form input {
-        margin-bottom: 15px;
-        padding: 5px 10px; }
+      .signup-container .signup-form form .my-input {
+        margin-bottom: 15px; }
+        .signup-container .signup-form form .my-input span {
+          color: #d9534f; }
       .signup-container .signup-form form button {
         color: #ffffff;
         background-color: #666666;
         border: none; }
         .signup-container .signup-form form button:hover {
           background-color: #333333; }
-    .signup-container .signup-form a {
-      color: #337ab7; }
     .signup-container .signup-form p {
       margin-top: 10px; }
+
+.profile-page .profile {
+  width: 100%;
+  height: 200px;
+  background-color: #333333; }
+  .profile-page .profile .user {
+    height: 100%;
+    padding: 30px 300px; }
+    .profile-page .profile .user .user-avatar {
+      float: left;
+      width: 140px;
+      height: 140px; }
+      .profile-page .profile .user .user-avatar img {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%; }
+    .profile-page .profile .user .user-profile {
+      float: left;
+      margin-left: 10px;
+      padding: 15px 30px;
+      color: #ffffff; }
+      .profile-page .profile .user .user-profile .follow-like {
+        padding: 15px 0; }
+.profile-page .information {
+  overflow: hidden; }
+  .profile-page .information .about-me {
+    padding: 30px;
+    background-color: #ffffff;
+    border-right: 30px solid #eeeeee; }
+    .profile-page .information .about-me > p {
+      margin-bottom: 10px; }
+    .profile-page .information .about-me > h3 {
+      margin-bottom: 20px;
+      text-align: center; }
+    .profile-page .information .about-me .statistical {
+      margin-top: 10px;
+      border: 1px solid #eeeeee;
+      overflow: hidden; }
+      .profile-page .information .about-me .statistical .statistical-articles, .profile-page .information .about-me .statistical .statistical-followers {
+        text-align: center;
+        padding: 20px; }
+  .profile-page .information .involves-user {
+    padding: 30px;
+    background-color: #ffffff; }
+    .profile-page .information .involves-user .nav {
+      border-bottom: 1px solid #333333; }
+      .profile-page .information .involves-user .nav a:hover {
+        cursor: pointer;
+        border: 1px solid #333333;
+        background-color: #ffffff; }
+    .profile-page .information .involves-user .articles-list, .profile-page .information .involves-user .following-user {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #333333;
+      border-top: none; }
+      .profile-page .information .involves-user .articles-list h3, .profile-page .information .involves-user .following-user h3 {
+        margin-bottom: 10px; }
+    .profile-page .information .involves-user .list-following-user {
+      padding: 15px 0;
+      border-top: 1px solid #eeeeee;
+      overflow: hidden; }
+      .profile-page .information .involves-user .list-following-user .user-item {
+        float: left;
+        width: calc(100% / 3); }
+        .profile-page .information .involves-user .list-following-user .user-item .user-media {
+          overflow: hidden;
+          margin-bottom: 15px;
+          text-align: center; }
+          .profile-page .information .involves-user .list-following-user .user-item .user-media .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            float: none;
+            margin-left: calc(50% - 40px); }
+            .profile-page .information .involves-user .list-following-user .user-item .user-media .user-avatar img {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%; }
+          .profile-page .information .involves-user .list-following-user .user-item .user-media .user-profile {
+            margin-left: 0;
+            float: none; }
+
+.editor-container {
+  min-height: 510px; }
+  .editor-container .editor-form {
+    padding: 30px 0; }
+    .editor-container .editor-form form {
+      margin-top: 30px; }
+      .editor-container .editor-form form .my-input {
+        margin-bottom: 20px; }
+        .editor-container .editor-form form .my-input span {
+          color: #d9534f; }
+      .editor-container .editor-form form button {
+        color: #ffffff;
+        background-color: #666666;
+        border: none; }
+        .editor-container .editor-form form button:hover {
+          background-color: #333333; }
+
+.setting-container {
+  min-height: 510px; }
+  .setting-container .avatar {
+    padding: 30px 0;
+    text-align: center; }
+    .setting-container .avatar input {
+      margin: 0 auto; }
+    .setting-container .avatar img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover; }
+  .setting-container .setting-form {
+    padding: 30px 0; }
+    .setting-container .setting-form .buttons {
+      text-align: center; }
+    .setting-container .setting-form form {
+      margin-top: 30px; }
+      .setting-container .setting-form form input {
+        margin-bottom: 15px; }
+      .setting-container .setting-form form button {
+        color: #ffffff;
+        background-color: #666666;
+        border: none; }
+        .setting-container .setting-form form button:hover {
+          background-color: #333333; }
+
+.welcome-container {
+  text-align: center;
+  min-height: 510px; }
+  .welcome-container .welcome {
+    padding: 80px 0; }
+    .welcome-container .welcome h2 {
+      margin-bottom: 30px; }
 
 /*# sourceMappingURL=style.css.map */

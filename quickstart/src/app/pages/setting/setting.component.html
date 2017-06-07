@@ -1,0 +1,22 @@
+<div class="setting-container">
+  <div class="avatar col-md-offset-2 col-md-3">
+    <label for="avatar">Avatar:</label>
+    <img src="{{imageSrc}}" [class.isHidden]="!loaded">
+    <input type="file" name="avatar" accept=".jpg, .png" (change)="fileChange($event)">
+  </div>
+  <div class="setting-form col-md-offset-1 col-md-4">
+    <h2 class="text-bold">Profile</h2>
+    <form [formGroup]="userForm">
+      <label for="fullname">Fullname:</label>
+      <input type="text" name="fullname" class="form-control" placeholder="Fullname" formControlName="fullname">
+      <label for="birthday">Birthday:</label>
+      <input type="date" name="birthday" class="form-control" placeholder="Birthday" formControlName="birthday">
+      <label for="description">Description:</label>
+      <input type="text" name="description" class="form-control" placeholder="Description" formControlName="description">
+      <div class="buttons">
+        <button type="button" class="btn btn-default" (click)="update()">Update</button>
+        <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
