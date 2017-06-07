@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
 import { ValidationService } from '../../share/services/validation.service';
 import { AuthenticationService } from '../../share/services/authentication.service';
+import { AppConfig } from '../../share/app.config';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginPageComponent {
 		_formBuider: FormBuilder,
 		private route: ActivatedRoute,
     private router: Router,
-		private _authenticationService: AuthenticationService
+		private _authenticationService: AuthenticationService,
+    private _appConfig: AppConfig
 	) {
     this.email = new FormControl("thap.spdn@gmail.com", [
       Validators.required,
@@ -26,9 +28,6 @@ export class LoginPageComponent {
     ]);
   	this.password = new FormControl("1234567", [
       Validators.required,
-      // Validators.minLength(6),
-      // Validators.maxLength(24),
-      // ValidationService.passwordValidator
     ]);
     this.loginForm = _formBuider.group({
   		email: this.email,
@@ -36,17 +35,24 @@ export class LoginPageComponent {
   	});
   }
   ngOnInit() {
+    if (this._appConfig.currentUser) {
+      this.router.navigate(['/home']);
+    }
   	// reset login status
-    this._authenticationService.logout();
+    // this._authenticationService.logout();
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
   login() {
   	// this.loading = true;
     this._authenticationService.login(this.email.value, this.password.value)
-    .subscribe(data => {
-      this.router.navigate([this.returnUrl]);
-      console.log(data);
+    .subscribe((data: any) => {
+      if (data) {
+        this.router.navigate(['/home']);
+        console.log(data);
+      } else {
+        alert(data);
+      }
     },
     error => {
       console.log(error);

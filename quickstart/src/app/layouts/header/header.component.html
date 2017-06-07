@@ -10,7 +10,7 @@
         <input type="text" class="form-control" 
         [(ngModel)]="inputSearch"
         (ngModelChange)="inputSearchChange($event)" placeholder="Search ..">
-        <div class="search-result" 
+        <div class="search-result"
           [class.isHidden]="!showSearchResult">
           <span [class.isHidden]="haveSearchResult">No result...</span>
           <app-minilist-articles
@@ -42,7 +42,7 @@
             </a>
           </li>
           <li [class.isHidden]="!isLogined" class="notification">
-            <a (click)="clickNotification()">
+            <a (click)="clickNotification()" class="click-notification">
               <span class="glyphicon glyphicon-globe"></span>
               <div class="notification-number"
                 [class.isHidden]="!haveNotification">{{numberNotification}}</div>
@@ -50,7 +50,8 @@
             <app-notification
               [class.isHidden]="!showNotification"
               [inputNotification]="notificationsOutput"
-              (result)="getNumberNotification($event)">
+              (result)="getNumberNotification($event)"
+              (hiddenNotification)="hideNotification($event)">
             </app-notification>
           </li>
           <li [class.isHidden]="!isLogined">

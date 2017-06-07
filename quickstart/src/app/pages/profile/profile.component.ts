@@ -16,6 +16,8 @@ export class ProfilePageComponent  {
   showArticles: boolean;
   showFollowing: boolean;
   isCurrentUser: boolean;
+  param: any;
+  paramUsername: string;
   constructor(
   	private _apiService: APIService,
     private _appConfig: AppConfig,
@@ -36,24 +38,26 @@ export class ProfilePageComponent  {
   	this.showFollowing = true;
   }
   ngOnInit() {
-    let param = this._route.snapshot.params["username"]
-    this._apiService.getUser(param)
-    .subscribe((data: any) => {
-      this.userProfile = data.user;
-      this._apiService.getPopularArticles(data.user.username)
+    this.param = this._route.params.subscribe((data: any) => {
+      this.paramUsername = data['username'];
+      this._apiService.getUser(this.paramUsername)
       .subscribe((data: any) => {
-        this.arrayPopularArticles = data.articles;
+        this.userProfile = data.user;
+        this._apiService.getPopularArticles(data.user.username)
+        .subscribe((data: any) => {
+          this.arrayPopularArticles = data.articles;
+        });
+        this._apiService.getFollowingUser(data.user.username)
+        .subscribe((data: any) => {
+          console.log(data.users);
+          this.arrayFollowingUser = data.users;
+        });
+        if (this.currentUser && (this.currentUser.username === data.user.username)) {
+          this.isCurrentUser = true;
+        } else {
+          this.isCurrentUser = false;
+        }
       });
-      this._apiService.getFollowingUser(data.user.username)
-      .subscribe((data: any) => {
-        console.log(data.users);
-        this.arrayFollowingUser = data.users;
-      });
-      if (this.currentUser && (this.currentUser.username === data.user.username)) {
-        this.isCurrentUser = true;
-      } else {
-        this.isCurrentUser = false;
-      }
-    });
+    })
   }
 }

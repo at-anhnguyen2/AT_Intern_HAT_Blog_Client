@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from "rxjs";
 import { AuthenticationService } from '../../share/services/authentication.service'
@@ -6,7 +6,10 @@ import { APIService } from '../../share/services/api.service'
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html'
+  templateUrl: './header.component.html',
+  host: {
+    '(document:click)': 'onClick($event)',
+  }
 })
 
 export class HeaderLayoutComponent {
@@ -25,13 +28,15 @@ export class HeaderLayoutComponent {
   constructor(
     private _router: Router,
     private _authenticationService: AuthenticationService,
-    private _apiService: APIService
+    private _apiService: APIService,
+    private _elementRef: ElementRef
   ) {
     this._authenticationService.authStatus$
     .subscribe((data: any) => {
       this.isLogined = data;
       this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
     });
+    console.log(this.currentUser);
     this.haveNotification = false;
     this.showNotification = false;
     this.numberNotification = 0;
@@ -100,5 +105,21 @@ export class HeaderLayoutComponent {
     } else {
       this.showSearchResult = false;
     }
+  }
+  onClick(e: any){
+    if (this._elementRef.nativeElement.contains(e.target)) {
+      if (e.target.className !== 'form-control ng-valid ng-dirty ng-touched' && e.target.className !== 'search-result') {
+        this.showSearchResult = false;
+      } else {
+        if (this.inputSearch !== '') {
+          this.showSearchResult = true;
+        }
+      }
+    } else {
+      this.showSearchResult = false;
+    }
+  }
+  hideNotification(e: any) {
+    this.showNotification = e;
   }
 }

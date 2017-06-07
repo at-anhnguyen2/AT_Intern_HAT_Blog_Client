@@ -62,7 +62,7 @@ export class SettingPageComponent  {
     this.loaded = true;
   }
   update() {
-  	console.log(this.userForm.value);
+  	// console.log(this.userForm.value);
   	let formData: FormData = new FormData();
   	formData.append('username', this.username);
   	formData.append('fullname', this.fullname.value);
@@ -83,9 +83,10 @@ export class SettingPageComponent  {
 				this._router.navigate(['/profile', this.username]);
 			} else {
 				alert(data.errors);
+				// console.log(data);
 			}
 		})
-  }
+	}
   cancel() {
   	this._router.navigate(['/profile', this.username]);
   }

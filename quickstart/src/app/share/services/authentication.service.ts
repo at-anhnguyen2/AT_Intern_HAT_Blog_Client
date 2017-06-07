@@ -3,13 +3,12 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map'
-import { AppConfig } from '../../share/app.config';
 
 @Injectable()
 export class AuthenticationService {
   authStatus = new BehaviorSubject(false);
   authStatus$ = this.authStatus.asObservable();
-  constructor(private http: Http, private _appConfig: AppConfig) {
+  constructor(private http: Http) {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if( currentUser ) {
       this.authStatus.next(true);
@@ -24,7 +23,7 @@ export class AuthenticationService {
       password: password
     }
     let headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
-    return this.http.post(this._appConfig.APIUrl + 'authorizations', JSON.stringify(body), {headers: headers})
+    return this.http.post('http://172.17.19.153:3000/api/v1/authorizations', JSON.stringify(body), {headers: headers})
     .map((response: Response) => {
       // login successful if there's a jwt token in the response
       let user = response.json().user;

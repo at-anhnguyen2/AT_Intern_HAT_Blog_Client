@@ -7,7 +7,7 @@
 		<div class="content-notification"
 			[class.text-bold]="!item.isChecked"
 			[class.text-notice]="!item.isChecked">
-			{{item.message}}
+			{{item.message | shortcontentpipe}}
 		</div>
 	</a>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIService } from '../../share/services/api.service';
 import { AppConfig } from '../../share/app.config';
@@ -65,10 +65,12 @@ export class ArticlePageComponent  {
 			this.sendComment();
 		}
 	}
+	
 	sendComment() {
 		this._apiService.createComment(this.article.slug, this.inputComment)
 		.subscribe((data: any) => {
 			if (data.comment) {
+				console.log(data.comment);
 				this.article.comments.push(data.comment);
 				this._router.navigate(['/article', this.article.slug]);
 				this.inputComment = '';

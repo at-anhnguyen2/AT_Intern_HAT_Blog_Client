@@ -1,8 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, ElementRef } from '@angular/core';
 import { APIService } from '../../share/services/api.service';
 @Component({
   selector: 'app-edit-comment',
-  templateUrl: './editcomment.component.html'
+  templateUrl: './editcomment.component.html',
+  host: {
+    '(document:click)': 'onClick($event)',
+  }
 })
 
 export class EditCommentComponent  {
@@ -14,7 +17,10 @@ export class EditCommentComponent  {
 	inputEditComment: string;
 	id: number;
 	slug: string;
-	constructor(private _apiService: APIService) {
+	constructor(
+		private _apiService: APIService,
+		private _elementRef: ElementRef
+	) {
 		this.showEdit = true;
 		this.inputEditComment = "";
 		this.id = 0;
@@ -29,6 +35,15 @@ export class EditCommentComponent  {
 		}
 		this.id = this.inputID;
 		this.slug = this.inputSlug;
+	}
+	onClick(e: any) {
+		if (this._elementRef.nativeElement.contains(e.target)) {
+			console.log('editting');
+	  } else {
+	  	if (e.target.className !== 'caret' && e.target.className !== 'btn-edit-comment') {
+	  		this.showEdit = false;
+	  	}
+	  }
 	}
 	updateComment() {
 		console.log(this.inputEditComment);
