@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { APIService } from '../../share/services/api.service';
 import { AppConfig } from '../../share/app.config';
 
@@ -33,6 +33,9 @@ export class ArticlePageComponent  {
 	}
 
 	ngOnInit() {
+		this._router.events.subscribe((evt: any) => {
+      window.scrollTo(0, 0)
+    });
 		this.param = this._route.params.subscribe((data: any) => {
 			this.slug = data['slug'];
 			this._apiService.getArticle(this.slug)

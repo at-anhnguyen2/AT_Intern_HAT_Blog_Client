@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from "rxjs";
-import { AuthenticationService } from '../../share/services/authentication.service'
-import { APIService } from '../../share/services/api.service'
+import { AuthenticationService } from '../../share/services/authentication.service';
+import { APIService } from '../../share/services/api.service';
 
 @Component({
   selector: 'app-header',
@@ -19,8 +19,6 @@ export class HeaderLayoutComponent {
   showNotification: boolean;
   numberNotification: number;
   arrayNotification: any;
-  notificationsAfter: any;
-  notificationsOutput: any;
   inputSearch: string;
   arraySearchResult: any;
   showSearchResult: boolean;
@@ -36,60 +34,66 @@ export class HeaderLayoutComponent {
       this.isLogined = data;
       this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
     });
-    console.log(this.currentUser);
     this.haveNotification = false;
     this.showNotification = false;
-    this.numberNotification = 0;
-    this.arrayNotification = null;
-    this.notificationsAfter = null;
-    this.notificationsOutput = null;
     this.inputSearch = '';
     this.showSearchResult = false;
+    // setInterval(() => {
+      if (!this.showNotification && this.currentUser) {
+        this._apiService.getNumberNotifications(this.currentUser.username)
+        .subscribe((data: any) => {
+          this.numberNotification = data.users.count_notifications;
+          if (this.numberNotification > 0) {
+            this.haveNotification = true;
+          } else {
+            this.haveNotification = false;
+          }
+        })
+      }
+    // }, 3000);
   }
+
   logout() {
     this._authenticationService.logout();
+    window.scroll(0, 0);
   }
+  
+  moveToTop() {
+    window.scroll(0, 0);
+  }
+
   clickNotification() {
     if (this.showNotification) {
       this.showNotification = false;
-      this.notificationsOutput = this.notificationsAfter;
-    } else {
-      this.showNotification = true;
-      // request to server
-      if (this.haveNotification) {
-        for (var item of this.arrayNotification) {
-          console.log(item.id);
+      if (this.currentUser && this.arrayNotification) {
+        let arrayTemp = this.arrayNotification.filter((obj: any) => 
+          obj.isChecked === false
+        )
+        for (var item of arrayTemp) {
           this._apiService.updateNotification(item.id)
           .subscribe((data: any) => {
-            this.notificationsAfter = data.notifications;
+            this.arrayNotification = data.notifications;
           })
         }
       }
+    } else {
+      this.showNotification = true;
       this.haveNotification = false;
+      if (this.currentUser) {
+        this._apiService.getNotifications(this.currentUser.username)
+        .subscribe((data: any) => {
+          if (data && data.notifications) {
+            this.arrayNotification = data.notifications;
+          }
+        })
+      }
     }
   }
-  getNumberNotification(obj: any) {
-    let len;
-    if (obj) {
-      len = obj.length;
-    } else {
-      len = 0;
-    }
-    if (len > 0) {
-      this.numberNotification = len;
-      this.arrayNotification = obj;
-      this.haveNotification = true;
-    } else {
-      this.numberNotification = 0;
-      this.haveNotification = false;
-    }
-  }
+
   inputSearchChange(e: any) {
-    console.log(e);
     if (e !== '') {
       this._apiService.getSearch(e)
       .subscribe((data: any) => {
-        console.log(data);
         if (data && data.articles) {
           this.arraySearchResult = data.articles;
           if (this.arraySearchResult.length === 0) {
@@ -106,6 +110,7 @@ export class HeaderLayoutComponent {
       this.showSearchResult = false;
     }
   }
+
   onClick(e: any){
     if (this._elementRef.nativeElement.contains(e.target)) {
       if (e.target.className !== 'form-control ng-valid ng-dirty ng-touched' && e.target.className !== 'search-result') {
@@ -119,6 +124,7 @@ export class HeaderLayoutComponent {
       this.showSearchResult = false;
     }
   }
+
   hideNotification(e: any) {
     this.showNotification = e;
   }

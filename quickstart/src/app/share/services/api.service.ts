@@ -5,27 +5,37 @@ import 'rxjs/add/operator/map';
 import { Article } from '../../models/article';
 import { User } from '../../models/user';
 import { AppConfig } from '../../share/app.config';
+import { AuthenticationService } from '../../share/services/authentication.service'
 
 @Injectable()
 
 export class APIService {
   APIUrl: string;
-  constructor(private _http: Http, private _appConfig: AppConfig) {
+  currentUser: any;
+  constructor(
+    private _http: Http,
+    private _appConfig: AppConfig,
+    private _authenticationService: AuthenticationService
+   ) {
     this.APIUrl = _appConfig.APIUrl;
+    this._authenticationService.authStatus$
+    .subscribe((data: any) => {
+      this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    });
   }
 
   private jwt() {
     // create authorization header with jwt token
-    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser && currentUser.access_token) {
+    // let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (this.currentUser && this.currentUser.access_token) {
       let headers = new Headers(
         {
-          'access_token': currentUser.access_token,
+          'access_token': this.currentUser.access_token,
         });
       return new RequestOptions({ headers: headers });
     }
   }
-
+  
   // Article
   getArticle(slug: string) : Observable<any> {
     return this._http.get(this.APIUrl + 'articles/' + slug, this.jwt())
@@ -82,7 +92,7 @@ export class APIService {
 
   // User
   getUser(username: string) : Observable<any> {
-    return this._http.get(this.APIUrl + "users/" + username)
+    return this._http.get(this.APIUrl + "users/" + username, this.jwt())
     .map((res: any) => {
       return res.json();
     })
@@ -106,7 +116,7 @@ export class APIService {
     })
   }
   getFollowingUser(username: string) {
-    return this._http.get(this.APIUrl + 'users/' + username + '/follow_users', this.jwt())
+    return this._http.get(this.APIUrl + 'users/' + username + '/follow_users')
     .map((res: Response) => {
       return res.json();
     })
@@ -139,7 +149,7 @@ export class APIService {
     let comments = {
       content: content
     }
-    return this._http.post(this.APIUrl + 'articles/' + slug + '/comments', { comments: comments }, this.jwt())
+    return this._http.post(this.APIUrl + 'articles/' + slug + '/comments',  comments, this.jwt())
     .map((res: Response) => {
       return res.json();
     })
@@ -181,14 +191,22 @@ export class APIService {
   }
 
   // notification
-  getNotifications() {
-    return this._http.get(this.APIUrl + 'notifications', this.jwt())
+  getNotifications(username: string) {
+    return this._http.get(this.APIUrl + 'users/' + username + '/notifications', this.jwt())
+    // return this._http.get(this.APIUrl + 'notifications', this.jwt())
     .map((res: Response) => {
       return res.json();
     })
   }
   updateNotification(id: number) {
-    return this._http.put(this.APIUrl + 'notifications/' + id, {}, this.jwt())
+    return this._http.put(this.APIUrl + 'users/' + this.currentUser.username + '/notifications/' + id, {}, this.jwt())
+    // return this._http.put(this.APIUrl + 'notifications/' + id, {}, this.jwt())
+    .map((res: Response) => {
+      return res.json();
+    })
+  }
+  getNumberNotifications(username: string) {
+    return this._http.get(this.APIUrl + 'users/' + username + '/notification_users', this.jwt())
     .map((res: Response) => {
       return res.json();
     })

@@ -16,25 +16,25 @@ export class AuthenticationService {
       this.authStatus.next(false);
     }
   }
-
+  
   login(email: string, password: string) : Observable<boolean> {
     let body = {
       email: email,
       password: password
     }
     let headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
-    return this.http.post('http://172.17.19.153:3000/api/v1/authorizations', JSON.stringify(body), {headers: headers})
+    return this.http.post('http://172.17.19.107:3000/api/v1/authorizations', JSON.stringify(body), {headers: headers})
     .map((response: Response) => {
       // login successful if there's a jwt token in the response
       let user = response.json().user;
-      console.log(user);
       if (user && user.access_token) {
-        console.log('1');
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.authStatus.next(true);
+        return user;
+      } else {
+        return response.json();
       }
-      return user;
     });
   }
 

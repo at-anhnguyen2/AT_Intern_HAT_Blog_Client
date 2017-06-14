@@ -21,6 +21,7 @@ export class SignUpPageComponent  {
     private _router: Router,
     private _apiService: APIService
   ) {
+    window.scrollTo(0, 0)
   	this.userName = new FormControl("anhnguyen", [
       Validators.required,
       Validators.minLength(4),
@@ -60,13 +61,21 @@ export class SignUpPageComponent  {
     user.birthday = "";
     user.description = "";
     this._apiService.createUser(user)
-    .subscribe((data: any) => {
-      let user = data.user;
-      if (user && user.access_token) {
-        localStorage.setItem('currentUser', JSON.stringify(user));
-      }
-      this._router.navigate(['/welcome']);
-    });
+    .subscribe(
+      (data: any) => {
+        if (data && data.user) {
+          let user = data.user;
+          if (user && user.access_token) {
+            localStorage.setItem('currentUser', JSON.stringify(user));
+          }
+          this._router.navigate(['/welcome']);
+        } else {
+          alert('email or username have been taken')
+        }
+      },
+      (error: any) => {
+        alert(error.statusText + ': Email or Username have been taken')
+      })
     return false;
   }
 }

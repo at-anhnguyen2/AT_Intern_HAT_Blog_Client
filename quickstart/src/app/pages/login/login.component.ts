@@ -22,6 +22,7 @@ export class LoginPageComponent {
 		private _authenticationService: AuthenticationService,
     private _appConfig: AppConfig
 	) {
+    window.scrollTo(0, 0);
     this.email = new FormControl("thap.spdn@gmail.com", [
       Validators.required,
       ValidationService.emailValidator
@@ -47,11 +48,11 @@ export class LoginPageComponent {
   	// this.loading = true;
     this._authenticationService.login(this.email.value, this.password.value)
     .subscribe((data: any) => {
-      if (data) {
+      if (data.access_token) {
         this.router.navigate(['/home']);
-        console.log(data);
       } else {
-        alert(data);
+        let error = data.errors[0].message[0];
+        alert(error.email?error.email:error.password);
       }
     },
     error => {

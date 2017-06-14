@@ -8,7 +8,8 @@
         <h2 class="text-bold">{{userProfile.username}}
         <br><small>{{userProfile.fullname}} &minus; {{userProfile.birthday | date:'MMM d, y'}}</small></h2>
         <div class="follow-like">
-          <app-follow-button [value]="userProfile"></app-follow-button>
+          <app-follow-button *ngIf="!isCurrentUser"
+          [value]="userProfile"></app-follow-button>
           <a [routerLink]="['/settings']"
             class="btn btn-sm btn-info setting-button"
             [class.isHidden]="!isCurrentUser">

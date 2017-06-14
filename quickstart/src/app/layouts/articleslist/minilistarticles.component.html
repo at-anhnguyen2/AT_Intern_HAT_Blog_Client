@@ -6,7 +6,7 @@
           <img src="{{articleItem.title_image.url | imagepipe}}" alt="article img">
         </div>
 	      <div class="item-content">
-	        <h5 class="text-bold">{{articleItem.title | shortcontentpipe}}</h5>
+	        <h5 class="text-bold">{{articleItem.title | shortcontentpipe:50}}</h5>
 	        <p><small>{{articleItem.user.username}} - {{articleItem.count_like}} Likes - {{articleItem.count_comment}} Comments</small></p>
 	      </div>
 	    </a>

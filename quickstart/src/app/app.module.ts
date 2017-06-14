@@ -50,7 +50,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingPageComponent },
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'aboutus', component: AboutUsPageComponent },
-  { path: 'http://172.17.19.153:3000/api/v1/authorizations/:confirm', redirectTo: 'home', pathMatch: 'full' }
+  // { path: 'http://172.17.19.153:3000/api/v1/authorizations/:confirm', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 export const routing = RouterModule.forRoot(routes);

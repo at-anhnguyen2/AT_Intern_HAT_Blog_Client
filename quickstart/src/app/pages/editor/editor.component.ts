@@ -31,6 +31,10 @@ export class EditorPageComponent  {
 		private _route: ActivatedRoute,
 		private _router: Router
 	) {
+		if (!this._appConfig.currentUser) {
+			this._router.navigate(['/login']);
+		}
+		window.scrollTo(0, 0);
 		this.articleForm = _formBuilder.group({
 			title: this.title,
 			content: this.content,

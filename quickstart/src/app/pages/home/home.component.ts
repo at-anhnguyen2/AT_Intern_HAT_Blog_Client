@@ -33,9 +33,11 @@ export class HomePageComponent  {
     this.currentTagID = 0;
     this.currentTag = "";
   }
+
   ngOnInit() {
     this._apiService.getArticles(this.limit, this.currentIDCategory, this.currentPageNumber, this.currentTagID)
     .subscribe((data: any) => {
+      window.scrollTo(0, 0);
       this.total = data.meta.total;
       this.arrayArticles = data.articles;
       this.totalPages = this.total / this.limit;
@@ -53,18 +55,21 @@ export class HomePageComponent  {
       this.arrayTags = data.tags;
     });
   }
+
   getArticles() {
     this._apiService.getArticles(this.limit, this.currentIDCategory, this.currentPageNumber, this.currentTagID)
     .subscribe((data: any) => {
+      window.scrollTo(0, 0);
       this.total = data.meta.total;
       this.arrayArticles = data.articles;
       this.totalPages = this.total / this.limit;
     });
   }
+
   @HostListener("window:scroll", [])
   onWindowScroll() {
     let number = this._document.body.scrollTop;
-    if (number > 200) {
+    if (number > 350) {
       this.navIsFixed = true;
     } else {
       this.navIsFixed = false;
@@ -85,12 +90,14 @@ export class HomePageComponent  {
     this.currentIDCategory = -1;
     this.getArticles();
   }
+
   clickCategory(number: number) {
     this.currentIDCategory = number;
     this.currentPageNumber = 1;
     this.currentTagID = 0;
     this.getArticles();
   }
+  
   clickGlobal(){
     this.currentIDCategory = 0;
     this.currentPageNumber = 1;
