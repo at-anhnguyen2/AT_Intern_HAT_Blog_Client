@@ -26,6 +26,10 @@ export class SettingPageComponent  {
 		private _route: ActivatedRoute,
     private _router: Router
 	) {
+		if (!this._appConfig.currentUser) {
+			this._router.navigate(['/login']);
+		}
+		window.scrollTo(0, 0);
 		this.userForm = _formBuilder.group({
 			fullname: this.fullname,
 			birthday: this.birthday,

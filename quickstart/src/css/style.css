@@ -121,7 +121,11 @@ button:focus, input:focus, a:focus {
   color: #ffffff !important;
   background-color: #333333 !important; }
 
-.like-button, .follow-button, .setting-button, .edit-button, .delete-button {
+.like-button,
+.follow-button,
+.setting-button,
+.edit-button,
+.delete-button {
   padding: 2px 5px; }
 
 .follow-button {
@@ -203,6 +207,12 @@ button:focus, input:focus, a:focus {
       padding: 10px;
       padding-right: 0; }
 
+.line-breaker {
+  white-space: pre-line; }
+
+.text-indent {
+  text-indent: 30px; }
+
 .header {
   width: 100%;
   height: 78px; }
@@ -211,7 +221,7 @@ button:focus, input:focus, a:focus {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 20;
   width: 100%;
   padding: 10px 0;
   background-color: #eeeeee;
@@ -242,6 +252,26 @@ button:focus, input:focus, a:focus {
     margin: 8.5px 0; }
     .header-scroll .header-contain .menu .isHidden {
       display: none; }
+    .header-scroll .header-contain .menu .user {
+      overflow: hidden;
+      height: 40px; }
+      .header-scroll .header-contain .menu .user .avatar {
+        position: relative;
+        float: left;
+        width: 30px;
+        height: 30px;
+        margin-top: -5px; }
+        .header-scroll .header-contain .menu .user .avatar img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          position: absolute;
+          display: block;
+          top: 0;
+          left: 0; }
+      .header-scroll .header-contain .menu .user .username {
+        float: left;
+        margin-left: 5px; }
     .header-scroll .header-contain .menu .notification {
       position: relative;
       z-index: 20;
@@ -262,9 +292,17 @@ button:focus, input:focus, a:focus {
         cursor: pointer; }
       .header-scroll .header-contain .menu .notification app-notification {
         position: fixed;
-        top: 55px;
+        top: 60px;
         left: 650px;
         z-index: 10; }
+    .header-scroll .header-contain .menu a {
+      border-bottom: 2px solid transparent; }
+    .header-scroll .header-contain .menu .isActived {
+      border-radius: 0 !important;
+      background-color: transparent !important;
+      color: #333333 !important;
+      padding-bottom: 8px !important;
+      border-bottom: 2px solid #333333; }
 
 .footer {
   width: 100%;
@@ -289,7 +327,7 @@ button:focus, input:focus, a:focus {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   background-color: #ffffff; }
-  .notification-modal span {
+  .notification-modal .no-notification {
     padding: 15px; }
   .notification-modal a {
     overflow: hidden; }
@@ -389,19 +427,76 @@ button:focus, input:focus, a:focus {
       border-top: 1px solid #333333; }
 
 .top-banner {
+  position: relative;
   width: 100%;
-  height: 200px;
-  padding: 57px 0;
+  height: 350px;
   background-color: #333333;
-  text-align: center; }
+  border-bottom: 1px solid #333333;
+  background: -webkit-linear-gradient(bottom, #333333, #c6f9ff 30%, #333333); }
   .top-banner .banner-contain {
-    color: #ffffff;
-    text-transform: uppercase;
-    text-shadow: 0px 0px 2px #ffffff; }
-    .top-banner .banner-contain span {
-      font-size: 14px; }
+    height: 100%; }
+    .top-banner .banner-contain .feature {
+      height: 100%;
+      margin-top: 50px;
+      margin-left: 18%; }
+      .top-banner .banner-contain .feature .feature-img {
+        float: left;
+        width: 40%;
+        height: 250px;
+        perspective: 300px; }
+        .top-banner .banner-contain .feature .feature-img .main-img {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transform: rotateY(15deg);
+          margin-bottom: 50px;
+          border-radius: 10px;
+          box-shadow: -1px 0px 0px #333333, -2px 0px 0px #888, -3px 0px 0px #777, -4px 0px 0px #666, -5px 0px 0px #555, -6px 0px 0px #444; }
+          .top-banner .banner-contain .feature .feature-img .main-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            background-color: #eeeeee; }
+          .top-banner .banner-contain .feature .feature-img .main-img .shadow-img {
+            position: absolute;
+            bottom: -250px;
+            width: 100%;
+            height: 100%;
+            transform: rotateX(180deg); }
+            .top-banner .banner-contain .feature .feature-img .main-img .shadow-img img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(80%, rgba(255, 255, 255, 0)), color-stop(120%, rgba(255, 255, 255, 0.5))); }
+          .top-banner .banner-contain .feature .feature-img .main-img:before {
+            content: '';
+            position: absolute;
+            display: block;
+            background: -webkit-linear-gradient(transparent 10%, #000000);
+            width: 100%;
+            height: 10%;
+            bottom: -2px;
+            left: -35px;
+            transform: skew(70deg);
+            z-index: -1;
+            border-radius: 10px; }
+      .top-banner .banner-contain .feature .feature-content {
+        float: left;
+        width: 45%;
+        height: 200px;
+        margin-top: 50px;
+        color: #ffffff;
+        text-shadow: 1px 1px black; }
+        .top-banner .banner-contain .feature .feature-content h3, .top-banner .banner-contain .feature .feature-content p {
+          margin-bottom: 10px; }
+    .top-banner .banner-contain .left,
+    .top-banner .banner-contain .right {
+      width: 82%; }
 
 .categories {
+  position: relative;
+  z-index: 10;
   background-color: #eeeeee;
   border-bottom: 1px solid #333333;
   height: 51px; }
@@ -503,7 +598,7 @@ button:focus, input:focus, a:focus {
   position: fixed;
   top: 78px;
   left: 0;
-  z-index: 9;
+  z-index: 15;
   width: 100%;
   height: 51px;
   background-color: #eeeeee;

@@ -39,6 +39,7 @@ export class ProfilePageComponent  {
   }
   ngOnInit() {
     this.param = this._route.params.subscribe((data: any) => {
+      window.scrollTo(0, 0);
       this.paramUsername = data['username'];
       this._apiService.getUser(this.paramUsername)
       .subscribe((data: any) => {
@@ -49,7 +50,6 @@ export class ProfilePageComponent  {
         });
         this._apiService.getFollowingUser(data.user.username)
         .subscribe((data: any) => {
-          console.log(data.users);
           this.arrayFollowingUser = data.users;
         });
         if (this.currentUser && (this.currentUser.username === data.user.username)) {
@@ -58,6 +58,8 @@ export class ProfilePageComponent  {
           this.isCurrentUser = false;
         }
       });
+      this.showArticles = true;
+      this.showFollowing = false;
     })
   }
 }

@@ -8,7 +8,8 @@
         <small>{{article.count_comment}} Comments</small>
       </h3>
       <div class="follow-like">
-        <app-subscribe-button [value]="article.attention"
+        <app-subscribe-button *ngIf="!isCurrentUser" 
+          [value]="article.attention"
           [article]="article">
         </app-subscribe-button>
         <app-like-button [value]="article.attention"
@@ -35,7 +36,7 @@
         <img src="{{article.title_image.url | imagepipe}}">
       </div>
       <div class="article-content">
-        <p [innerHTML]="article.content | safepipe:'html'" class="text-justify"></p>
+        <div [innerHTML]="article.content | safepipe:'html'" class="line-breaker text-justify"></div>
       </div>
       <div class="article-tags">
         <ul class="list-inline">
@@ -56,7 +57,7 @@
             </app-user-media>
           </div>
           <div class="comment-content">
-            <p>{{commentItem.content}}</p>
+            <p class="line-breaker">{{commentItem.content}}</p>
           </div>
           <div class="btn-edit-comment" (click)="editComment(commentItem.id)"
             [class.isHidden]="!(currentUser && (currentUser.username === commentItem.user.username))">
@@ -97,11 +98,13 @@
       </a>
       <h4><a [routerLink]="['/profile', article.user.username]">{{article.user.username}}</a>
       <br>
-      <small>{{article.user.fullname}} &minus; {{article.user.birthday | date:'MMM d, y'}}</small>
+      <small>{{article.user.birthday | date:'MMM d, y'}}</small>
       </h4>
       <p>{{article.user.description}}</p>
       <div class="follow">
-        <app-follow-button [value]="article.user"></app-follow-button>
+        <app-follow-button *ngIf="!isCurrentUser"
+          [value]="article.user">
+        </app-follow-button>
       </div>
       <div class="popular-article">
         <h3 class="text-bold">Popular articles</h3>

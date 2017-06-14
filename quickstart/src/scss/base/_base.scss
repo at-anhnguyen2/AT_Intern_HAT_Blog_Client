@@ -25,7 +25,11 @@
   color: $color-a !important;
   background-color: $color-primary !important;
 }
-.like-button, .follow-button, .setting-button, .edit-button, .delete-button {
+.like-button,
+.follow-button,
+.setting-button,
+.edit-button,
+.delete-button {
   padding: 2px 5px;
 }
 .follow-button {
@@ -83,4 +87,10 @@
       }
     }
   }
+}
+.line-breaker {
+  white-space: pre-line;
+}
+.text-indent {
+  text-indent: 30px;
 }

@@ -11,7 +11,6 @@ export class SafePipe {
 	}
 
 	public transform(value: string, type: string): SafeHtml | SafeStyle | SafeScript | SafeUrl | SafeResourceUrl {
-		console.log(type);
 		switch (type) {
 			case 'html':
 				return this._sanitizer.bypassSecurityTrustHtml(value);

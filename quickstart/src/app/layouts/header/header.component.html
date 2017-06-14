@@ -2,7 +2,7 @@
   <div class="header-scroll">
     <div class="header-contain">
       <div class="logo wow flipInY">
-        <a [routerLink]="['home']">
+        <a [routerLink]="['home']" (click)="moveToTop()">
           <img src="../img/logo.png" alt="logo img">
         </a>
       </div>
@@ -21,7 +21,7 @@
       <nav class="menu">
         <ul class="nav nav-pills">
           <li>
-            <a [routerLink]="['/home']" routerLinkActive="isActived">
+            <a [routerLink]="['/home']" (click)="moveToTop()" routerLinkActive="isActived">
               <span class="glyphicon glyphicon-home"></span> Home
             </a>
           </li>
@@ -37,20 +37,26 @@
           </li>
           <li [class.isHidden]="!isLogined" *ngIf="currentUser">
             <a [routerLink]="['/profile', currentUser.username]"
-              routerLinkActive="isActived">
-              <span class="glyphicon glyphicon-user"></span> {{currentUser.username}}
+              routerLinkActive="isActived" class="user">
+              <div class="avatar">
+                <img src="{{currentUser.avatar | avatarpipe}}" class="img-circle" alt="Cinque Terre" width="30" height="30">
+              </div>
+              <div class="username">
+                {{currentUser.username}}
+              </div>
             </a>
           </li>
           <li [class.isHidden]="!isLogined" class="notification">
             <a (click)="clickNotification()" class="click-notification">
               <span class="glyphicon glyphicon-globe"></span>
               <div class="notification-number"
-                [class.isHidden]="!haveNotification">{{numberNotification}}</div>
+                [class.isHidden]="!haveNotification">
+                {{numberNotification}}
+              </div>
             </a>
             <app-notification
               [class.isHidden]="!showNotification"
-              [inputNotification]="notificationsOutput"
-              (result)="getNumberNotification($event)"
+              [inputNotifications]="arrayNotification"
               (hiddenNotification)="hideNotification($event)">
             </app-notification>
           </li>

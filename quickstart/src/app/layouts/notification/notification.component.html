@@ -1,13 +1,13 @@
-<div class="notification-modal list-group">
-	<span [class.isHidden]="haveNotification">No notification</span>
-	<a *ngFor="let item of arrayNotification" class="list-group-item">
+<div class="notification-modal list-group" *ngIf="!isShow">
+	<div class="no-notification" [class.isHidden]="haveNotification">No notification</div>
+	<a *ngFor="let item of arrayNotification" class="list-group-item" (click)="clickNotificationItem(item)" title="{{item.message}}">
 		<div class="img-notification">
 			<img src="{{item.image | imagepipe}}">
 		</div>
 		<div class="content-notification"
 			[class.text-bold]="!item.isChecked"
 			[class.text-notice]="!item.isChecked">
-			{{item.message | shortcontentpipe}}
+			{{item.message | shortcontentpipe:50}}
 		</div>
 	</a>
 </div>
