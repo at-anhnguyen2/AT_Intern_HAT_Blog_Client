@@ -70,6 +70,7 @@
             (result)="resultEditComment($event)">
           </app-edit-comment>
         </div>
+        <div *ngIf="article.comments.length === 0" class="text-notice">Be the first to comment the article</div>
       </div>
       <div class="comment-field">
         <div class="form-group" [class.isHidden]="!currentUser">

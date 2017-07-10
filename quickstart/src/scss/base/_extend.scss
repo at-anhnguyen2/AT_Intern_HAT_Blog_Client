@@ -3,12 +3,14 @@
   margin: 0 auto;
   width: 100%;
 }
+
 %reset {
   padding: 0;
   * {
     padding: 0;
   }
 }
+
 %article-view {
   position: relative;
   &:after {
@@ -22,12 +24,7 @@
     height: 100%;
   }
 }
-// %active {
-//   &:active, &:focus {
-//     color: $color-a;
-//     background-color: $color-primary;
-//   }
-// }
+
 %text-hover {
   color: $color-primary;
   text-decoration: none;

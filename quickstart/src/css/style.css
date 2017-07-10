@@ -515,27 +515,8 @@ button:focus, input:focus, a:focus {
     min-height: 200px;
     background-color: #ffffff;
     overflow: hidden; }
-    .container .item-article .article-img a:before {
-      position: absolute;
-      display: block;
-      content: '';
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background-color: rgba(0, 0, 0, 0.2);
-      z-index: 5;
-      transition: background-color 500ms; }
-    .container .item-article .article-img a:hover:before {
+    .container .item-article .article-img .imghover-shutter-out-vertical:before {
       background-color: rgba(0, 0, 0, 0.5); }
-    .container .item-article .article-img a:hover img {
-      width: 110%;
-      height: 110%; }
-    .container .item-article .article-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: all 0.5s; }
     .container .item-article .article-img .arrow {
       position: absolute;
       width: 7%;
@@ -544,17 +525,22 @@ button:focus, input:focus, a:focus {
       right: -3.5%;
       top: 47%;
       transform: rotate(45deg);
-      z-index: 8; }
-    .container .item-article .article-description .content {
-      padding: 30px; }
-      .container .item-article .article-description .content .follow-like {
-        position: absolute;
-        bottom: 30px; }
+      z-index: 8;
+      box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.3); }
+    .container .item-article .article-description {
+      box-shadow: -1px 0px 1px rgba(0, 0, 0, 0.3); }
+      .container .item-article .article-description .content {
+        padding: 30px; }
+        .container .item-article .article-description .content .follow-like {
+          position: absolute;
+          bottom: 30px; }
     .container .item-article:nth-child(even) .article-img {
       float: right; }
       .container .item-article:nth-child(even) .article-img .arrow {
-        right: 96.5%; }
+        right: 96.5%;
+        box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.3); }
     .container .item-article:nth-child(even) .article-description {
+      box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.3);
       float: left; }
     .container .item-article p {
       margin-top: 10px; }
