@@ -51,7 +51,6 @@ export class EditorPageComponent  {
 
 	ngOnInit() {
 		let param = this._route.snapshot.params["slug"];
-		console.log(param);
 		if (param) {
 			this.slugArticle = param;
 			this._apiService.getArticle(this.slugArticle)

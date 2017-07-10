@@ -38,7 +38,7 @@ export class HeaderLayoutComponent {
     this.showNotification = false;
     this.inputSearch = '';
     this.showSearchResult = false;
-    // setInterval(() => {
+    setInterval(() => {
       if (!this.showNotification && this.currentUser) {
         this._apiService.getNumberNotifications(this.currentUser.username)
         .subscribe((data: any) => {
@@ -50,7 +50,7 @@ export class HeaderLayoutComponent {
           }
         })
       }
-    // }, 3000);
+    }, 3000);
   }
 
   logout() {

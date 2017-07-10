@@ -67,10 +67,13 @@
       <div *ngFor="let articleItem of arrayArticles" class="item-article wow slideInUp">
         <div class="article-img col-sm-6">
           <div class="content">
-            <a [routerLink]="['/article', articleItem.slug]"
-              title="{{articleItem.title}}">
+            <figure class="imghover-shutter-out-vertical">
               <img src="{{articleItem.title_image.url | imagepipe}}" alt="article img">
-            </a>
+              <figcaption>
+                <img src="{{articleItem.title_image.url | imagepipe}}" alt="article img">
+              </figcaption>
+              <a [routerLink]="['/article', articleItem.slug]" title="{{articleItem.title}}"></a>
+            </figure>
             <div class="arrow"></div>
           </div>
         </div>

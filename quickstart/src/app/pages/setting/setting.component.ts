@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIService } from '../../share/services/api.service';
+import { AuthenticationService } from '../../share/services/authentication.service';
 import { AppConfig } from '../../share/app.config';
 
 @Component({
@@ -23,6 +24,7 @@ export class SettingPageComponent  {
 		_formBuilder: FormBuilder,
 		private _appConfig: AppConfig,
 		private _apiService: APIService,
+		private _apiAuthenticationService: AuthenticationService,
 		private _route: ActivatedRoute,
     private _router: Router
 	) {
@@ -83,6 +85,7 @@ export class SettingPageComponent  {
 				let user = data.user;
 				if (user && user.access_token) {
 	        localStorage.setItem('currentUser', JSON.stringify(user));
+	        this._apiAuthenticationService.authStatus.next(true);
 	      }
 				this._router.navigate(['/profile', this.username]);
 			} else {

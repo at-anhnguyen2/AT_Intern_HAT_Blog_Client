@@ -73,7 +73,6 @@ export class ArticlePageComponent  {
 		this._apiService.createComment(this.article.slug, this.inputComment)
 		.subscribe((data: any) => {
 			if (data.comment) {
-				console.log(data.comment);
 				this.article.comments.push(data.comment);
 				this._router.navigate(['/article', this.article.slug]);
 				this.inputComment = '';
